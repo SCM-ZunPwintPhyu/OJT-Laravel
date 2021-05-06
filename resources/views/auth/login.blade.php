@@ -4,9 +4,9 @@
 <div class="container">
     <link href='https://fonts.googleapis.com/css?family=Ubuntu:500' rel='stylesheet' type='text/css'>
     <div class="login-header">
-            <h5>Laravel OJT Project</h5>
+        <p><span style="color:red;font-size:2em">Laravel</span>&nbsp; OJT Project</p>
     </div>
-    <div class="login"><br><br>
+    <div class="login">
         <form method="POST" action="{{ route('login') }}">
             @csrf
             <div class="login-form">
@@ -31,24 +31,6 @@
                     @enderror
                 </div>
                 <a class="sign-up" href="{{ route('register') }}">Sign Up!</a>
-
-
-                <!-- <div class="row">
-                    <div class="col-sm-6 col-form-label">
-                    <a href="http://localhost/ojt_project/public/"><br><br><br>
-                        <input type="button" value="Cancel" class="cancel-button" />
-                    </a>
-                    </div>
-                    <div class="col-sm-6 col-form-label">
-                    <a href="http://localhost/ojt_project/public/"><br><br><br>
-                        <input type="button" value="Cancel" class="cancel-button" />
-                    </a>
-                    </div>
-                    <div class="col-sm-6 col-form-label">
-                        <input type="submit" value="Login" class="login-button" />
-                    </div>
-                </div> -->
-
                 <a href="http://localhost/ojt_project/public/"><br><br><br>
                     <input type="button" value="Cancel" class="cancel-button" />
                 </a>&nbsp;

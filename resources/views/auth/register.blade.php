@@ -4,7 +4,7 @@
 <div class="container">
     <link href='https://fonts.googleapis.com/css?family=Ubuntu:500' rel='stylesheet' type='text/css'>
     <div class="login-header">
-        <h5>Laravel OJT Project</h5>
+    <p><span style="color:red;font-size:2em">Laravel</span>&nbsp; OJT Project</p>
     </div>
     <div class="login">
         <form method="POST" action="{{ route('register') }}">

@@ -1,10 +1,11 @@
 body {
     /* background:url('http://cdn.wallpapersafari.com/13/6/Mpsg2b.jpg'); */
-    background-image: linear-gradient(to right, rgb(90, 216, 233) , rgb(223, 103, 177));
+    /* background-image: linear-gradient(to right, rgb(90, 216, 233) , rgb(223, 103, 177)); */
+    background-image: linear-gradient(to right, rgb(90, 216, 233) , rgb(153,255,204));
     margin:0px;
     font-family: 'Ubuntu', sans-serif;
     background-size: 100% 110%;
-    padding-top: 3%;
+    padding-top: 2%;
   }
   h1, h2, h3, h4, h5, h6, a {
     margin:0; padding:0;
@@ -16,9 +17,8 @@ body {
   }
   .login-header {
     /* color:rgb(41, 44, 41); */
-    color:white;
     text-align:center;
-    font-size:190%;
+    font-size:1.5em;
     font-family: 'Time New Roman', sans-serif;
   }
   /* .login-header h1 {
@@ -58,25 +58,38 @@ body {
   }
   .login-form input[type="submit"],
   .login-form input[type="button"] {
-    height:30px;
+    height:35px;
     width:100px;
     background:#fff;
     border:1px solid #f2f2f2;
-    border-radius:20px;
+    border-radius:10px;
     color: rgb(80, 93, 105);
     text-transform:uppercase;
     font-family: 'Ubuntu', sans-serif;
     cursor:pointer;
+    font-size: .8em;
   }
   .login-form input[type="submit"]{
     border:0px solid #f2f2f2;
-    background:rgb(34, 182, 54);
+    /* background:rgb(34, 182, 54); */
+    background: linear-gradient(0deg, rgb(19, 240, 49) 0%, rgb(34, 182, 54) 100%);
     color: rgb(247, 247, 247);
+  }
+  .login-form input[type="submit"]:hover{
+    border:0px solid #f2f2f2;
+    background:rgb(13, 243, 44);
+    color: black;
   }
   .login-form input[type="button"] {
     border:0px solid #f2f2f2;
-    background:rgb(182, 34, 34);
+    /* background:rgb(182, 34, 34); */
+    background: linear-gradient(0deg, rgb(221, 17, 17) 0%, rgb(182, 34, 34) 100%);
     color: rgb(247, 247, 247);
+  }
+  .login-form input[type="button"]:hover{
+    border:0px solid #f2f2f2;
+    background:rgb(226, 12, 12);
+    color: black;
   }
   .sign-up{
     color:#222222;
