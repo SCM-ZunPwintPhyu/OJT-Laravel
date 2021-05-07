@@ -36,46 +36,16 @@ th {
 </style>
 <div class="container">
     <div align="center" style="text-shadow: 2px 2px 5px #FAB10C;">
-        <h4>Laravel OJT Project Show Post Detail</h4>
+        <h4>Post's Detail</h4>
     </div>
-    <form action="{{ url('post') }}" method="GET" >
-        <div class="row">
-            <div class="col-md-4">
-                <input type="text" name="name" class="form-control" placeholder="Serach By Word..." value="">
-            </div>
-            <div class="col-md-1">
-                <input type="submit" class="btn btn-primary btn-sm" value="Search">
-            </div>
-            <div class="col-md-5"></div>
-            <div class="col-md-2">
-                <div style="float:right">
-                    <a class="btn btn-success btn-sm" href="{{ url('post/create') }}"><span class="glyphicon glyphicon-plus"></span>Add Post</a>
-                </div>
-            </div>
-        </div>
-    </form>
-    <br>
-    <table class="table table-hover" style="text-shadow: 2px 2px 5px rgb(90, 216, 233);"> 
-        <thead>
-            <tr class="info">
-                <th>ID</th>
-                <th>Title</th>
-                <th>Description</th>
-                <th>Status</th>
-                <th>Created</th>
-                <th>Created User Id</th>
-                <th>Updated User Id</th>
-                <th>Deleted User Id</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-
-    </table>
+    
     <div>
         <div class="col-md-2">
-
+           Herer is post detail 
         </div>
         <div class="col-md-8">
+        <img src="https://pbs.twimg.com/profile_images/1163911054788833282/AcA2LnWL_400x400.jpg"
+                            class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="col-md-2">
 
