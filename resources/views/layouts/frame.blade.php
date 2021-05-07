@@ -1,27 +1,3 @@
-<!-- @extends('layouts.app')
-
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    {{ __('You are logged in!') }}
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-@endsection -->
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -34,23 +10,24 @@
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+    <link href="{{ asset('plugins/fontawesome-free/css/all.min.css') }}" rel="stylesheet">
+
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Tempusdominus Bootstrap 4 -->
-    <link rel="stylesheet" href="plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+    <link rel="stylesheet" href="{{ asset('plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css') }}">
     <!-- iCheck -->
-    <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    <link rel="stylesheet" href="{{ asset('plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">
     <!-- JQVMap -->
-    <link rel="stylesheet" href="plugins/jqvmap/jqvmap.min.css">
+    <link rel="stylesheet" href="{{ asset('plugins/jqvmap/jqvmap.min.css') }}">
     <!-- Theme style -->
-    <link rel="stylesheet" href="dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="{{ asset('dist/css/adminlte.min.css') }}">
     <!-- overlayScrollbars -->
-    <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+    <link rel="stylesheet" href="{{ asset('plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
     <!-- Daterange picker -->
-    <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
+    <link rel="stylesheet" href="{{ asset('plugins/daterangepicker/daterangepicker.css') }}">
     <!-- summernote -->
-    <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
+    <link rel="stylesheet" href="{{ asset('plugins/summernote/summernote-bs4.min.css') }}">
 </head>
 <style type="text/css" media="screen">
 th {
@@ -65,7 +42,7 @@ th {
     width: 90%;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     /* background-image: linear-gradient(#ffc107, #f39c12); */
-    background-image: linear-gradient(to right, rgb(90, 216, 233) , rgb(153,255,204));
+    background-image: linear-gradient(to right, rgb(90, 216, 233), rgb(153, 255, 204));
 }
 </style>
 
@@ -235,7 +212,7 @@ th {
                         data-accordion="false">
                         <li class="nav-header"><b>Information</b></li>
                         <li class="nav-item">
-                            <a href="{{ route('post') }}"  class="nav-link">
+                            <a href="#" class="nav-link">
                                 <i class="nav-icon far fa-circle text-danger"></i>
                                 <p>Posts</p>
                             </a>
@@ -270,52 +247,12 @@ th {
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
-
-
-            <div align="center" style="padding-top:5%;text-shadow: 2px 2px 5px #FAB10C;">
-                <h4>Laravel OJT Project Dashboard</h4>
-            </div>
-
-            <div class="row text-center">
-                <div class="col-lg-3 col-md-3 col-xs-6"></div>
-                <div class="col-lg-3 col-md-3 col-xs-6" style="margin-top:7%">
-                    <div class="small-box text-center" id="card1">
-                        <div class="inner">
-                            <div class="row text-center">
-                                <div class="col-md-12">
-                                    <h1 style="font-size:18px"><b>Total User </b></h1>
-                                </div>
-                                <div class="col-md-12 text-center">
-                                    <p style="font-size: 23px;color:white;">
-                                        3
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="book" class="small-box-footer" id="footer_card">More info <i
-                                class="fa fa-fw fa-arrow-right"></i></a>
-                    </div>
+            <section>
+                <div align="center">
+                    <main class="py-4">
+                        @yield('content')
+                    </main>
                 </div>
-                <div class="col-lg-3 col-md-3 col-xs-6" style="margin-top:7%">
-                    <div class="small-box text-center" id="card1">
-                        <div class="inner">
-                            <div class="row text-center">
-                                <div class="col-md-12">
-                                    <h1 style="font-size:18px"><b>Total Post </b></h1>
-                                </div>
-                                <div class="col-md-12 text-center">
-                                    <p style="font-size: 23px;color:white;">
-                                        3
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="review" class="small-box-footer" id="footer_card">More info <i
-                                class="fa fa-fw fa-arrow-right"></i></a>
-                    </div>
-                </div>
-            </div>
-
             </section>
             <!-- /.content -->
         </div>
@@ -336,39 +273,39 @@ th {
     <!-- ./wrapper -->
 
     <!-- jQuery -->
-    <script src="plugins/jquery/jquery.min.js"></script>
+    <script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
     <!-- jQuery UI 1.11.4 -->
-    <script src="plugins/jquery-ui/jquery-ui.min.js"></script>
+    <script src="{{ asset('plugins/jquery-ui/jquery-ui.min.js') }}"></script>
     <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
     <script>
     $.widget.bridge('uibutton', $.ui.button)
     </script>
     <!-- Bootstrap 4 -->
-    <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ asset('plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <!-- ChartJS -->
-    <script src="plugins/chart.js/Chart.min.js"></script>
+    <script src="{{ asset('plugins/chart.js/Chart.min.js') }}"></script>
     <!-- Sparkline -->
-    <script src="plugins/sparklines/sparkline.js"></script>
+    <script src="{{ asset('plugins/sparklines/sparkline.js') }}"></script>
     <!-- JQVMap -->
-    <script src="plugins/jqvmap/jquery.vmap.min.js"></script>
-    <script src="plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
+    <script src="{{ asset('plugins/jqvmap/jquery.vmap.min.js') }}"></script>
+    <script src="{{ asset('plugins/jqvmap/maps/jquery.vmap.usa.js') }}"></script>
     <!-- jQuery Knob Chart -->
-    <script src="plugins/jquery-knob/jquery.knob.min.js"></script>
+    <script src="{{ asset('plugins/jquery-knob/jquery.knob.min.js') }}"></script>
     <!-- daterangepicker -->
-    <script src="plugins/moment/moment.min.js"></script>
-    <script src="plugins/daterangepicker/daterangepicker.js"></script>
+    <script src="{{ asset('plugins/moment/moment.min.js') }}"></script>
+    <script src="{{ asset('plugins/daterangepicker/daterangepicker.js') }}"></script>
     <!-- Tempusdominus Bootstrap 4 -->
-    <script src="plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+    <script src="{{ asset('plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js') }}"></script>
     <!-- Summernote -->
-    <script src="plugins/summernote/summernote-bs4.min.js"></script>
+    <script src="{{ asset('plugins/summernote/summernote-bs4.min.js') }}"></script>
     <!-- overlayScrollbars -->
-    <script src="plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+    <script src="{{ asset('plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
     <!-- AdminLTE App -->
-    <script src="dist/js/adminlte.js"></script>
+    <script src="{{ asset('dist/js/adminlte.js') }}"></script>
     <!-- AdminLTE for demo purposes -->
-    <script src="dist/js/demo.js"></script>
+    <script src="{{ asset('dist/js/demo.js') }}"></script>
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-    <script src="dist/js/pages/dashboard.js"></script>
+    <script src="{{ asset('dist/js/pages/dashboard.js') }}"></script>
 </body>
 
 </html>

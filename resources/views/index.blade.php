@@ -40,7 +40,7 @@ th {
 #card1 {
     width: 90%;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    background-image: linear-gradient(#ffc107, #f39c12);
+    background-image: linear-gradient(red, green);
 }
 </style>
 
@@ -276,7 +276,7 @@ th {
                         <div class="inner">
                             <div class="row text-center">
                                 <div class="col-md-12">
-                                    <h1 style="font-size:18px"><b>Total Book </b></h1>
+                                    <h1 style="font-size:18px"><b>Total Post </b></h1>
                                 </div>
                                 <div class="col-md-12 text-center">
                                     <p style="font-size: 23px;color:white;">

@@ -17,10 +17,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
+// Route::get('/home','HomeController@index')->name('home');
 
 
 
@@ -28,9 +30,18 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::group(['middleware' => 'auth'], function () {
 
-    // Route::get('/index', function () {
-    //     return view('index');
+    // Route::get('/home', function () {
+    //     return view('home');
     // });
-    
 
+    // Route::get('/post', [App\Http\Controllers\PostController::class, 'index'])->name('post');
+    // Route::get('/post/create', [App\Http\Controllers\PostController::class, 'create'])->name('post_create');
+    
+    Route::group(['prefix' => 'post'],function() {
+        Route::get('/', [App\Http\Controllers\PostController::class, 'index'])->name('post');
+        Route::get('/create', [App\Http\Controllers\PostController::class, 'create'])->name('post_create');
+        Route::get('/show', [App\Http\Controllers\PostController::class, 'show'])->name('post_show');
+        Route::get('/edit', [App\Http\Controllers\PostController::class, 'edit'])->name('post_edit');
+    });
+    
 });
