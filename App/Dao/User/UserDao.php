@@ -14,7 +14,20 @@ class UserDao implements UserDaoInterface
    */
   public function getUserList()
   {
-    $users =  User::get();
+    $users =  User::all();
     return $users;
+  }
+
+  public function createUser($user) {
+    $user->save();
+  }
+
+  public function userByID($id) {
+    $user = User::find($id);
+    return $user;
+  }
+
+  public function updateUser($user) {
+    $user->save();
   }
 }

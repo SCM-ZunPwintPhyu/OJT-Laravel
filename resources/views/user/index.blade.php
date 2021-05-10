@@ -175,8 +175,8 @@ body {
             <tbody class="td">
                 @foreach ($data as $user)
                 <tr>
-                    <td>{{++$i}}</td>
-                    <td>{{ $user->name}}</td>
+                    <td>{{$user->id}}</td>
+                    <td>{{$user->name}}</td>
                     <td>{{$user->type}}</td>
                     <td>{{$user->email}}</td>
                     <td>
