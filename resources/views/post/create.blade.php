@@ -125,28 +125,27 @@ input:checked+.slider:before {
 }
 </style>
 <div class="container">
-    <form class="form-style-9" method="post" action="#" enctype="multipart/form-data">
+    <form class="form-style-9" method="post" action="{{ route('post_create')}}" enctype="multipart/form-data">
         @csrf
         <ul>
             <li>
                 <label style="float:left">Title</label>
-                <input type="text" name="name" class="field-style field-full align-none" placeholder="Title" />
-                <span style="color:red">{!! $errors->first('name','<small>:message</small>')!!} </span>
+                <input type="text" name="title" class="field-style field-full align-none" placeholder="Title" />
+                <span style="color:red">{!! $errors->first('title','<small>:message</small>')!!} </span>
             </li>
             <li>
                 <label style="float:left">Description</label>
-                <input type="text" name="author" class="field-style field-full align-none" placeholder="Description" />
-                <span style="color:red">{!! $errors->first('author','<small>:message</small>')!!} </span>
+                <input type="text" name="description" class="field-style field-full align-none" placeholder="Description" />
+                <span style="color:red">{!! $errors->first('description','<small>:message</small>')!!} </span>
             </li><br>
+            
             <li>
-                <div class="form-group {{ $errors->first('pdf', 'has-error') }}" style="float:left">
+                <div class="form-group {{ $errors->first('status', 'has-error') }}" style="float:left">
                     <label >Status</label>
                     <label class="switch">
                         <input type="checkbox" checked>
                         <span class="slider round"></span>
                     </label>
-                    <!-- <input type="file" name="pdf" class="field-style field-full align-none" value="Choose PDF" />
-                    <span style="color:red">{!! $errors->first('pdf','<small>:message</small>')!!} </span> -->
                 </div>
             </li>
             <li>

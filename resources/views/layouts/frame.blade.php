@@ -212,7 +212,7 @@ th {
                         data-accordion="false">
                         <li class="nav-header"><b>Information</b></li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{ route('post') }}" class="nav-link">
                                 <i class="nav-icon far fa-circle text-danger"></i>
                                 <p>Posts</p>
                             </a>

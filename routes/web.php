@@ -40,8 +40,11 @@ Route::group(['middleware' => 'auth'], function () {
     Route::group(['prefix' => 'post'],function() {
         Route::get('/', [App\Http\Controllers\PostController::class, 'index'])->name('post');
         Route::get('/create', [App\Http\Controllers\PostController::class, 'create'])->name('post_create');
-        Route::get('/show', [App\Http\Controllers\PostController::class, 'show'])->name('post_show');
-        Route::get('/edit', [App\Http\Controllers\PostController::class, 'edit'])->name('post_edit');
+        Route::post('/create', [App\Http\Controllers\PostController::class, 'store'])->name('post_store');
+        Route::delete('/destroy/{id}', [App\Http\Controllers\PostController::class, 'destroy'])->name('post_destroy');
+        Route::get('/edit/{id}', [App\Http\Controllers\PostController::class, 'edit'])->name('post_edit');
+        Route::put('/update/{id}', [App\Http\Controllers\PostController::class, 'update'])->name('post_update');
     });
+    Route::get('changeStatus', 'UserController@changeStatus');
     
 });
