@@ -20,18 +20,21 @@ class PostController extends Controller
         if($keyword!=''){
             $data = $data->where('title','like','%'.$keyword.'%');
         }
-        $data=$data->orderBy('id','DESC')->paginate(6);
+        $data=$data->orderBy('id','DESC')->paginate(2);
         return view('post.index',compact('data','count'))
-            ->with('i', ($request->input('page', 1) - 1) * 6);
+            ->with('i', ($request->input('page', 1) - 1) * 2);
     }
-    public function changeStatus(Request $request)
+    public function changestatuspost(Request $request)
     {
-        $user = User::find($request->user_id);
-        $user->status = $request->status;
-        $user->save();
-  
+        dd("herer");
+        // dd($request->all());
+        $posts = Post::find($request->post_id);
+        $posts->status = $request->status;
+
+        $posts->save();
         return response()->json(['success'=>'Status change successfully.']);
     }
+
     public function create() {
         $data = Post::all();
         return view('post.create',compact('data'));

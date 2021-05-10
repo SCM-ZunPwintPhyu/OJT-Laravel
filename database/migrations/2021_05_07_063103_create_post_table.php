@@ -17,11 +17,11 @@ class CreatePostTable extends Migration
             $table->id();
             $table->string('title');
             $table->string('description');
-            $table->integer('status');
-            $table->string('created_user_id');
-            $table->string('updated_user_id');
-            $table->string('deleted_user_id');
-            $table->integer('deleted_at');
+            $table->integer('status')->nullable();
+            $table->string('created_user_id')->nullable();
+            $table->string('updated_user_id')->nullable();
+            $table->string('deleted_user_id')->nullable();
+            $table->integer('deleted_at')->nullable();
             $table->timestamps();
         });
     }

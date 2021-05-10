@@ -214,9 +214,10 @@ body {
                     </label>
                 </td> -->
                     <td>
-                        <input data-id="{{$post->id}}" class="toggle-class" type="checkbox" data-onstyle="success"
-                            data-offstyle="danger" data-toggle="toggle" data-on="Active" data-off="InActive"
-                            {{ $post->status ? 'checked' : '' }}>
+                        <label class="switch">
+                        <input data-id="{{$post->id}}" data-size ="small" class="toggle-class" type="checkbox" data-onstyle="success" data-offstyle="danger" data-toggle="toggle" data-on="Active" data-off="InActive" {{ $post->status ? 'checked' : '' }}>
+                        <span class="slider round"></span>
+                        </label>
                     </td>
                     <td>{{$post->created_at}}</td>
                     <td>{{$post->created_user_id}}</td>
@@ -250,24 +251,22 @@ body {
         </div>
         <script>
         $(function() {
-            $('.toggle-class').change(function() {
-                var status = $(this).prop('checked') == true ? 1 : 0;
-                var user_id = $(this).data('id');
+  $('.toggle-class').change(function() {
+      var status = $(this).prop('checked') == true ? 1 : 0;
+      
+      var post_id = $(this).data('id'); 
+      $.ajax({
+          type: "GET",
+          dataType: "json",
+          url: "<?php echo route('change-status-post') ?>",
+          data: {'status': status, 'post_id': post_id},
+          success: function(data){
+           console.log(data.success);
+          }
+      });
+  });
 
-                $.ajax({
-                    type: "GET",
-                    dataType: "json",
-                    url: '/changeStatus',
-                    data: {
-                        'status': status,
-                        'user_id': user_id
-                    },
-                    success: function(data) {
-                        console.log(data.success)
-                    }
-                });
-            })
-        })
+
         </script>
 
         <script>

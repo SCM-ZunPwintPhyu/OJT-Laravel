@@ -30,10 +30,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::group(['middleware' => 'auth'], function () {
 
-    // Route::get('/home', function () {
-    //     return view('home');
-    // });
-
     // Route::get('/post', [App\Http\Controllers\PostController::class, 'index'])->name('post');
     // Route::get('/post/create', [App\Http\Controllers\PostController::class, 'create'])->name('post_create');
     
@@ -46,5 +42,17 @@ Route::group(['middleware' => 'auth'], function () {
         Route::put('/update/{id}', [App\Http\Controllers\PostController::class, 'update'])->name('post_update');
     });
     Route::get('changeStatus', 'UserController@changeStatus');
+
+    Route::group(['prefix' => 'profile'],function() {
+        Route::get('/', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile');
+        Route::get('/create', [App\Http\Controllers\ProfileController::class, 'create'])->name('profile_create');
+        Route::post('/create', [App\Http\Controllers\ProfileController::class, 'store'])->name('profile_store');
+        Route::delete('/destroy/{id}', [App\Http\Controllers\ProfileController::class, 'destroy'])->name('profile_destroy');
+        Route::get('/edit/{id}', [App\Http\Controllers\ProfileController::class, 'edit'])->name('profile_edit');
+        Route::put('/update/{id}', [App\Http\Controllers\ProfileController::class, 'update'])->name('profile_update');
+    });
     
 });
+
+
+Route::get('change-status-post','PostController@changestatuspost')->name('change-status-post');
