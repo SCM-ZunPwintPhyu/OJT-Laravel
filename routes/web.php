@@ -50,6 +50,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::delete('/destroy/{id}', [App\Http\Controllers\ProfileController::class, 'destroy'])->name('profile_destroy');
         Route::get('/edit/{id}', [App\Http\Controllers\ProfileController::class, 'edit'])->name('profile_edit');
         Route::put('/update/{id}', [App\Http\Controllers\ProfileController::class, 'update'])->name('profile_update');
+        Route::get('/show/{id}', [App\Http\Controllers\ProfileController::class, 'show'])->name('profile_show');
     });
     
 });

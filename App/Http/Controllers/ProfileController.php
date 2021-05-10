@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use Hash;
 use App\Models\User;
+use File;
 
 class ProfileController extends Controller
 {
@@ -59,7 +60,7 @@ class ProfileController extends Controller
                     'profile'=>$profile,
                 ]);
                 // dd($res);
-        return redirect()->route('user')
+        return redirect()->route('profile')
                         ->with('success','User added successful!.');
     }
     public function show() {
@@ -144,8 +145,13 @@ class ProfileController extends Controller
 
         $user->fill($arr)->save();
 
-        return redirect()->route('user')->with('success', 'User Update successfully');
+        return redirect()->route('profile')->with('success', 'User Update successfully');
     }
 
-
+    public function destroy($id)
+    {
+        $user = User::findOrFail($id);
+        $user->delete();
+        return redirect('/profile')->with('success', 'Profile is successfully deleted');
+    }
 }
