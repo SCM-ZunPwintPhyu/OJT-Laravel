@@ -20,9 +20,9 @@ class PostController extends Controller
         if($keyword!=''){
             $data = $data->where('title','like','%'.$keyword.'%');
         }
-        $data=$data->orderBy('id','DESC')->paginate(15);
+        $data=$data->orderBy('id','DESC')->paginate(6);
         return view('post.index',compact('data','count'))
-            ->with('i', ($request->input('page', 1) - 1) * 15);
+            ->with('i', ($request->input('page', 1) - 1) * 6);
     }
     public function changeStatus(Request $request)
     {
@@ -39,8 +39,6 @@ class PostController extends Controller
 
     public function store(Request $request)
     {
-        // dd("herere");
-        // dd($request);
         $rules = [
             'title'=>'required',
             'description' => 'required',
@@ -57,7 +55,7 @@ class PostController extends Controller
                     'title'=>$request->title,
                     'description'=>$request->description,
                     'created_user_id'=>$user_id,
-                    'updated_user_id'=>null,
+                    'updated_user_id'=>"Not Update",
                 ]);
 
                 // dd($res);

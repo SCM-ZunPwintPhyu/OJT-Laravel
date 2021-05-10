@@ -51,7 +51,7 @@
                 </span>
                 @enderror
 
-                <a href="http://localhost/ojt_project/public/"><br><br><br>
+                <a href="{{ route('welcome') }}"><br><br><br>
                     <input type="button" value="Cancel" class="cancel-button" />
                 </a>&nbsp;
                 <input type="submit" value="Register" class="login-button" />

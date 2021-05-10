@@ -43,13 +43,15 @@
     }
 
     a {
-        color: inherit;
+        color: red;
         text-decoration: inherit
     }
 
     .bg-white {
-        --bg-opacity: 1;
-        background-color: red;
+        padding: 10px;
+        /* color:red; */
+        /* --bg-opacity: 1; */
+        /* background-color: red; */
         /* background-color: #fff;
         background-color: rgba(255, 255, 255, var(--bg-opacity)) */
     }
@@ -235,8 +237,8 @@
 
     .text-gray-500 {
         --text-opacity: 1;
-        color: #a0aec0;
-        color: rgba(160, 174, 192, var(--text-opacity))
+        color: black;
+        /* color: rgba(160, 174, 192, var(--text-opacity)) */
     }
 
     .text-gray-600 {
@@ -417,11 +419,10 @@
     }
 
     td {
-        height: 25px;
         font-family: "Time New Romans";
         font-size: 15px;
         font-weight: 100;
-        padding: 10px;
+        padding: 0px;
     }
 
     form {
@@ -439,7 +440,8 @@
         font-weight: 100;
     }
 
-    input[type="text"] {
+    input[type="text"],
+    input[type="search"] {
         font-size: 13px;
         font-family: "Open Sans";
         font-weight: 100;
@@ -561,13 +563,9 @@
             @auth
             <a href="{{ url('/home') }}" class="text-sm text-gray-700 underline">Home</a>
             @else
-            <!-- <a href="{{ route('login') }}" class="text-sm text-gray-700 underline"><input type="button"
-                    value="Log in"></a> -->
             <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">
                 <button class="custom-btn btn-5"><span>Log in</span></button></a>
             @if (Route::has('register'))
-            <!-- <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline"><input type="button"
-                    value="Register"></a> -->
             <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">
                 <button class="custom-btn btn-5"><span>Register</span></button></a>
             @endif
@@ -588,7 +586,22 @@
                 <p style="font-size:1em;padding-top:25px">&nbsp;OJT Project</p>
             </div>
             <hr style="height:1px;border-width:0;color:gray;background-color:gray;margin-bottom:50px">
-            <form action="#">
+            <?php 
+                $title= isset($_GET['title'])?$_GET['title']:'';
+            ?>
+            <br>
+            <form action="{{ route('welcome') }}" method="GET">
+                <div class="row">
+                    <div class="col-md-3">
+                        <input type="text" name="title" placeholder="Serach By Word..."
+                            value="">
+                    </div>
+                    <div class="col-md-1">
+                        <input type="submit"  value="Search">
+                    </div>
+                </div>
+            </form>
+            <!-- <form action="#">
                 <div>
                     <input type="text" name="keyword" placeholder="Search word">
                 </div>
@@ -607,52 +620,51 @@
                 <div>
                     <input type="submit" value="Search">
                 </div>
-            </form>
+            </form> -->
 
-            <div class="container">
+            <div class="container" style="overflow-x:auto;">
+                @if(count($data)>0)
                 <table>
                     <tr>
                         <th>Id</th>
                         <th>Title</th>
-                        <th>Photo</th>
                         <th>Description</th>
-                        <th>Posted User</th>
-                        <th>Posted Date</th>
+                        <th>Created User</th>
+                        <th>Updated User</th>
+                        <th>Created Time</th>
                     </tr>
+                    @foreach ($data as $post)
                     <tr>
-                        <td>1</td>
-                        <td>Driver Frontal</td>
-                        <td>herer is photo</td>
-                        <td>Driver Frontal Stage .......</td>
-                        <td>Restrains</td>
-                        <td>2007-10-07</td>
+                        <td>{{++$i}}</td>
+                        <td>{{$post->title}}</td>
+                        <td>{{$post->description}}</td>
+                        <td>{{$post->created_user_id}}</td>
+                        <td>{{$post->updated_user_id}}</td>
+                        <td>{{$post->created_at}}</td>
+                        <td>
+                            <form action="{{ route('post_destroy',$post->id)}}" method="post"
+                                onsubmit="return confirm('Do you want to delete?');">
+                                @csrf @method('DELETE')
+                                <a class="btn btn-sm btn-primary" href="{{ route('post_edit',$post->id)}}">
+                                    <i class="fas fa-edit" title="Edit"></i></a>
+                                </a>
+                                <button class="btn btn-sm btn-danger btn-sm" type="submit">
+                                    <i class="fa fa-fw fa-trash" title="Delete"></i>
+                                </button>
+                            </form>
+                        </td>
                     </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Driver Frontal</td>
-                        <td>herer is photo</td>
-                        <td>sDriver Frontal ......</td>
-                        <td>Restrains</td>
-                        <td>2007-10-07</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Driver Frontal</td>
-                        <td>herer is photo</td>
-                        <td>Driver Frontal Stage .......</td>
-                        <td>Restrains</td>
-                        <td>2007-10-07</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Driver Frontal</td>
-                        <td>herer is photo</td>
-                        <td>sDriver Frontal ......</td>
-                        <td>Restrains</td>
-                        <td>2007-10-07</td>
-                    </tr>
-
+                    @endforeach
                 </table>
+                <div style="float:right">
+                    {!! $data->appends(request()->input())->links() !!}
+                </div>
+                @else
+                <h4 class="h4 pt-5 pb-3 text-info">Posts Not Found!....</h4>
+                @endif
+                <div class="col-md-2">
+                    <p style="font-size:15px"> Count:: {{$count}}</p>
+                </div>
             </div>
         </div>
     </div>
