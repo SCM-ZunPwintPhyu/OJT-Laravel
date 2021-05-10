@@ -57,7 +57,7 @@ class PostController extends Controller
                     'title'=>$request->title,
                     'description'=>$request->description,
                     'created_user_id'=>$user_id,
-                    'updated_user_id'=>$user_id,
+                    'updated_user_id'=>null,
                 ]);
 
                 // dd($res);
