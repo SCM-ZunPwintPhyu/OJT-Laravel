@@ -1,5 +1,4 @@
 @extends('layouts.frame')
-
 @section('content')
 <style>
 .table .thead-light th {
@@ -175,7 +174,7 @@ body {
     </form>
     <br>
     <div style="overflow-x:auto;">
-
+        @if(count($data)>0)
         <table class="table table-hover" style="text-shadow: 2px 2px 5px rgb(90, 216, 233);">
             <thead>
                 <tr class="info">
@@ -240,16 +239,14 @@ body {
 
             </tbody>
         </table>
-        <div>
-            <div class="col-md-2">
-                {!! $data->appends(request()->input())->links() !!}
-
-            </div>
-            <div class="col-md-8">
-            </div>
-            <div class="col-md-2">
-                <p style="font-size:15px"> Count:: {{$count}}</p>
-            </div>
+        <div class="d-flex justify-content-center">
+        <!-- {!! $data->appends(request()->input())->links() !!} -->
+        </div>
+        @else
+        <h4 class="h4 pt-5 pb-3 text-info">Posts Not Found!....</h4>
+        @endif
+        <div class="col-md-2" style="float:left">
+            <p style="font-size:15px"> Count:: {{$count}}</p>
         </div>
         <script>
         $(function() {
