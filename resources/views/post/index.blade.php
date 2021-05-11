@@ -207,7 +207,7 @@ body {
             <tbody class="td">
                 @foreach ($data as $post)
                 <tr>
-                    <td>{{++$i}}</td>
+                    <td>{{$post->id}}</td>
                     <!-- <td>{{ $post->title}}</td> -->
                     <td>
                         <!-- <div id="myBtn"><a href="#">{{$post->title}}</a></div> -->
@@ -285,7 +285,7 @@ body {
             <tbody class="td">
                 @foreach ($data as $post)
                 <tr>
-                    <td>{{++$i}}</td>
+                    <td>{{$post->id}}</td>
                     <!-- <td>{{ $post->title}}</td> -->
                     <!-- <td>
                         <div id="myBtn"><a href="#">{{$post->title}}</a></div>
@@ -360,9 +360,8 @@ body {
     <h4 class="h4 pt-5 pb-3 text-info">Posts Not Found!....</h4>
     @endif
     <div style="width:300px;height:30px;background:red;float:right;font-size:15px">
-        <!-- Here Paginate -->
-        <!-- {!! $data->links() !!} -->
-        {!! $data->appends(request()->input())->links() !!}
+        Here Paginate
+        
     </div>
     <div class="col-md-2" style="float:left">
         <p style="font-size:15px"> Count:: {{$count}}</p>

@@ -51,6 +51,5 @@ Route::group(['middleware' => 'auth'], function () {
     });
    
 });
-// Route::get('change-status-post','PostController@changestatuspost')->name('change-status-post');
 
 Route::get('change-status-post', [App\Http\Controllers\PostController::class, 'changestatuspost'])->name('change-status-post');
