@@ -125,30 +125,24 @@ input:checked+.slider:before {
 }
 </style>
 <div class="container">
-    <form class="form-style-9" method="post" action="{{ route('profile_update', $data->id)}}"
-        enctype="multipart/form-data">
-        @csrf
-        @method('PUT')
+<form class="form-style-9" method="post" action="{{ route('profile_update', $data->id)}}" enctype="multipart/form-data">
+    @csrf
+    @method('PUT')
         <ul>
             <li>
                 <label style="float:left">Name</label>
-                <input type="text" name="name" class="field-style field-full align-none" value="{{ $data->name }}" />
+                <input type="text" name="name" class="field-style field-full align-none" value="{{$data->name}}" />
                 <span style="color:red">{!! $errors->first('name','<small>:message</small>')!!} </span>
             </li>
             <li>
                 <label style="float:left">Email</label>
                 <input type="email" name="email" class="field-style field-full align-none" value="{{ $data->email }}"
-                    disabled />
-                <span style="color:red"> </span>
+                     />
+                    <span style="color:red">{!! $errors->first('email','<small>:message</small>')!!} </span>
             </li>
-            <!-- <li>
-                <label style="float:left">Type</label>
-                <input type="text" name="type" class="field-style field-full align-none" value="{{ $data->type }}" />
-                <span style="color:red"> </span>
-            </li> -->
             <li>
                 <label style="float:left">Type</label>
-                <select class="form-control" name="name">
+                <select class="form-control" name="type">
                     <option value="{{$data->type}}">
                         <?php
                         if ($data->type == 0) {

@@ -50,7 +50,7 @@ class ProfileController extends Controller
                 if ($file = $request->file('profile')) {
                     $extension = $file->getClientOriginalExtension();
         
-                    $safeName = $profile . '.' . $extension;
+                    $safeName = $profile. '.' ."PNG";
                     $file->move($destinationPath, $safeName);
                     $profile = $safeName;
                 }
@@ -67,102 +67,86 @@ class ProfileController extends Controller
 
     public function edit($id) {
         $data = $this->userInterface->userByID($id);
-
         return view('user.edit',compact('data'));
     }
 
-    public function update(Request $request, $id) {
-        $rules = [
-                    'name' => 'required',
-                    'email' => 'required|email|unique:users,email,'.$id,
-                ];
+    // public function update(Request $request, $id) {
+    //     $rules = [
+    //                 'name' => 'required',
+    //                 'email' => 'required|email|unique:users,email,'.$id,
+    //             ];
         
-                $customMessage = [
-                    'name.required' => 'Please Fill name',
-                    'email.required' => 'Please Fill email',
-                ];
+    //             $customMessage = [
+    //                 'name.required' => 'Please Fill name',
+    //                 'email.required' => 'Please Fill email',
+    //             ];
         
-                $this->validate($request, $rules, $customMessage);
+    //             $this->validate($request, $rules, $customMessage);
 
-                $target_dir = public_path() . '/uploads/Profile/';
+    //             $target_dir = public_path() . '/uploads/Profile/';
         
-                if(!File::isDirectory($target_dir)){
-                    File::makeDirectory($target_dir, 0777, true, true);
-                }
+    //             if(!File::isDirectory($target_dir)){
+    //                 File::makeDirectory($target_dir, 0777, true, true);
+    //             }
         
             
-                $structure = "uploads/Profile/";
-                // $profile = $user->profile;
+    //             $structure = "uploads/Profile/";
+    //             // $profile = $user->profile;
         
-                if ($profile = $request->file('profile')) {
+    //             if ($profile = $request->file('profile')) {
         
-                    if ($profile->getClientOriginalExtension() == "jpg" || $profile->getClientOriginalExtension() == "jpeg" || $profile->getClientOriginalExtension() == "JPG" || $profile->getClientOriginalExtension() == "png" || $profile->getClientOriginalExtension() == "PNG" || $profile->getClientOriginalExtension() == "gif" || $profile->getClientOriginalExtension() == "GIF") {
+    //                 if ($profile->getClientOriginalExtension() == "jpg" || $profile->getClientOriginalExtension() == "jpeg" || $profile->getClientOriginalExtension() == "JPG" || $profile->getClientOriginalExtension() == "png" || $profile->getClientOriginalExtension() == "PNG" || $profile->getClientOriginalExtension() == "gif" || $profile->getClientOriginalExtension() == "GIF") {
         
-                        $photo = $profile->getClientOriginalName();
-                        $profile->move($structure, $photo);
-                    }
-                }
+    //                     $photo = $profile->getClientOriginalName();
+    //                     $profile->move($structure, $photo);
+    //                 }
+    //             }
+    //             dd("herer");
+    //     $data = $this->userInterface->updateUser($request, $id);
+    //     return redirect()->route('profile')->with('success', 'User Update successfully');
+    // }
+
+
+    public function update(Request $request, $id)
+    {   
+        // dd($request);
+        // dd("herer");
+        $user = User::findOrFail($id);
+        $rules = [
+            'name' => 'required',
+            'email' => 'required|email|unique:users,email,'.$id,
+        ];
+
+        $customMessage = [
+            'name.required' => 'Please Fill name gg',
+            'email.required' => 'Please Fill email',
+        ];
+       
+        $this->validate($request, $rules, $customMessage);
+       
+       
+        $target_dir = public_path() . '/uploads/Profile/';
+
+        if(!File::isDirectory($target_dir)){
+            File::makeDirectory($target_dir, 0777, true, true);
+        }
+
+    
+        $structure = "uploads/Profile/";
+        $profile = $user->profile;
+
+        if ($profile = $request->file('profile')) {
+
+            if ($profile->getClientOriginalExtension() == "jpg" || $profile->getClientOriginalExtension() == "jpeg" || $profile->getClientOriginalExtension() == "JPG" || $profile->getClientOriginalExtension() == "png" || $profile->getClientOriginalExtension() == "PNG" || $profile->getClientOriginalExtension() == "gif" || $profile->getClientOriginalExtension() == "GIF") {
+
+                $photo = $profile->getClientOriginalName();
+                $profile->move($structure, $photo);
+            }
+        }
+    
         $data = $this->userInterface->updateUser($request, $id);
         return redirect()->route('profile')->with('success', 'User Update successfully');
     }
-
-    // public function update(Request $request, $id)
-    // {   
-
-    //     $user = User::findOrFail($id);
-
-    //     $rules = [
-    //         'name' => 'required',
-    //         'email' => 'required|email|unique:users,email,'.$id,
-    //     ];
-
-    //     $customMessage = [
-    //         'name.required' => 'Please Fill name',
-    //         'email.required' => 'Please Fill email',
-    //     ];
-
-    //     $this->validate($request, $rules, $customMessage);
-       
-
-
-
-
-    //     $target_dir = public_path() . '/uploads/Profile/';
-
-    //     if(!File::isDirectory($target_dir)){
-    //         File::makeDirectory($target_dir, 0777, true, true);
-    //     }
-
-    
-    //     $structure = "uploads/Profile/";
-    //     $profile = $user->profile;
-
-    //     if ($profile = $request->file('profile')) {
-
-    //         if ($profile->getClientOriginalExtension() == "jpg" || $profile->getClientOriginalExtension() == "jpeg" || $profile->getClientOriginalExtension() == "JPG" || $profile->getClientOriginalExtension() == "png" || $profile->getClientOriginalExtension() == "PNG" || $profile->getClientOriginalExtension() == "gif" || $profile->getClientOriginalExtension() == "GIF") {
-
-    //             $photo = $profile->getClientOriginalName();
-    //             $profile->move($structure, $photo);
-    //         }
-    //     }
-
-    //     $arr = [
-    //         'name'=>$request->name,
-    //         'email'=>$request->email,
-    //         'password'=>$request->password,
-    //         'type'=>$request->type,
-    //         'phone'=>$request->phone,
-    //         'dob'=>$request->dob,
-    //         'address'=>$request->address,
-    //         'profile'=>$profile,
-    //     ];
-
-    //     // dd($arr);
-
-    //     $user->fill($arr)->save();
-
-    //     return redirect()->route('profile')->with('success', 'User Update successfully');
-    // }
 
     public function destroy($id)
     {

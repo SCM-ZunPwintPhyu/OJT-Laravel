@@ -201,11 +201,11 @@ input:checked+.slider:before {
             <li>
                 <div class="row">
                     <div class="col-md-10"></div>
-                    <div class="col-md-1 col-sm-9 col-xs-9">
-                        <a href="{{ route('profile') }}" class="btn btn-danger btn-sm">Cancel</a>
-                    </div>
                     <div class="col-md-1 col-sm-3 col-xs-3">
-                        <input type="submit" class="btn btn-success btn-sm" value="Save" />
+                        <input type="submit" class="btn btn-success btn-sm" value="Confirm" />
+                    </div>
+                    <div class="col-md-1 col-sm-9 col-xs-9">
+                        <a href="{{ route('profile') }}" class="btn btn-danger btn-sm">Clear</a>
                     </div>
                 </div>
             </li>

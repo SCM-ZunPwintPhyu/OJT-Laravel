@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Auth;
+use Hash;
+use App\Post;
+use App\Models\User;
 
 class HomeController extends Controller
 {
@@ -21,8 +25,13 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('home');
+        $post= Post::All();
+        $count = $post->count();
+        
+        $user= User::All();
+        $user_count = $user->count();
+        return view('home',compact('count','user_count'));
     }
 }

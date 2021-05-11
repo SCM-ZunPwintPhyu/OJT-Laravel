@@ -9,7 +9,7 @@
     </div>
 </div>
 
-
+<!-- 
 @if (count($errors) > 0)
 <div class="alert alert-danger">
     <strong>Whoops!</strong> There were some problems with your input.<br><br>
@@ -19,21 +19,20 @@
         @endforeach
     </ul>
 </div>
-@endif
+@endif -->
 
 
 <form  method="post" action="{{ route('profile_update', $data->id)}}" enctype="multipart/form-data">
     @csrf
     @method('PUT')
     <div class="row">
-
         <div style="width:800px">
             <label style="float:left;padding-left:15%">Name:</label>
-            <input type="text" name="name" class="field-style field-full align-none form-control" value="{{$data->name}}" style="margin-left:15%" disabled />
+            <input type="text" name="name" class="field-style field-full align-none form-control" value="{{$data->name}}" style="margin-left:15%"  />
         </div>
         <div style="width:800px">
             <label style="float:left;padding-left:15%">Email:</label>
-            <input type="email" name="email" class="field-style field-full align-none form-control" value="{{$data->email}}" style="margin-left:15%" disabled/>
+            <input type="email" name="email" class="field-style field-full align-none form-control" value="{{$data->email}}" style="margin-left:15%" />
         </div>
         <div style="width:800px">
             <label style="float:left;padding-left:15%">Old Password:</label>
