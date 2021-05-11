@@ -660,7 +660,9 @@
                     {!! $data->appends(request()->input())->links() !!}
                 </div>
                 @else
-                <h4 class="h4 pt-5 pb-3 text-info">Posts Not Found!....</h4>
+                <table>
+                    Posts Not Found!....
+                </table>
                 @endif
                 <div class="col-md-2">
                     <p style="font-size:15px"> Count:: {{$count}}</p>
