@@ -125,10 +125,11 @@ input:checked+.slider:before {
 }
 </style>
 <div class="container">
-<form class="form-style-9" method="post" action="{{ route('profile_update', $data->id)}}" enctype="multipart/form-data">
-    @csrf
-    @method('PUT')
-<ul>
+    <form class="form-style-9" method="post" action="{{ route('profile_update', $data->id)}}"
+        enctype="multipart/form-data">
+        @csrf
+        @method('PUT')
+        <ul>
             <li>
                 <label style="float:left">Name</label>
                 <input type="text" name="name" class="field-style field-full align-none" value="{{ $data->name }}" />
@@ -136,13 +137,30 @@ input:checked+.slider:before {
             </li>
             <li>
                 <label style="float:left">Email</label>
-                <input type="email" name="email" class="field-style field-full align-none" value="{{ $data->email }}" disabled/>
+                <input type="email" name="email" class="field-style field-full align-none" value="{{ $data->email }}"
+                    disabled />
                 <span style="color:red"> </span>
             </li>
-            <li>
+            <!-- <li>
                 <label style="float:left">Type</label>
                 <input type="text" name="type" class="field-style field-full align-none" value="{{ $data->type }}" />
                 <span style="color:red"> </span>
+            </li> -->
+            <li>
+                <label style="float:left">Type</label>
+                <select class="form-control" name="name">
+                    <option value="{{$data->type}}">
+                        <?php
+                        if ($data->type == 0) {
+                        echo "Admin";
+                        } else {
+                        echo "User";
+                        }
+                        ?>
+                    </option>
+                    <option value="Admin">Admin</option>
+                    <option value="User">User</option>
+                </select>
             </li>
             <li>
                 <label style="float:left">Phone</label>
@@ -156,9 +174,10 @@ input:checked+.slider:before {
             </li>
             <li>
                 <label style="float:left">Address</label>
-                <input type="text" name="address" class="field-style field-full align-none" value="{{ $data->address }}" />
+                <input type="text" name="address" class="field-style field-full align-none"
+                    value="{{ $data->address }}" />
                 <span style="color:red"> </span>
-            </li> 
+            </li>
             <!-- <li>
                 <label style="float:left">Password:</label>
                 <input type="password" name="password" class="field-style field-full align-none" value="{{ $data->password }}"/>
@@ -171,11 +190,12 @@ input:checked+.slider:before {
             </li> -->
             <li>
                 <label style="float:left">Profile Photo</label>
-                <input type="file" name="profile" class="field-style field-full align-none" value="{{ $data->profile }}" />
+                <input type="file" name="profile" class="field-style field-full align-none"
+                    value="{{ $data->profile }}" />
                 <span style="color:red"> </span>
             </li>
             <li>
-            <a href="{{ route('change_pass', $data->id)}}" class="" style="float:left">Change Password</a>
+                <a href="{{ route('change_pass', $data->id)}}" class="" style="float:left">Change Password</a>
             </li>
             <br>
             <li>

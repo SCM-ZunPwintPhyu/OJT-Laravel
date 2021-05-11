@@ -20,7 +20,8 @@ class ProfileController extends Controller
 
     public function index() {
         $data = $this->userInterface->getUserList();
-        return view('user.index',compact('data'));
+        $count = $data->count();
+        return view('user.index',compact('data','count'));
     }
 
     public function create() {
@@ -60,7 +61,6 @@ class ProfileController extends Controller
     
     public function show($id) {
         $data = $this->userInterface->userByID($id);
-
         return view('user.show',compact('data'));
         // return view('user.show');
     }

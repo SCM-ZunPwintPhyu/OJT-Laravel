@@ -139,7 +139,7 @@ input:checked+.slider:before {
                 <span style="color:red">{!! $errors->first('description','<small>:message</small>')!!} </span>
             </li><br>
             
-            <li>
+            <!-- <li>
                 <div class="form-group {{ $errors->first('status', 'has-error') }}" style="float:left">
                     <label >Status</label>
                     <label class="switch">
@@ -147,7 +147,7 @@ input:checked+.slider:before {
                         <span class="slider round"></span>
                     </label>
                 </div>
-            </li>
+            </li> -->
             <li>
                 <div class="row">
                     <div class="col-md-10"></div>

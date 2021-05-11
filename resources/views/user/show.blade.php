@@ -61,7 +61,15 @@ img {
         <div class="card">
             <div class="w3-card-4 w3-info row">
                 <div class="col-xs-6 col-sm-6 col-md-6">
-                    <label><b>Type:{{$data->type}}</b></label>
+                    <label><b>Type:
+                    <?php
+                        if ($data->type == 0) {
+                        echo "Admin";
+                        } else {
+                        echo "User";
+                        }
+                    ?>
+                    </b></label>
                 </div>
             </div>
         </div>

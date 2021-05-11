@@ -162,7 +162,7 @@ body {
     <br>
 
     <div style="overflow-x:auto;">
-                <table class="table table-hover" style="text-shadow: 2px 2px 5px rgb(90, 216, 233);">
+        <table class="table table-hover" style="text-shadow: 2px 2px 5px rgb(90, 216, 233);">
             <thead>
                 <tr class="info">
                     <th>ID</th>
@@ -177,7 +177,16 @@ body {
                 <tr>
                     <td>{{$user->id}}</td>
                     <td>{{$user->name}}</td>
-                    <td>{{$user->type}}</td>
+                    <td>
+                        <?php
+
+                        if ($user->type == 0) {
+                        echo "Admin";
+                        } else {
+                        echo "User";
+                        }
+                        ?>
+                    </td>
                     <td>{{$user->email}}</td>
                     <td>
                         <form action="{{ route('profile_destroy',$user->id)}}" method="post"
@@ -201,14 +210,14 @@ body {
             </tbody>
         </table>
         <div class="d-flex justify-content-center">
-        <!--  -->
+            <!--  -->
         </div>
-                <div class="col-md-2" style="float:left">
-            <p style="font-size:15px"> Count:: 1</p>
+        <div class="col-md-2" style="float:left">
+            <p style="font-size:15px"> Count:: {{$count}}</p>
         </div>
-                            </main>
-                </div>
-            </section>
-            <!-- /.content -->
-        </div>
-        @endsection
+        </main>
+    </div>
+    </section>
+    <!-- /.content -->
+</div>
+@endsection

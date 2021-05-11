@@ -125,8 +125,10 @@ input:checked+.slider:before {
 }
 </style>
 <div class="container">
-<form class="form-style-9" method="post" action="{{ route('profile_create') }}" enctype="multipart/form-data" autocomplete="false">
-        <input type="hidden" name="_token" value="mqblqz3d3DPukIC32buh1IOO8GX3vseCiBUlHTke">        <ul>
+    <form class="form-style-9" method="post" action="{{ route('profile_create') }}" enctype="multipart/form-data"
+        autocomplete="false">
+        <input type="hidden" name="_token" value="mqblqz3d3DPukIC32buh1IOO8GX3vseCiBUlHTke">
+        <ul>
             <li>
                 <label style="float:left">Name</label>
                 <input type="text" name="name" class="field-style field-full align-none" placeholder="Name" />
@@ -134,13 +136,25 @@ input:checked+.slider:before {
             </li>
             <li>
                 <label style="float:left">Email</label>
-                <input type="email" name="email" class="field-style field-full align-none" placeholder="Email"/>
+                <input type="email" name="email" class="field-style field-full align-none" placeholder="Email" />
                 <span style="color:red"> </span>
             </li>
-            <li>
+            <!-- <li>
                 <label style="float:left">Type</label>
                 <input type="text" name="type" class="field-style field-full align-none" placeholder="Type" />
                 <span style="color:red"> </span>
+            </li> -->
+            <li>
+                <div class="form-group">
+                    @csrf
+                    <label style="float:left">Type</label>
+                    <select class="form-control" name="type">
+                        <option value="">Select Type</option>
+                        <option value="Admin">Admin</option>
+                        <option value="User">User</option>
+                    </select>
+
+                </div>
             </li>
             <li>
                 <label style="float:left">Phone</label>
@@ -156,10 +170,11 @@ input:checked+.slider:before {
                 <label style="float:left">Address</label>
                 <input type="text" name="address" class="field-style field-full align-none" placeholder="Address" />
                 <span style="color:red"> </span>
-            </li> 
+            </li>
             <li>
                 <label style="float:left">Password:</label>
-                <input type="password" name="password" class="field-style field-full align-none" placeholder="Password"/>
+                <input type="password" name="password" class="field-style field-full align-none"
+                    placeholder="Password" />
                 <span style="color:red"> </span>
                 <!-- <div class="form-group">
                     <strong>Password:</strong>
@@ -168,7 +183,8 @@ input:checked+.slider:before {
             </li>
             <li>
                 <label style="float:left">Confirm Password:</label>
-                <input type="password" name="confirm-password" class="field-style field-full align-none" placeholder="Confirm Password" />
+                <input type="password" name="confirm-password" class="field-style field-full align-none"
+                    placeholder="Confirm Password" />
                 <span style="color:red"> </span>
                 <!-- <div class="form-group">
                     <strong>Confirm Password:</strong>
@@ -177,7 +193,8 @@ input:checked+.slider:before {
             </li>
             <li>
                 <label style="float:left">Profile Photo</label>
-                <input type="file" name="profile" class="field-style field-full align-none" placeholder="Profile Photo" />
+                <input type="file" name="profile" class="field-style field-full align-none"
+                    placeholder="Profile Photo" />
                 <span style="color:red"> </span>
             </li>
             <br>
