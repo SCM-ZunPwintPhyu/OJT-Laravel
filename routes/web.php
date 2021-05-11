@@ -49,8 +49,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/show/{id}', [App\Http\Controllers\ProfileController::class, 'show'])->name('profile_show');
         Route::get('/changePass/{id}', [App\Http\Controllers\ProfileController::class, 'changePass'])->name('change_pass');
     });
-    
+    Route::get('/change-status-post','PostController@changestatuspost')->name('change-status-post');
 });
 
 
-Route::get('change-status-post','PostController@changestatuspost')->name('change-status-post');

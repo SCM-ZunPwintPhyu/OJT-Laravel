@@ -41,11 +41,11 @@
 
         <div style="width:800px">
             <label style="float:left;padding-left:15%">New Password:</label>
-            <input type="password" name="password" class="field-style field-full align-none form-control" value="{{ $data->password }}" style="margin-left:15%"/>
+            <input type="password" name="password" class="field-style field-full align-none form-control" value="" style="margin-left:15%"/>
         </div>
         <div style="width:800px">
             <label style="float:left;padding-left:15%">Confirm New Password:</label>
-            <input type="password" name="password" class="field-style field-full align-none form-control" value="{{ $data->password }}" style="margin-left:15%" />
+            <input type="password" name="password" class="field-style field-full align-none form-control" value="" style="margin-left:15%" />
         </div>
 
 

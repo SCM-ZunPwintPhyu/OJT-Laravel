@@ -189,10 +189,10 @@ body {
                 </tr>
             </thead>
             <tbody class="td"> -->
-                <?php
+            <?php
                 if (Auth::user()->type == 0) {
                 ?>
-                 <thead>
+            <thead>
                 <tr class="info">
                     <th>ID</th>
                     <th>Title</th>
@@ -203,8 +203,8 @@ body {
                     <th>Updated User</th>
                     <th>Action</th>
                 </tr>
-                </thead>
-                <tbody class="td">
+            </thead>
+            <tbody class="td">
                 @foreach ($data as $post)
                 <tr>
                     <td>{{++$i}}</td>
@@ -258,19 +258,19 @@ body {
                 <?php
                 } else {
                 ?>
-                 <thead>
-                <tr class="info">
-                    <th>ID</th>
-                    <th>Title</th>
-                    <th>Description</th>
-                    <th>Status</th>
-                    <th>Created Time</th>
-                    <th>Created User</th>
-                    <th>Updated User</th>
-                </tr>
+                <thead>
+                    <tr class="info">
+                        <th>ID</th>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Status</th>
+                        <th>Created Time</th>
+                        <th>Created User</th>
+                        <th>Updated User</th>
+                    </tr>
                 </thead>
-                <tbody class="td">
-                 @foreach ($data as $post)
+            <tbody class="td">
+                @foreach ($data as $post)
                 <tr>
                     <td>{{++$i}}</td>
                     <!-- <td>{{ $post->title}}</td> -->
@@ -293,15 +293,15 @@ body {
                         <input type="checkbox" checked>
                         <span class="slider round"></span>
                     </label>
-                </td> -->
-                    <td>
+                    </td> -->
+                    <!-- <td>
                         <label class="switch">
                             <input data-id="{{$post->id}}" data-size="small" class="toggle-class" type="checkbox"
                                 data-onstyle="success" data-offstyle="danger" data-toggle="toggle" data-on="Active"
                                 data-off="InActive" {{ $post->status ? 'checked' : '' }}>
                             <span class="slider round"></span>
                         </label>
-                    </td>
+                    </td> -->
                     <td>{{$post->created_at}}</td>
                     <td>{{$post->created_user_id}}</td>
                     <td>{{$post->updated_user_id}}</td>
@@ -311,78 +311,66 @@ body {
                 <?php
                 }
                 ?>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             </tbody>
         </table>
-        <div class="d-flex justify-content-center">
-            <!-- {!! $data->appends(request()->input())->links() !!} -->
-        </div>
-        @else
-        <h4 class="h4 pt-5 pb-3 text-info">Posts Not Found!....</h4>
-        @endif
-        <div class="col-md-2" style="float:left">
-            <p style="font-size:15px"> Count:: {{$count}}</p>
-        </div>
-        <script>
-        $(function() {
-                    $('.toggle-class').change(function() {
-                        var status = $(this).prop('checked') == true ? 1 : 0;
+    </div>
+    @else
+    <h4 class="h4 pt-5 pb-3 text-info">Posts Not Found!....</h4>
+    @endif
+    <div style="width:300px;height:30px;background:red;float:right;font-size:15px">
+        Here Paginate
+        <!-- {!! $data->links() !!} -->
+        <!-- {!! $data->appends(request()->input())->links() !!} -->
+    </div>
+    <div class="col-md-2" style="float:left">
+        <p style="font-size:15px"> Count:: {{$count}}</p>
+    </div>
+    <script>
+    $(function() {
+                $('.toggle-class').change(function() {
+                    var status = $(this).prop('checked') == true ? 1 : 0;
 
-                        var post_id = $(this).data('id');
-                        $.ajax({
-                            type: "GET",
-                            dataType: "json",
-                            url: "<?php echo route('change-status-post') ?>",
-                            data: {
-                                'status': status,
-                                'post_id': post_id
-                            },
-                            success: function(data) {
-                                console.log(data.success);
-                            }
-                        });
+                    var post_id = $(this).data('id');
+                    $.ajax({
+                        type: "GET",
+                        dataType: "json",
+                        url: "<?php echo route('change-status-post') ?>",
+                        data: {
+                            'status': status,
+                            'post_id': post_id
+                        },
+                        success: function(data) {
+                            console.log(data.success);
+                        }
                     });
-        </script>
+                });
+    </script>
 
-        <script>
-        // Get the modal
-        var modal = document.getElementById("myModal");
+    <script>
+    // Get the modal
+    var modal = document.getElementById("myModal");
 
-        // Get the button that opens the modal
-        var btn = document.getElementById("myBtn");
+    // Get the button that opens the modal
+    var btn = document.getElementById("myBtn");
 
-        // Get the <span> element that closes the modal
-        var span = document.getElementsByClassName("close")[0];
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
 
-        // When the user clicks the button, open the modal 
-        btn.onclick = function() {
-            modal.style.display = "block";
-        }
+    // When the user clicks the button, open the modal 
+    btn.onclick = function() {
+        modal.style.display = "block";
+    }
 
-        // When the user clicks on <span> (x), close the modal
-        span.onclick = function() {
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal) {
             modal.style.display = "none";
         }
-
-        // When the user clicks anywhere outside of the modal, close it
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        }
-        </script>
-        @endsection
+    }
+    </script>
+    @endsection

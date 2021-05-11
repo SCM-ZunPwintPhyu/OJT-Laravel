@@ -21,9 +21,9 @@ class PostController extends Controller
             $data = $data->where('title','like','%'.$keyword.'%');
         }
         // dd($data[1]);
-        $data=$data->orderBy('id','DESC')->paginate(2);
+        $data=$data->orderBy('id','DESC')->paginate(5);
         return view('post.index',compact('data','count'))
-            ->with('i', ($request->input('page', 1) - 1) * 2);
+            ->with('i', ($request->input('page', 1) - 1) * 5);
     }
     public function changestatuspost(Request $request)
     {
