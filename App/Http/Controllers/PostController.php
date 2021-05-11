@@ -27,13 +27,12 @@ class PostController extends Controller
     }
     public function changestatuspost(Request $request)
     {
-        dd("herer");
         // dd($request->all());
         $posts = Post::find($request->post_id);
         $posts->status = $request->status;
 
         $posts->save();
-        return response()->json(['success'=>'Status change successfully.']);
+        return response()->json(['success'=>'Post change successfully.']);
     }
 
     public function create() {
@@ -78,8 +77,8 @@ class PostController extends Controller
         return view('post.edit', compact('post'));
     }
 
-    public function update(Request $request, $id)
-    {   
+    public function update(Request $request, $id) 
+    {
         $post = Post::findOrFail($id);
 
         $rules = [
@@ -93,10 +92,18 @@ class PostController extends Controller
         ];
 
         $this->validate($request, $rules, $customMessage);
+
+        if($request->has('status')) {
+            $request->status = 1;
+        }else {
+            $request->status = 0;
+        }
         $user_id=Auth::user()->name;
+        // dd($request->status);
         $arr = [
             'title'=> $request->title,
             'description'=>$request->description,
+            'status'=>$request->status,
             'updated_user_id'=>$user_id,
         ];
 

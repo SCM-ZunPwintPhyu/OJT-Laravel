@@ -143,8 +143,12 @@ input:checked+.slider:before {
             <li>
                 <div class="form-group {{ $errors->first('status', 'has-error') }}" style="float:left">
                     <label >Status</label>
-                    <label class="switch">
-                        <input type="checkbox" checked>
+                    <label class="switch" name="status" id="status"> 
+                    @if($post->status !== 0 )
+                        <input type="checkbox" name="status" id="status" checked>
+                    @else
+                    <input type="checkbox" name="status" id="status">
+                    @endif
                         <span class="slider round"></span>
                     </label>
                     <!-- <input type="file" name="pdf" class="field-style field-full align-none" value="Choose PDF" />

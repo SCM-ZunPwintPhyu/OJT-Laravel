@@ -232,7 +232,7 @@ body {
                                 <p>Created Time:{{$post->created_at}}</p>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Closeh</button>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                             </div>
                             </div>
                         </div>
@@ -246,10 +246,8 @@ body {
                     </td> -->
                     <td>
                         <label class="switch">
-                            <input data-id="{{$post->id}}" data-size="small" class="toggle-class" type="checkbox"
-                                data-onstyle="success" data-offstyle="danger" data-toggle="toggle" data-on="Active"
-                                data-off="InActive" {{ $post->status ? 'checked' : '' }}>
-                            <span class="slider round"></span>
+                        <input data-id="{{$post->id}}" data-size ="small" class="toggle-class" type="checkbox" data-onstyle="success" data-offstyle="danger" data-toggle="toggle" data-on="Active" data-off="InActive" {{ $post->status ? 'checked' : '' }}>
+                        <span class="slider round"></span>
                         </label>
                     </td>
                     <td>{{$post->created_at}}</td>
@@ -369,24 +367,37 @@ body {
     <div class="col-md-2" style="float:left">
         <p style="font-size:15px"> Count:: {{$count}}</p>
     </div>
-    <script>
-    $(function() {
-                $('.toggle-class').change(function() {
-                    var status = $(this).prop('checked') == true ? 1 : 0;
-
-                    var post_id = $(this).data('id');
-                    $.ajax({
-                        type: "GET",
-                        dataType: "json",
-                        url: "<?php echo route('change-status-post') ?>",
-                        data: {
-                            'status': status,
-                            'post_id': post_id
-                        },
-                        success: function(data) {
-                            console.log(data.success);
-                        }
-                    });
-                });
-    </script>
+    
     @endsection
+
+
+
+    @section('js')
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
+    <script src="http://malsup.github.com/jquery.form.js"></script>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.12/datatables.min.js"></script>
+    <script>
+    $(document).ready(function() {
+    $(function() {
+    $('.toggle-class').change(function() {
+        var status = $(this).prop('checked') == true ? 1 : 0;
+        
+        var post_id = $(this).data('id'); 
+        $.ajax({
+            type: "GET",
+            dataType: "json",
+            url: "<?php echo route('change-status-post') ?>",
+            data: {'status': status, 'post_id': post_id},
+            success: function(data){
+            console.log(data.success);
+            }
+        });
+    });
+    });
+    });
+
+    </script>
+@stop
