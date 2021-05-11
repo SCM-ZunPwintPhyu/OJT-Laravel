@@ -176,7 +176,7 @@ body {
     <div style="overflow-x:auto;">
         @if(count($data)>0)
         <table class="table table-hover" style="text-shadow: 2px 2px 5px rgb(90, 216, 233);">
-            <thead>
+            <!-- <thead>
                 <tr class="info">
                     <th>ID</th>
                     <th>Title</th>
@@ -188,8 +188,89 @@ body {
                     <th>Action</th>
                 </tr>
             </thead>
-            <tbody class="td">
+            <tbody class="td"> -->
+                <?php
+                if (Auth::user()->type == 0) {
+                ?>
+                 <thead>
+                <tr class="info">
+                    <th>ID</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Status</th>
+                    <th>Created Time</th>
+                    <th>Created User</th>
+                    <th>Updated User</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody class="td">
                 @foreach ($data as $post)
+                <tr>
+                    <td>{{++$i}}</td>
+                    <!-- <td>{{ $post->title}}</td> -->
+                    <td>
+                        <div id="myBtn"><a href="#">{{$post->title}}</a></div>
+                        <div id="myModal" class="modal">
+                            <div class="modal-content">
+                                <span class="close">&times;</span>
+                                <p>Title:{{$post->title}}</p>
+                                <p>Description:{{$post->description}}</p>
+                                <p>Created User:{{$post->created_user_id}}</p>
+                                <p>Updated User:{{$post->updated_user_id}}</p>
+                                <p>Hello this is come herer</p>
+                                <p></p>
+                            </div>
+                        </div>
+                    </td>
+                    <td>{{$post->description}}</td>
+                    <!-- <td> <label class="switch">
+                        <input type="checkbox" checked>
+                        <span class="slider round"></span>
+                    </label>
+                    </td> -->
+                    <td>
+                        <label class="switch">
+                            <input data-id="{{$post->id}}" data-size="small" class="toggle-class" type="checkbox"
+                                data-onstyle="success" data-offstyle="danger" data-toggle="toggle" data-on="Active"
+                                data-off="InActive" {{ $post->status ? 'checked' : '' }}>
+                            <span class="slider round"></span>
+                        </label>
+                    </td>
+                    <td>{{$post->created_at}}</td>
+                    <td>{{$post->created_user_id}}</td>
+                    <td>{{$post->updated_user_id}}</td>
+                    <td>
+                        <form action="{{ route('post_destroy',$post->id)}}" method="post"
+                            onsubmit="return confirm('Do you want to delete?');">
+                            @csrf @method('DELETE')
+                            <a class="btn btn-sm btn-primary" href="{{ route('post_edit',$post->id)}}">
+                                <i class="fas fa-edit" title="Edit"></i></a>
+                            </a>
+                            <button class="btn btn-sm btn-danger btn-sm" type="submit">
+                                <i class="fa fa-fw fa-trash" title="Delete"></i>
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+
+                @endforeach
+                <?php
+                } else {
+                ?>
+                 <thead>
+                <tr class="info">
+                    <th>ID</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Status</th>
+                    <th>Created Time</th>
+                    <th>Created User</th>
+                    <th>Updated User</th>
+                </tr>
+                </thead>
+                <tbody class="td">
+                 @foreach ($data as $post)
                 <tr>
                     <td>{{++$i}}</td>
                     <!-- <td>{{ $post->title}}</td> -->
@@ -215,33 +296,40 @@ body {
                 </td> -->
                     <td>
                         <label class="switch">
-                        <input data-id="{{$post->id}}" data-size ="small" class="toggle-class" type="checkbox" data-onstyle="success" data-offstyle="danger" data-toggle="toggle" data-on="Active" data-off="InActive" {{ $post->status ? 'checked' : '' }}>
-                        <span class="slider round"></span>
+                            <input data-id="{{$post->id}}" data-size="small" class="toggle-class" type="checkbox"
+                                data-onstyle="success" data-offstyle="danger" data-toggle="toggle" data-on="Active"
+                                data-off="InActive" {{ $post->status ? 'checked' : '' }}>
+                            <span class="slider round"></span>
                         </label>
                     </td>
                     <td>{{$post->created_at}}</td>
                     <td>{{$post->created_user_id}}</td>
                     <td>{{$post->updated_user_id}}</td>
-                    <td>
-                        <form action="{{ route('post_destroy',$post->id)}}" method="post"
-                            onsubmit="return confirm('Do you want to delete?');">
-                            @csrf @method('DELETE')
-                            <a class="btn btn-sm btn-primary" href="{{ route('post_edit',$post->id)}}">
-                                <i class="fas fa-edit" title="Edit"></i></a>
-                            </a>
-                            <button class="btn btn-sm btn-danger btn-sm" type="submit">
-                                <i class="fa fa-fw fa-trash" title="Delete"></i>
-                            </button>
-                        </form>
-                    </td>
                 </tr>
 
                 @endforeach
+                <?php
+                }
+                ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
             </tbody>
         </table>
         <div class="d-flex justify-content-center">
-        <!-- {!! $data->appends(request()->input())->links() !!} -->
+            <!-- {!! $data->appends(request()->input())->links() !!} -->
         </div>
         @else
         <h4 class="h4 pt-5 pb-3 text-info">Posts Not Found!....</h4>
@@ -251,22 +339,23 @@ body {
         </div>
         <script>
         $(function() {
-  $('.toggle-class').change(function() {
-      var status = $(this).prop('checked') == true ? 1 : 0;
-      
-      var post_id = $(this).data('id'); 
-      $.ajax({
-          type: "GET",
-          dataType: "json",
-          url: "<?php echo route('change-status-post') ?>",
-          data: {'status': status, 'post_id': post_id},
-          success: function(data){
-           console.log(data.success);
-          }
-      });
-  });
+                    $('.toggle-class').change(function() {
+                        var status = $(this).prop('checked') == true ? 1 : 0;
 
-
+                        var post_id = $(this).data('id');
+                        $.ajax({
+                            type: "GET",
+                            dataType: "json",
+                            url: "<?php echo route('change-status-post') ?>",
+                            data: {
+                                'status': status,
+                                'post_id': post_id
+                            },
+                            success: function(data) {
+                                console.log(data.success);
+                            }
+                        });
+                    });
         </script>
 
         <script>

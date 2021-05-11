@@ -20,6 +20,7 @@ class PostController extends Controller
         if($keyword!=''){
             $data = $data->where('title','like','%'.$keyword.'%');
         }
+        // dd($data[1]);
         $data=$data->orderBy('id','DESC')->paginate(2);
         return view('post.index',compact('data','count'))
             ->with('i', ($request->input('page', 1) - 1) * 2);
