@@ -58,8 +58,11 @@ class ProfileController extends Controller
                         ->with('success','User added successful!.');
     }
     
-    public function show() {
-        return view('user.show');
+    public function show($id) {
+        $data = $this->userInterface->userByID($id);
+
+        return view('user.show',compact('data'));
+        // return view('user.show');
     }
 
     public function edit($id) {
@@ -166,5 +169,11 @@ class ProfileController extends Controller
         $user = User::findOrFail($id);
         $user->delete();
         return redirect('/profile')->with('success', 'Profile is successfully deleted');
+    }
+    public function changePass($id)
+    {
+        $data = $this->userInterface->userByID($id);
+        return view('user.password',compact('data'));
+    	// return view('user.password');
     }
 }

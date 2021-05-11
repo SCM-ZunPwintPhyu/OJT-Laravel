@@ -136,7 +136,7 @@ input:checked+.slider:before {
             </li>
             <li>
                 <label style="float:left">Email</label>
-                <input type="email" name="email" class="field-style field-full align-none" value="{{ $data->email }}"/>
+                <input type="email" name="email" class="field-style field-full align-none" value="{{ $data->email }}" disabled/>
                 <span style="color:red"> </span>
             </li>
             <li>
@@ -159,38 +159,33 @@ input:checked+.slider:before {
                 <input type="text" name="address" class="field-style field-full align-none" value="{{ $data->address }}" />
                 <span style="color:red"> </span>
             </li> 
-            <li>
+            <!-- <li>
                 <label style="float:left">Password:</label>
                 <input type="password" name="password" class="field-style field-full align-none" value="{{ $data->password }}"/>
                 <span style="color:red"> </span>
-                <!-- <div class="form-group">
-                    <strong>Password:</strong>
-                    <input type="password" placeholder="Password" class="form-control" name="password">
-                </div> -->
             </li>
             <li>
                 <label style="float:left">Confirm Password:</label>
                 <input type="password" name="confirm-password" class="field-style field-full align-none" value="{{ $data->password }}" />
                 <span style="color:red"> </span>
-                <!-- <div class="form-group">
-                    <strong>Confirm Password:</strong>
-                    <input type="password" placeholder="Confirm Password" class="form-control" name="confirm-password">
-                </div> -->
-            </li>
+            </li> -->
             <li>
                 <label style="float:left">Profile Photo</label>
                 <input type="file" name="profile" class="field-style field-full align-none" value="{{ $data->profile }}" />
                 <span style="color:red"> </span>
             </li>
+            <li>
+            <a href="{{ route('change_pass', $data->id)}}" class="" style="float:left">Change Password</a>
+            </li>
             <br>
             <li>
                 <div class="row">
                     <div class="col-md-10"></div>
-                    <div class="col-md-1 col-sm-9 col-xs-9">
-                        <a href="{{ route('profile')}}" class="btn btn-danger btn-sm">Cancel</a>
-                    </div>
                     <div class="col-md-1 col-sm-3 col-xs-3">
-                        <input type="submit" class="btn btn-success btn-sm" value="Save" />
+                        <input type="submit" class="btn btn-success btn-sm" value="Confirm" />
+                    </div>
+                    <div class="col-md-1 col-sm-9 col-xs-9">
+                        <a href="{{ route('profile')}}" class="btn btn-danger btn-sm">Clear</a>
                     </div>
                 </div>
             </li>
