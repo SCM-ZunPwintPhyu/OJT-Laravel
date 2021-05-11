@@ -15,7 +15,8 @@
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Tempusdominus Bootstrap 4 -->
-    <link rel="stylesheet" href="{{ asset('plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css') }}">
+    <link rel="stylesheet"
+        href="{{ asset('plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css') }}">
     <!-- iCheck -->
     <link rel="stylesheet" href="{{ asset('plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">
     <!-- JQVMap -->
@@ -207,7 +208,50 @@ th {
                 </div>
 
                 <!-- Sidebar Menu -->
+                <?php
+
+                        if (Auth::user()->type == 0) {
+                            ?>
                 <nav class="mt-2">
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
+                        data-accordion="false">
+                        <li class="nav-header"><b>Information</b></li>
+                        <li class="nav-item">
+                            <a href="{{ route('post') }}" class="nav-link">
+                                <i class="nav-icon far fa-circle text-danger"></i>
+                                <p>Posts</p>
+                            </a>
+                        </li>
+
+
+                        <li class="nav-header"><b>Roles Permission</b></li>
+                        <li class="nav-item">
+                            <a href="{{ route('profile') }}" class="nav-link">
+                                <i class="nav-icon far fa-circle text-warning"></i>
+                                <p>Profile</p>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <?php
+                        } else {
+                        ?>
+                <nav class="mt-2">
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
+                        data-accordion="false">
+                        <li class="nav-header"><b>Information</b></li>
+                        <li class="nav-item">
+                            <a href="{{ route('post') }}" class="nav-link">
+                                <i class="nav-icon far fa-circle text-danger"></i>
+                                <p>Posts</p>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <?php
+                        }
+                ?>
+                <!-- <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                         data-accordion="false">
                         <li class="nav-header"><b>Information</b></li>
@@ -227,7 +271,7 @@ th {
                             </a>
                         </li>
                     </ul>
-                </nav>
+                </nav> -->
                 <!-- /.sidebar-menu -->
             </div>
             <!-- /.sidebar -->

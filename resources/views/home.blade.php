@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -43,7 +41,7 @@ th {
     width: 90%;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     /* background-image: linear-gradient(#ffc107, #f39c12); */
-    background-image: linear-gradient(to right, rgb(90, 216, 233) , rgb(153,255,204));
+    background-image: linear-gradient(to right, rgb(90, 216, 233), rgb(153, 255, 204));
 }
 </style>
 
@@ -208,12 +206,16 @@ th {
                 </div>
 
                 <!-- Sidebar Menu -->
+                <?php
+
+                        if (Auth::user()->type == 0) {
+                            ?>
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                         data-accordion="false">
                         <li class="nav-header"><b>Information</b></li>
                         <li class="nav-item">
-                            <a href="{{ route('post') }}"  class="nav-link">
+                            <a href="{{ route('post') }}" class="nav-link">
                                 <i class="nav-icon far fa-circle text-danger"></i>
                                 <p>Posts</p>
                             </a>
@@ -229,6 +231,47 @@ th {
                         </li>
                     </ul>
                 </nav>
+                <?php
+                        } else {
+                        ?>
+                <nav class="mt-2">
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
+                        data-accordion="false">
+                        <li class="nav-header"><b>Information</b></li>
+                        <li class="nav-item">
+                            <a href="{{ route('post') }}" class="nav-link">
+                                <i class="nav-icon far fa-circle text-danger"></i>
+                                <p>Posts</p>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <?php
+                        }
+                ?>
+
+                <!-- <nav class="mt-2">
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
+                        data-accordion="false">
+                        <li class="nav-header"><b>Information</b></li>
+                        <li class="nav-item">
+                            <a href="{{ route('post') }}" class="nav-link">
+                                <i class="nav-icon far fa-circle text-danger"></i>
+                                <p>Posts</p>
+                            </a>
+                        </li>
+
+
+                        <li class="nav-header"><b>Roles Permission</b></li>
+                        <li class="nav-item">
+                            <a href="{{ route('profile') }}" class="nav-link">
+                                <i class="nav-icon far fa-circle text-warning"></i>
+                                <p>Profile</p>
+                            </a>
+                        </li>
+                    </ul>
+                </nav> -->
+
                 <!-- /.sidebar-menu -->
             </div>
             <!-- /.sidebar -->
@@ -253,7 +296,7 @@ th {
                                 </div>
                                 <div class="col-md-12 text-center">
                                     <p style="font-size: 23px;color:white;">
-                                       {{$user_count}}
+                                        {{$user_count}}
                                     </p>
                                 </div>
                             </div>
