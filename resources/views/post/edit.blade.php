@@ -125,9 +125,10 @@ input:checked+.slider:before {
 }
 </style>
 <div class="container">
-<form class="form-style-9" method="post" action="{{ route('post_update', $post->id)}}" enctype="multipart/form-data">
-    @csrf
-    @method('PUT')
+    <form class="form-style-9" method="post" action="{{ route('post_update', $post->id)}}"
+        enctype="multipart/form-data">
+        @csrf
+        @method('PUT')
         <ul>
             <li>
                 <label style="float:left">Title</label>
@@ -136,19 +137,20 @@ input:checked+.slider:before {
             </li>
             <li>
                 <label style="float:left">Description</label>
-                <input type="text" name="description" class="field-style field-full align-none" value="{{ $post->description }}"/>
+                <input type="text" name="description" class="field-style field-full align-none"
+                    value="{{ $post->description }}" />
                 <span style="color:red">{!! $errors->first('description','<small>:message</small>')!!} </span>
             </li><br>
-            
+
             <li>
                 <div class="form-group {{ $errors->first('status', 'has-error') }}" style="float:left">
-                    <label >Status</label>
-                    <label class="switch" name="status" id="status"> 
-                    @if($post->status !== 0 )
+                    <label>Status</label>
+                    <label class="switch" name="status" id="status">
+                        @if($post->status !== 0 )
                         <input type="checkbox" name="status" id="status" checked>
-                    @else
-                    <input type="checkbox" name="status" id="status">
-                    @endif
+                        @else
+                        <input type="checkbox" name="status" id="status">
+                        @endif
                         <span class="slider round"></span>
                     </label>
                     <!-- <input type="file" name="pdf" class="field-style field-full align-none" value="Choose PDF" />

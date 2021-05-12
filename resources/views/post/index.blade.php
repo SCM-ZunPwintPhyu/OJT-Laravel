@@ -211,32 +211,34 @@ body {
                     <!-- <td>{{ $post->title}}</td> -->
                     <td>
                         <!-- <div id="myBtn"><a href="#">{{$post->title}}</a></div> -->
-                        <div type="button"  data-toggle="modal" data-target="#exampleModal">
-                        {{$post->title}}
-                        </diiv>
+                        <div type="button" data-toggle="modal" data-target="#exampleModal">
+                            {{$post->title}}
+                            </diiv>
 
-                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">{{$post->title}}</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                                </button>
+                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">{{$post->title}}</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>Title:{{$post->title}}</p>
+                                            <p>Description:{{$post->description}}</p>
+                                            <p>Created User:{{$post->created_user_id}}</p>
+                                            <p>Updated User:{{$post->updated_user_id}}</p>
+                                            <p>Created Time:{{$post->created_at}}</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="modal-body">
-                                <p>Title:{{$post->title}}</p>
-                                <p>Description:{{$post->description}}</p>
-                                <p>Created User:{{$post->created_user_id}}</p>
-                                <p>Updated User:{{$post->updated_user_id}}</p>
-                                <p>Created Time:{{$post->created_at}}</p>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            </div>
-                            </div>
-                        </div>
-                        </div>
                     </td>
                     <td>{{$post->description}}</td>
                     <!-- <td> <label class="switch">
@@ -246,8 +248,10 @@ body {
                     </td> -->
                     <td>
                         <label class="switch">
-                        <input data-id="{{$post->id}}" data-size ="small" class="toggle-class" type="checkbox" data-onstyle="success" data-offstyle="danger" data-toggle="toggle" data-on="Active" data-off="InActive" {{ $post->status ? 'checked' : '' }}>
-                        <span class="slider round"></span>
+                            <input data-id="{{$post->id}}" data-size="small" class="toggle-class" type="checkbox"
+                                data-onstyle="success" data-offstyle="danger" data-toggle="toggle" data-on="Active"
+                                data-off="InActive" {{ $post->status ? 'checked' : '' }}>
+                            <span class="slider round"></span>
                         </label>
                     </td>
                     <td>{{$post->created_at}}</td>
@@ -303,32 +307,34 @@ body {
                     </td> -->
                     <td>
                         <!-- <div id="myBtn"><a href="#">{{$post->title}}</a></div> -->
-                        <div type="button"  data-toggle="modal" data-target="#exampleModal">
-                        {{$post->title}}
-                        </diiv>
+                        <div type="button" data-toggle="modal" data-target="#exampleModal">
+                            {{$post->title}}
+                            </diiv>
 
-                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">{{$post->title}}</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                                </button>
+                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">{{$post->title}}</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>Title:{{$post->title}}</p>
+                                            <p>Description:{{$post->description}}</p>
+                                            <p>Created User:{{$post->created_user_id}}</p>
+                                            <p>Updated User:{{$post->updated_user_id}}</p>
+                                            <p>Created Time:{{$post->created_at}}</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary btn-sm"
+                                                data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="modal-body">
-                                <p>Title:{{$post->title}}</p>
-                                <p>Description:{{$post->description}}</p>
-                                <p>Created User:{{$post->created_user_id}}</p>
-                                <p>Updated User:{{$post->updated_user_id}}</p>
-                                <p>Created Time:{{$post->created_at}}</p>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
-                            </div>
-                            </div>
-                        </div>
-                        </div>
                     </td>
                     <td>{{$post->description}}</td>
                     <!-- <td> <label class="switch">
@@ -361,12 +367,12 @@ body {
     @endif
     <div style="width:300px;height:30px;background:red;float:right;font-size:15px">
         Here Paginate
-        
+
     </div>
     <div class="col-md-2" style="float:left">
         <p style="font-size:15px"> Count:: {{$count}}</p>
     </div>
-    
+
     @endsection
 
 
@@ -380,23 +386,25 @@ body {
     <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.12/datatables.min.js"></script>
     <script>
     $(document).ready(function() {
-    $(function() {
-    $('.toggle-class').change(function() {
-        var status = $(this).prop('checked') == true ? 1 : 0;
-        
-        var post_id = $(this).data('id'); 
-        $.ajax({
-            type: "GET",
-            dataType: "json",
-            url: "<?php echo route('change-status-post') ?>",
-            data: {'status': status, 'post_id': post_id},
-            success: function(data){
-            console.log(data.success);
-            }
+        $(function() {
+            $('.toggle-class').change(function() {
+                var status = $(this).prop('checked') == true ? 1 : 0;
+
+                var post_id = $(this).data('id');
+                $.ajax({
+                    type: "GET",
+                    dataType: "json",
+                    url: "<?php echo route('change-status-post') ?>",
+                    data: {
+                        'status': status,
+                        'post_id': post_id
+                    },
+                    success: function(data) {
+                        console.log(data.success);
+                    }
+                });
+            });
         });
     });
-    });
-    });
-
     </script>
-@stop
+    @stop

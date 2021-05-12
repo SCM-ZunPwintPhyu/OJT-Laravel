@@ -593,11 +593,10 @@
             <form action="{{ route('welcome') }}" method="GET">
                 <div class="row">
                     <div class="col-md-3">
-                        <input type="text" name="title" placeholder="Serach By Word..."
-                            value="">
+                        <input type="text" name="title" placeholder="Serach By Word..." value="">
                     </div>
                     <div class="col-md-1">
-                        <input type="submit"  value="Search">
+                        <input type="submit" value="Search">
                     </div>
                 </div>
             </form>

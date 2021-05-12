@@ -135,10 +135,11 @@ input:checked+.slider:before {
             </li>
             <li>
                 <label style="float:left">Description</label>
-                <input type="text" name="description" class="field-style field-full align-none" placeholder="Description" />
+                <input type="text" name="description" class="field-style field-full align-none"
+                    placeholder="Description" />
                 <span style="color:red">{!! $errors->first('description','<small>:message</small>')!!} </span>
             </li><br>
-            
+
             <!-- <li>
                 <div class="form-group {{ $errors->first('status', 'has-error') }}" style="float:left">
                     <label >Status</label>

@@ -125,9 +125,10 @@ input:checked+.slider:before {
 }
 </style>
 <div class="container">
-<form class="form-style-9" method="post" action="{{ route('profile_update', $data->id)}}" enctype="multipart/form-data">
-    @csrf
-    @method('PUT')
+    <form class="form-style-9" method="post" action="{{ route('profile_update', $data->id)}}"
+        enctype="multipart/form-data">
+        @csrf
+        @method('PUT')
         <ul>
             <li>
                 <label style="float:left">Name</label>
@@ -136,9 +137,8 @@ input:checked+.slider:before {
             </li>
             <li>
                 <label style="float:left">Email</label>
-                <input type="email" name="email" class="field-style field-full align-none" value="{{ $data->email }}"
-                     />
-                    <span style="color:red">{!! $errors->first('email','<small>:message</small>')!!} </span>
+                <input type="email" name="email" class="field-style field-full align-none" value="{{ $data->email }}" />
+                <span style="color:red">{!! $errors->first('email','<small>:message</small>')!!} </span>
             </li>
             <li>
                 <label style="float:left">Type</label>

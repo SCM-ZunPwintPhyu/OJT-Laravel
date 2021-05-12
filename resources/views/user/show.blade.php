@@ -40,7 +40,7 @@ img {
 <div class="row">
     <div class="col-lg-9" style="padding-top:20px"></div>
     <div class="col-lg-3" style="padding-top:20px">
-            <a class="btn btn-primary btn-sm" href="{{ route('profile') }}"> Back</a>
+        <a class="btn btn-primary btn-sm" href="{{ route('profile') }}"> Back</a>
     </div>
     <div class="col-xs-12 col-sm-12 col-md-12" align="center">
         <a href=""><img src='{{ asset("./uploads/Profile/$data->name.PNG " ) }}' height="130px" width="130px" id="photo"
@@ -62,14 +62,14 @@ img {
             <div class="w3-card-4 w3-info row">
                 <div class="col-xs-6 col-sm-6 col-md-6">
                     <label><b>Type:
-                    <?php
+                            <?php
                         if ($data->type == 0) {
                         echo "Admin";
                         } else {
                         echo "User";
                         }
                     ?>
-                    </b></label>
+                        </b></label>
                 </div>
             </div>
         </div>

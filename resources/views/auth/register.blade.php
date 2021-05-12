@@ -4,7 +4,7 @@
 <div class="container">
     <link href='https://fonts.googleapis.com/css?family=Ubuntu:500' rel='stylesheet' type='text/css'>
     <div class="login-header">
-    <p><span style="color:red;font-size:2em">Laravel</span>&nbsp; OJT Project</p>
+        <p><span style="color:red;font-size:2em">Laravel</span>&nbsp; OJT Project</p>
     </div>
     <div class="login">
         <form method="POST" action="{{ route('register') }}">
@@ -23,7 +23,7 @@
                 <!-- For Email -->
                 <h3>&nbsp; E-Mail:</h3>
                 <input id="email" type="email" class="@error('email') is-invalid @enderror" name="email"
-                    value="{{ old('email') }}" required autocomplete="email"  placeholder="Here@gmail.com">
+                    value="{{ old('email') }}" required autocomplete="email" placeholder="Here@gmail.com">
 
                 @error('email')
                 <span class="invalid-feedback" role="alert">
@@ -33,7 +33,7 @@
                 <!-- For Password -->
                 <h3>&nbsp; Password:</h3>
                 <input id="password" type="password" class="@error('password') is-invalid @enderror" name="password"
-                     required autocomplete="new-password"  placeholder="***********">
+                    required autocomplete="new-password" placeholder="***********">
 
                 @error('password')
                 <span class="invalid-feedback" role="alert">
@@ -42,8 +42,8 @@
                 @enderror
 
                 <h3>&nbsp; Confirm Password:</h3>
-                <input id="password-confirm" type="password" name="password_confirmation"
-                required autocomplete="new-password"  placeholder="***********">
+                <input id="password-confirm" type="password" name="password_confirmation" required
+                    autocomplete="new-password" placeholder="***********">
 
                 @error('password')
                 <span class="invalid-feedback" role="alert">
