@@ -210,10 +210,9 @@ body {
                     <td>{{$post->id}}</td>
                     <!-- <td>{{ $post->title}}</td> -->
                     <td>
-                        <!-- <div id="myBtn"><a href="#">{{$post->title}}</a></div> -->
-                        <div type="button" data-toggle="modal" data-target="#exampleModal">
+                        <!-- <div type="button" data-toggle="modal" data-target="#exampleModal">
                             {{$post->title}}
-                            </diiv>
+                            </div>
 
                             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -238,7 +237,25 @@ body {
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                        </div> -->
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".modal">
+                             {{$post->title}}
+                            </button>
+
+                                <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-lg">
+                                        <div class="modal-content">
+                                            <button type="button" class="close" data-dismiss="modal">
+                                                <span aria-hidden="false">&times;</span>
+                                            </button>
+                                                <p>Title:{{$post->title}}</p>
+                                                <p>Description:{{$post->description}}</p>
+                                                <p>Created User:{{$post->created_user_id}}</p>
+                                                <p>Updated User:{{$post->updated_user_id}}</p>
+                                                <p>Created Time:{{$post->created_at}}</p>
+                                        </div>
+                                    </div>
+                                </div>
                     </td>
                     <td>{{$post->description}}</td>
                     <!-- <td> <label class="switch">
@@ -335,6 +352,21 @@ body {
                                     </div>
                                 </div>
                             </div>
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-sm">
+                            {{$post->title}}
+                            </button>
+
+                                <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-sm">
+                                    <div class="modal-content">
+                                            <p>Title:{{$post->title}}</p>
+                                            <p>Description:{{$post->description}}</p>
+                                            <p>Created User:{{$post->created_user_id}}</p>
+                                            <p>Updated User:{{$post->updated_user_id}}</p>
+                                            <p>Created Time:{{$post->created_at}}</p>
+                                    </div>
+                                </div>
+                                </div>
                     </td>
                     <td>{{$post->description}}</td>
                     <!-- <td> <label class="switch">
@@ -406,5 +438,7 @@ body {
             });
         });
     });
+    // $('.bd-example-modal-lg').modal('hide');
+    $('.bd-example-modal-lg').hide();
     </script>
     @stop

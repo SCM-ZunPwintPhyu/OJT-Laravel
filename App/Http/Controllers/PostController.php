@@ -19,20 +19,10 @@ class PostController extends Controller
 
     public function index(Request $request)
     {
-        $data = $this->postInterface->getPostList();
-        $count = $data->count();
+        $data = $this->postInterface->getPostList($request->title);
+        $count = 5;
+        $keyword = $request->title;
         return view('post.index',compact('data','count'));
-
-
-        // $data = new Post();
-        // $count = $data->count();
-        // $keyword = $request->title;
-        // if($keyword!=''){
-        //     $data = $data->where('title','like','%'.$keyword.'%');
-        // }
-        // $data=$data->orderBy('id','DESC')->paginate(5);
-        // return view('post.index',compact('data','count'))
-        //     ->with('i', ($request->input('page', 1) - 1) * 5);
     }
     public function changestatuspost(Request $request)
     {

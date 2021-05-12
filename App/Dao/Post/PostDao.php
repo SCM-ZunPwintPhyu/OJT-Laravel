@@ -12,11 +12,14 @@ class PostDao implements PostDaoInterface
    * @param Object
    * @return $operatorList
    */
-  public function getPostList()
+  public function getPostList($aa)
   {
-    // $posts =  Post::all();
     $posts = new Post();
-    $posts=$posts->orderBy('id','DESC')->paginate(5);
+    if ($aa != '') {
+      $posts = $posts->where('title','like','%'.$aa.'%')->orderBy('id','DESC')->get();
+    } else {
+      $posts = $posts->orderBy('id','DESC')->get();
+    }
     return $posts;
   }
 
