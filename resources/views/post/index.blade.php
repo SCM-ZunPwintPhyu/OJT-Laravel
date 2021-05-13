@@ -181,6 +181,14 @@ body {
                             class="glyphicon glyphicon-plus"></span>Add Post</a>
                 </div>
             </div>
+            <div class="col-md-1" style="width:200px;margin-top:3%">
+                <a class="btn btn-warning" href="{{ route('show_upload_file') }}"><span
+                        class="glyphicon glyphicon-plus"></span> Upload </a>
+            </div>
+            <div class="col-md-2" style="margin-top:3%">
+                <a class="btn btn-info" href="{{ route('export') }}"><span
+                        class="glyphicon glyphicon-plus"></span> Download </a>
+            </div>
         </div>
     </form>
     <br>

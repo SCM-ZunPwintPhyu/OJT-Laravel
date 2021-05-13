@@ -36,6 +36,11 @@ Route::group(['middleware' => 'auth'], function () {
         Route::delete('/destroy/{id}', [App\Http\Controllers\PostController::class, 'destroy'])->name('post_destroy');
         Route::get('/edit/{id}', [App\Http\Controllers\PostController::class, 'edit'])->name('post_edit');
         Route::put('/update/{id}', [App\Http\Controllers\PostController::class, 'update'])->name('post_update');
+        // Route::get('/create_csv', [App\Http\Controllers\PostController::class, 'csvCreate'])->name('csv_create');
+        // Route::post('/create_csv', [App\Http\Controllers\PostController::class, 'csvStore'])->name('csv_store');
+        Route::get('/excel', [App\Http\Controllers\PostController::class, 'export'])->name('export');
+        Route::get('/file', [App\Http\Controllers\PostController::class, 'showuploadFile'])->name('show_upload_file');
+        Route::post('/file', [App\Http\Controllers\PostController::class, 'uploadFile'])->name('upload_file');
     });
     Route::get('changeStatus', 'UserController@changeStatus');
 

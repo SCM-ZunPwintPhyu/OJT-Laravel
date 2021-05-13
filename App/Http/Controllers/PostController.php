@@ -8,6 +8,12 @@ use Auth;
 use Hash;
 use App\Post;
 use App\Models\User;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\PostsExport;
+use App\Imports\PostsImport;
+use App\Imports\ValidateCsvFile;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 
 class PostController extends Controller
 {
@@ -36,7 +42,7 @@ class PostController extends Controller
     public function create() {
         return view('post.create');
     }
-
+    
     public function store(Request $request)
     {
         $rules = [
@@ -120,5 +126,84 @@ class PostController extends Controller
         $post = Post::findOrFail($id);
         $post->delete();
         return redirect('/post')->with('success', 'Post is successfully deleted');
+    }
+    // public function csvCreate() {
+    //     // dd("herer");
+    //     return view('post.csv');
+    // }
+    // public function csvStore(Request $request)
+    // {
+         
+    //     $target_dir = public_path() . '/uploads/CSV/';
+
+    //     if(!File::isDirectory($target_dir)){
+    //         File::makeDirectory($target_dir, 0777, true, true);
+    //     }
+
+    //     $fileup = "";
+    //     if ($file = $request->file('csv')) {
+    //         $extension = $file->getClientOriginalExtension();
+    //         $destinationPath = public_path() . '/uploads/CSV/';
+    //         $safeName = name . '.' . $extension;
+    //         $file->move($destinationPath, $safeName);
+    //         $fileup = $safeName;
+    //     }
+
+    //     $res = Post::create([
+    //                 'csv' =>$fileup,
+    //             ]);
+
+    //     return redirect()->route('post')
+    //                     ->with('success','CSV added successful!.');
+    // }
+
+    //export posts 
+    public function export(Request $request)
+    {   
+        $data = $this->postInterface->getPostList($request);
+        // $keyword = $request->header('keyword');
+        // if($keyword != null){
+        //     return Excel::download(new PostsExport($keyword), 'searchresult.xlsx' );
+        // }
+        // if($request->keyword != null) {
+        //     return Excel::download(new PostsExport($request->keyword), 'searchresult.xlsx' );
+        // }
+        return Excel::download(new PostsExport($data), 'searchresult.xlsx' );
+    }
+    public function showuploadFile() {
+        return view('post.csv');
+    }
+    //csv file upload
+    public function uploadFile(Request $request) {
+        $file = $request->file('uploadfile');
+        if($request->has('uploadfile')) {
+            $filename = $file->getClientOriginalName();
+            $extension = $file->getClientOriginalExtension();
+            $fileSize = $file->getSize();
+            $filePath = $file->getRealPath();
+            $valid_extension = array("csv");
+            $maxFileSize = 2097152;
+            if(in_array(strtolower($extension),$valid_extension)){
+                if($fileSize <= $maxFileSize){
+                    try {
+                        Excel::import(new PostsImport, $filePath);
+                        Storage::disk('public')->put(Auth::User()->id . '/csv/' .$filename,  File::get($file));
+                        return redirect('post/');
+                    }catch (\Maatwebsite\Excel\Validators\ValidationException $e) {
+                        $failures = $e->failures();
+                         
+                        foreach ($failures as $failure) {
+                            return redirect()->back()->withInput()->withErrors($failure->errors());
+                        }
+                    }
+                }else {
+                    return back()->with('error','The uploadfile size larger than 2MB.');
+                }
+            }else {
+                return back()->with('error','The uploadfile must be a file of type: csv.');
+            }
+        }else {
+            return back()->with('error','The uploadfile field is required.');
+        }
     }
 }
