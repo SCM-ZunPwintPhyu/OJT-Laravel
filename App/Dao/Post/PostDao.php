@@ -15,9 +15,16 @@ class PostDao implements PostDaoInterface
   public function getPostList($aa)
   {
     $posts = new Post();
-    if ($aa != '') {
-      $posts = $posts->where('title','like','%'.$aa.'%')->orderBy('id','DESC')->get();
-    } else {
+    if ($aa->title != '') {
+      $posts = $posts->where('title','like','%'.$aa->title.'%')->orderBy('id','DESC')->get();
+    }
+    elseif ($aa->description != '') {
+      $posts = $posts->where('description','like','%'.$aa->description.'%')->orderBy('id','DESC')->get();
+    }
+    elseif ($aa->created_user_id != '') {
+      $posts = $posts->where('created_user_id','like','%'.$aa->created_user_id.'%')->orderBy('id','DESC')->get();
+    }
+    else {
       $posts = $posts->orderBy('id','DESC')->get();
     }
     return $posts;

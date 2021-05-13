@@ -153,19 +153,30 @@ body {
     </div>
     <?php 
         $title= isset($_GET['title'])?$_GET['title']:'';
+        $description= isset($_GET['description'])?$_GET['description']:'';
+        $created_user_id= isset($_GET['created_user_id'])?$_GET['created_user_id']:'';
     ?>
     <br>
     <form action="{{ url('post') }}" method="GET">
         <div class="row">
             <div class="col-md-2">
-                <input type="search" name="title" class="form-control-sm" placeholder="Serach By Word..." value="">
+                <input type="search" name="title" class="form-control-sm" placeholder="Serach By Title..."
+                    value="{{ $title}}">
             </div>
-            <div class="col-md-1">
+            <div class="col-md-2" style="margin-left:10px">
+                <input type="search" name="description" class="form-control-sm" placeholder="Serach By Description..."
+                    value="{{ $description}}">
+            </div>
+            <div class="col-md-2" style="margin-left:10px">
+                <input type="search" name="created_user_id" class="form-control-sm"
+                    placeholder="Serach By Created User..." value="{{ $created_user_id}}">
+            </div>
+            <div class="col-md-2">
                 <input type="submit" class="btn btn-primary btn-sm" value="Search">
             </div>
-            <div class="col-md-7"></div>
+            <div class="col-md-1"></div>
             <div class="col-md-2">
-                <div style="float:right">
+                <div style="float:right;">
                     <a class="btn btn-success btn-sm" href="{{ url('post/create') }}"><span
                             class="glyphicon glyphicon-plus"></span>Add Post</a>
                 </div>
@@ -198,9 +209,9 @@ body {
                     <th>Title</th>
                     <th>Description</th>
                     <th>Status</th>
-                    <th>Created Time</th>
                     <th>Created User</th>
                     <th>Updated User</th>
+                    <th>Created Time</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -208,122 +219,7 @@ body {
                 @foreach ($data as $post)
                 <tr>
                     <td>{{$post->id}}</td>
-                    <!-- <td>{{ $post->title}}</td> -->
                     <td>
-                        <!-- <div type="button" data-toggle="modal" data-target="#exampleModal">
-                            {{$post->title}}
-                            </div>
-
-                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
-                                aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">{{$post->title}}</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <p>Title:{{$post->title}}</p>
-                                            <p>Description:{{$post->description}}</p>
-                                            <p>Created User:{{$post->created_user_id}}</p>
-                                            <p>Updated User:{{$post->updated_user_id}}</p>
-                                            <p>Created Time:{{$post->created_at}}</p>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary"
-                                                data-dismiss="modal">Close</button>
-                                        </div>
-                                    </div>
-                                </div>
-                        </div> -->
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".modal">
-                             {{$post->title}}
-                            </button>
-
-                                <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog modal-lg">
-                                        <div class="modal-content">
-                                            <button type="button" class="close" data-dismiss="modal">
-                                                <span aria-hidden="false">&times;</span>
-                                            </button>
-                                                <p>Title:{{$post->title}}</p>
-                                                <p>Description:{{$post->description}}</p>
-                                                <p>Created User:{{$post->created_user_id}}</p>
-                                                <p>Updated User:{{$post->updated_user_id}}</p>
-                                                <p>Created Time:{{$post->created_at}}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                    </td>
-                    <td>{{$post->description}}</td>
-                    <!-- <td> <label class="switch">
-                        <input type="checkbox" checked>
-                        <span class="slider round"></span>
-                    </label>
-                    </td> -->
-                    <td>
-                        <label class="switch">
-                            <input data-id="{{$post->id}}" data-size="small" class="toggle-class" type="checkbox"
-                                data-onstyle="success" data-offstyle="danger" data-toggle="toggle" data-on="Active"
-                                data-off="InActive" {{ $post->status ? 'checked' : '' }}>
-                            <span class="slider round"></span>
-                        </label>
-                    </td>
-                    <td>{{$post->created_at}}</td>
-                    <td>{{$post->created_user_id}}</td>
-                    <td>{{$post->updated_user_id}}</td>
-                    <td>
-                        <form action="{{ route('post_destroy',$post->id)}}" method="post"
-                            onsubmit="return confirm('Do you want to delete?');">
-                            @csrf @method('DELETE')
-                            <a class="btn btn-sm btn-primary" href="{{ route('post_edit',$post->id)}}">
-                                <i class="fas fa-edit" title="Edit"></i></a>
-                            </a>
-                            <button class="btn btn-sm btn-danger btn-sm" type="submit">
-                                <i class="fa fa-fw fa-trash" title="Delete"></i>
-                            </button>
-                        </form>
-                    </td>
-                </tr>
-
-                @endforeach
-                <?php
-                } else {
-                ?>
-                <thead>
-                    <tr class="info">
-                        <th>ID</th>
-                        <th>Title</th>
-                        <th>Description</th>
-                        <th>Status</th>
-                        <th>Created Time</th>
-                        <th>Created User</th>
-                        <th>Updated User</th>
-                    </tr>
-                </thead>
-            <tbody class="td">
-                @foreach ($data as $post)
-                <tr>
-                    <td>{{$post->id}}</td>
-                    <!-- <td>{{ $post->title}}</td> -->
-                    <!-- <td>
-                        <div id="myBtn"><a href="#">{{$post->title}}</a></div>
-                        <div id="myModal" class="modal">
-                            <div class="modal-content">
-                                <span class="close">&times;</span>
-                                <p>Title:{{$post->title}}</p>
-                                <p>Description:{{$post->description}}</p>
-                                <p>Created User:{{$post->created_user_id}}</p>
-                                <p>Updated User:{{$post->updated_user_id}}</p>
-                                <p>Hello this is come herer</p>
-                                <p></p>
-                            </div>
-                        </div>
-                    </td> -->
-                    <td>
-                        <!-- <div id="myBtn"><a href="#">{{$post->title}}</a></div> -->
                         <div type="button" data-toggle="modal" data-target="#exampleModal">
                             {{$post->title}}
                             </diiv>
@@ -352,39 +248,109 @@ body {
                                     </div>
                                 </div>
                             </div>
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-sm">
-                            {{$post->title}}
-                            </button>
-
-                                <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-                                <div class="modal-dialog modal-sm">
-                                    <div class="modal-content">
-                                            <p>Title:{{$post->title}}</p>
-                                            <p>Description:{{$post->description}}</p>
-                                            <p>Created User:{{$post->created_user_id}}</p>
-                                            <p>Updated User:{{$post->updated_user_id}}</p>
-                                            <p>Created Time:{{$post->created_at}}</p>
-                                    </div>
-                                </div>
-                                </div>
                     </td>
                     <td>{{$post->description}}</td>
-                    <!-- <td> <label class="switch">
-                        <input type="checkbox" checked>
-                        <span class="slider round"></span>
-                    </label>
-                    </td> -->
-                    <!-- <td>
+                    <td>
                         <label class="switch">
                             <input data-id="{{$post->id}}" data-size="small" class="toggle-class" type="checkbox"
                                 data-onstyle="success" data-offstyle="danger" data-toggle="toggle" data-on="Active"
                                 data-off="InActive" {{ $post->status ? 'checked' : '' }}>
                             <span class="slider round"></span>
                         </label>
-                    </td> -->
-                    <td>{{$post->created_at}}</td>
+                    </td>
                     <td>{{$post->created_user_id}}</td>
                     <td>{{$post->updated_user_id}}</td>
+                    <td>{{$post->created_at}}</td>
+                    <td>
+                        <form action="{{ route('post_destroy',$post->id)}}" method="post"
+                            onsubmit="return confirm('Do you want to delete?');">
+                            @csrf @method('DELETE')
+                            <a class="btn btn-sm btn-primary" href="{{ route('post_edit',$post->id)}}">
+                                <i class="fas fa-edit" title="Edit"></i></a>
+                            </a>
+                            <button class="btn btn-sm btn-danger btn-sm" type="submit">
+                                <i class="fa fa-fw fa-trash" title="Delete"></i>
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+
+                @endforeach
+                <?php
+                } else {
+                ?>
+                <thead>
+                    <tr class="info">
+                        <th>ID</th>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Status</th>
+                        <th>Created User</th>
+                        <th>Updated User</th>
+                        <th>Created Time</th>
+                    </tr>
+                </thead>
+            <tbody class="td">
+                @foreach ($data as $post)
+                <tr>
+                    <td>{{$post->id}}</td>
+                    <!-- <td>{{ $post->title}}</td> -->
+                    <!-- <td>
+                        <div id="myBtn"><a href="#">{{$post->title}}</a></div>
+                        <div id="myModal" class="modal">
+                            <div class="modal-content">
+                                <span class="close">&times;</span>
+                                <p>Title:{{$post->title}}</p>
+                                <p>Description:{{$post->description}}</p>
+                                <p>Created User:{{$post->created_user_id}}</p>
+                                <p>Updated User:{{$post->updated_user_id}}</p>
+                                <p>Hello this is come herer</p>
+                                <p></p>
+                            </div>
+                        </div>
+                    </td> -->
+                    <td>
+                        <div type="button" data-toggle="modal" data-target="#exampleModal">
+                            {{$post->title}}
+                            </diiv>
+
+                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">{{$post->title}}</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>Title:{{$post->title}}</p>
+                                            <p>Description:{{$post->description}}</p>
+                                            <p>Created User:{{$post->created_user_id}}</p>
+                                            <p>Updated User:{{$post->updated_user_id}}</p>
+                                            <p>Created Time:{{$post->created_at}}</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary btn-sm"
+                                                data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </td>
+                    <td>{{$post->description}}</td>
+                    <td>
+                        <label class="switch">
+                            <input data-id="{{$post->id}}" data-size="small" class="toggle-class" type="checkbox"
+                                data-onstyle="success" data-offstyle="danger" data-toggle="toggle" data-on="Active"
+                                data-off="InActive" {{ $post->status ? 'checked' : '' }}>
+                            <span class="slider round"></span>
+                        </label>
+                    </td>
+                    <td>{{$post->created_user_id}}</td>
+                    <td>{{$post->updated_user_id}}</td>
+                    <td>{{$post->created_at}}</td>
                 </tr>
 
                 @endforeach

@@ -19,9 +19,8 @@ class PostController extends Controller
 
     public function index(Request $request)
     {
-        $data = $this->postInterface->getPostList($request->title);
-        $count = 5;
-        $keyword = $request->title;
+        $data = $this->postInterface->getPostList($request);
+        $count =$data->count();
         return view('post.index',compact('data','count'));
     }
     public function changestatuspost(Request $request)

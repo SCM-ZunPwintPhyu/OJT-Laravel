@@ -484,6 +484,9 @@
         border-radius: 5px;
         padding: 5px;
     }
+    input[type="search"] {
+        height:30px;
+    }
 
     ::-webkit-scrollbar {
         width: 12px;
@@ -588,15 +591,23 @@
             <hr style="height:1px;border-width:0;color:gray;background-color:gray;margin-bottom:50px">
             <?php 
                 $title= isset($_GET['title'])?$_GET['title']:'';
+                $description= isset($_GET['description'])?$_GET['description']:'';
+                $created_user_id= isset($_GET['created_user_id'])?$_GET['created_user_id']:'';
             ?>
             <br>
             <form action="{{ route('welcome') }}" method="GET">
                 <div class="row">
                     <div class="col-md-3">
-                        <input type="text" name="title" placeholder="Serach By Word..." value="">
+                        <input type="search" name="title" placeholder="Serach By Title..." value="{{ $title}}">
+                    </div>
+                    <div class="col-md-3">
+                        <input type="search" name="description" placeholder="Serach By Description..." value="{{ $description}}">
+                    </div>
+                    <div class="col-md-3">
+                        <input type="search" name="created_user_id" placeholder="Serach By Created User..." value="{{ $created_user_id}}">
                     </div>
                     <div class="col-md-1">
-                        <input type="submit" value="Search">
+                        <input type="submit" value="Search" style="height:30px">
                     </div>
                 </div>
             </form>
