@@ -210,6 +210,13 @@
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                         data-accordion="false">
+                        <li class="nav-header"><b>Dashboard</b></li>
+                        <li class="nav-item">
+                            <a href="{{ route('home') }}" class="nav-link">
+                                <i class="nav-icon far fa-circle text-success"></i>
+                                <p>Dashboard</p>
+                            </a>
+                        </li>
                         <li class="nav-header"><b>Information</b></li>
                         <li class="nav-item">
                             <a href="{{ route('post') }}" class="nav-link">
@@ -250,8 +257,20 @@
                                 </div>
                             </div>
                         </div>
+                        <?php
+
+                        if (Auth::user()->type == 0) {
+                        ?>
                         <a href="{{ route('profile')}}" class="small-box-footer" id="footer_card">More info <i
                                 class="fa fa-fw fa-arrow-right"></i></a>
+                        <?php
+                        } else {
+                        ?>
+                        <a href="{{ url('#')}}" class="small-box-footer" id="footer_card">More info <i
+                                class="fa fa-fw fa-arrow-right"></i></a>
+                        <?php
+                        }
+                        ?>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-3 col-xs-6" style="margin-top:7%">
