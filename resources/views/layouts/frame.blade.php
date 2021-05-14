@@ -4,48 +4,20 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>OJT Project</title>
-
+    <title>{{ config('app.name') }}</title>
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
     <link href="{{ asset('plugins/fontawesome-free/css/all.min.css') }}" rel="stylesheet">
-
-    <!-- Ionicons -->
-    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Tempusdominus Bootstrap 4 -->
     <link rel="stylesheet"
         href="{{ asset('plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css') }}">
-    <!-- iCheck -->
-    <link rel="stylesheet" href="{{ asset('plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">
-    <!-- JQVMap -->
-    <link rel="stylesheet" href="{{ asset('plugins/jqvmap/jqvmap.min.css') }}">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('dist/css/adminlte.min.css') }}">
     <!-- overlayScrollbars -->
     <link rel="stylesheet" href="{{ asset('plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
-    <!-- Daterange picker -->
-    <link rel="stylesheet" href="{{ asset('plugins/daterangepicker/daterangepicker.css') }}">
-    <!-- summernote -->
-    <link rel="stylesheet" href="{{ asset('plugins/summernote/summernote-bs4.min.css') }}">
 </head>
-<style type="text/css" media="screen">
-th {
-    background-color: rgba(0, 0, 0, .03);
-}
-
-.card-header {
-    background-color: rgba(0, 0, 0, 0) !important;
-}
-
-#card1 {
-    width: 90%;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    /* background-image: linear-gradient(#ffc107, #f39c12); */
-    background-image: linear-gradient(to right, rgb(90, 216, 233), rgb(153, 255, 204));
-}
-</style>
 
 <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
@@ -65,7 +37,7 @@ th {
                     <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a href="{{ route('welcome') }}" class="nav-link">Guest View</a>
+                    <a href="{{ route('welcome') }}" class="nav-link">Go Guest View</a>
                 </li>
             </ul>
 
@@ -165,11 +137,6 @@ th {
                         <i class="fas fa-expand-arrows-alt"></i>
                     </a>
                 </li>
-                <!-- <li class="nav-item">
-                    <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
-                        <i class="fas fa-th-large"></i>
-                    </a>
-                </li> -->
                 <li class="nav-item">
                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -216,6 +183,13 @@ th {
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                         data-accordion="false">
+                        <li class="nav-header"><b>Dashboard</b></li>
+                        <li class="nav-item">
+                            <a href="{{ route('home') }}" class="nav-link">
+                                <i class="nav-icon far fa-circle text-success"></i>
+                                <p>Dashboard</p>
+                            </a>
+                        </li>
                         <li class="nav-header"><b>Information</b></li>
                         <li class="nav-item">
                             <a href="{{ route('post') }}" class="nav-link">
@@ -223,9 +197,7 @@ th {
                                 <p>Posts</p>
                             </a>
                         </li>
-
-
-                        <li class="nav-header"><b>Roles Permission</b></li>
+                        <li class="nav-header"><b>Setting</b></li>
                         <li class="nav-item">
                             <a href="{{ route('profile') }}" class="nav-link">
                                 <i class="nav-icon far fa-circle text-warning"></i>
@@ -252,27 +224,6 @@ th {
                 <?php
                         }
                 ?>
-                <!-- <nav class="mt-2">
-                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
-                        data-accordion="false">
-                        <li class="nav-header"><b>Information</b></li>
-                        <li class="nav-item">
-                            <a href="{{ route('post') }}" class="nav-link">
-                                <i class="nav-icon far fa-circle text-danger"></i>
-                                <p>Posts</p>
-                            </a>
-                        </li>
-
-
-                        <li class="nav-header"><b>Profile</b></li>
-                        <li class="nav-item">
-                            <a href="{{ route('profile') }}" class="nav-link">
-                                <i class="nav-icon far fa-circle text-warning"></i>
-                                <p>Profile</p>
-                            </a>
-                        </li>
-                    </ul>
-                </nav> -->
                 <!-- /.sidebar-menu -->
             </div>
             <!-- /.sidebar -->
@@ -315,22 +266,10 @@ th {
     </script>
     <!-- Bootstrap 4 -->
     <script src="{{ asset('plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-    <!-- ChartJS -->
-    <script src="{{ asset('plugins/chart.js/Chart.min.js') }}"></script>
     <!-- Sparkline -->
     <script src="{{ asset('plugins/sparklines/sparkline.js') }}"></script>
-    <!-- JQVMap -->
-    <script src="{{ asset('plugins/jqvmap/jquery.vmap.min.js') }}"></script>
-    <script src="{{ asset('plugins/jqvmap/maps/jquery.vmap.usa.js') }}"></script>
-    <!-- jQuery Knob Chart -->
-    <script src="{{ asset('plugins/jquery-knob/jquery.knob.min.js') }}"></script>
-    <!-- daterangepicker -->
-    <script src="{{ asset('plugins/moment/moment.min.js') }}"></script>
-    <script src="{{ asset('plugins/daterangepicker/daterangepicker.js') }}"></script>
     <!-- Tempusdominus Bootstrap 4 -->
     <script src="{{ asset('plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js') }}"></script>
-    <!-- Summernote -->
-    <script src="{{ asset('plugins/summernote/summernote-bs4.min.js') }}"></script>
     <!-- overlayScrollbars -->
     <script src="{{ asset('plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
     <!-- AdminLTE App -->

@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>OJT Project</title>
+    <title>{{ config('app.name') }}</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
@@ -63,7 +63,7 @@ th {
                     <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a href="{{ route('welcome') }}" class="nav-link">Guest View</a>
+                    <a href="{{ route('welcome') }}" class="nav-link">Go Guest View</a>
                 </li>
             </ul>
 
@@ -163,11 +163,6 @@ th {
                         <i class="fas fa-expand-arrows-alt"></i>
                     </a>
                 </li>
-                <!-- <li class="nav-item">
-                    <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
-                        <i class="fas fa-th-large"></i>
-                    </a>
-                </li> -->
                 <li class="nav-item">
                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -214,6 +209,12 @@ th {
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                         data-accordion="false">
+                        <li class="nav-item">
+                            <a href="{{ route('home') }}" class="nav-link">
+                                <i class="nav-icon far fa-circle text-success"></i>
+                                <p>Dashboard</p>
+                            </a>
+                        </li>
                         <li class="nav-header"><b>Information</b></li>
                         <li class="nav-item">
                             <a href="{{ route('post') }}" class="nav-link">
@@ -221,8 +222,6 @@ th {
                                 <p>Posts</p>
                             </a>
                         </li>
-
-
                         <li class="nav-header"><b>Roles Permission</b></li>
                         <li class="nav-item">
                             <a href="{{ route('profile') }}" class="nav-link">

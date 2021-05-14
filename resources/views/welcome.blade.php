@@ -5,16 +5,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>OJT Project</title>
-
-    <!-- Fonts -->
+    <title>{{ config('app.name') }}</title>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-
-    <!-- Styles -->
+    <link rel="stylesheet" href="{{ asset('dist/css/app.css') }}">
     <style>
     /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
     html {
-        /* line-height: 1.15; */
         -webkit-text-size-adjust: 100%
     }
 
@@ -484,8 +480,9 @@
         border-radius: 5px;
         padding: 5px;
     }
+
     input[type="search"] {
-        height:30px;
+        height: 30px;
     }
 
     ::-webkit-scrollbar {
@@ -601,10 +598,12 @@
                         <input type="search" name="title" placeholder="Serach By Title..." value="{{ $title}}">
                     </div>
                     <div class="col-md-3">
-                        <input type="search" name="description" placeholder="Serach By Description..." value="{{ $description}}">
+                        <input type="search" name="description" placeholder="Serach By Description..."
+                            value="{{ $description}}">
                     </div>
                     <div class="col-md-3">
-                        <input type="search" name="created_user_id" placeholder="Serach By Created User..." value="{{ $created_user_id}}">
+                        <input type="search" name="created_user_id" placeholder="Serach By Created User..."
+                            value="{{ $created_user_id}}">
                     </div>
                     <div class="col-md-1">
                         <input type="submit" value="Search" style="height:30px">
