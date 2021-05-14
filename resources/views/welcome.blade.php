@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{{ asset('dist/css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('css/welcome.css') }}">
 </head>
+
 <body class="antialiased">
     <div class="relative  items-top  min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
         @if (Route::has('login'))
@@ -77,7 +78,7 @@
                     </tr>
                     @foreach ($data as $post)
                     <tr>
-                        <td>{{++$i}}</td>
+                        <td>{{$post->id}}</td>
                         <td>{{$post->title}}</td>
                         <td>{{$post->description}}</td>
                         <td>{{$post->created_user_id}}</td>

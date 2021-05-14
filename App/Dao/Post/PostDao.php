@@ -16,16 +16,37 @@ class PostDao implements PostDaoInterface
   {
     $posts = new Post();
     if ($aa->title != '') {
-      $posts = $posts->where('title','like','%'.$aa->title.'%')->orderBy('id','DESC')->get();
+      $posts = $posts->where('title','like','%'.$aa->title.'%')->orderBy('id','DESC')->paginate(5);
     }
     elseif ($aa->description != '') {
-      $posts = $posts->where('description','like','%'.$aa->description.'%')->orderBy('id','DESC')->get();
+      $posts = $posts->where('description','like','%'.$aa->description.'%')->orderBy('id','DESC')->paginate(5);
     }
     elseif ($aa->created_user_id != '') {
-      $posts = $posts->where('created_user_id','like','%'.$aa->created_user_id.'%')->orderBy('id','DESC')->get();
+      $posts = $posts->where('created_user_id','like','%'.$aa->created_user_id.'%')->orderBy('id','DESC')->paginate(5);
     }
     else {
-      $posts = $posts->orderBy('id','DESC')->get();
+      $posts = $posts->orderBy('id','DESC')->paginate(5);
+    }
+    return $posts;
+  }
+  public function getPostFrontend($aa)
+  {
+    $posts = new Post();
+    if ($aa->title != '') {
+      $posts = $posts->where('title','like','%'.$aa->title.'%')
+                    ->where('status','like','1')
+                    ->orderBy('id','DESC')->paginate(5);
+    }
+    elseif ($aa->description != '') {
+      $posts = $posts->where('description','like','%'.$aa->description.'%')
+                      ->where('status','like','1')
+                      ->orderBy('id','DESC')->paginate(5);
+    }
+    elseif ($aa->created_user_id != '') {
+      $posts = $posts->where('created_user_id','like','%'.$aa->created_user_id.'%')->orderBy('id','DESC')->paginate(5);
+    }
+    else {
+      $posts = $posts->where('status','like','1')->orderBy('id','DESC')->paginate(5);
     }
     return $posts;
   }

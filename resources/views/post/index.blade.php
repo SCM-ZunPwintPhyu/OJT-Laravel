@@ -196,8 +196,8 @@
     <h4 class="h4 pt-5 pb-3 text-info">Posts Not Found!....</h4>
     @endif
     <!-- For Pagination -->
-    <div style="width:300px;height:30px;background:red;float:right;font-size:15px">
-
+    <div style="float:right">
+    {!! $data->appends(request()->input())->links() !!}
     </div>
     <!-- For Count -->
     <div class="col-md-2" style="float:left">

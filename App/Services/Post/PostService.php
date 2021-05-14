@@ -31,6 +31,10 @@ class PostService implements PostServiceInterface
   {
     return $this->postDao->getPostList($aa);
   }
+  public function getPostFrontend($aa)
+  {
+    return $this->postDao->getPostFrontend($aa);
+  }
 
   public function createPost($request) {
     $post = new Post;
