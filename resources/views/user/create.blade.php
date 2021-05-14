@@ -132,12 +132,12 @@ input:checked+.slider:before {
             <li>
                 <label style="float:left">Name</label>
                 <input type="text" name="name" class="field-style field-full align-none" placeholder="Name" />
-                <span style="color:red"> </span>
+                <span style="color:red">{!! $errors->first('name','<small>:message</small>')!!} </span>
             </li>
             <li>
                 <label style="float:left">Email</label>
                 <input type="email" name="email" class="field-style field-full align-none" placeholder="Email" />
-                <span style="color:red"> </span>
+                <span style="color:red">{!! $errors->first('email','<small>:message</small>')!!} </span>
             </li>
             <!-- <li>
                 <label style="float:left">Type</label>
@@ -175,7 +175,7 @@ input:checked+.slider:before {
                 <label style="float:left">Password:</label>
                 <input type="password" name="password" class="field-style field-full align-none"
                     placeholder="Password" />
-                <span style="color:red"> </span>
+                <span style="color:red">{!! $errors->first('password','<small>:message</small>')!!} </span>
                 <!-- <div class="form-group">
                     <strong>Password:</strong>
                     <input type="password" placeholder="Password" class="form-control" name="password">
@@ -185,7 +185,7 @@ input:checked+.slider:before {
                 <label style="float:left">Confirm Password:</label>
                 <input type="password" name="confirm-password" class="field-style field-full align-none"
                     placeholder="Confirm Password" />
-                <span style="color:red"> </span>
+                <span style="color:red">{!! $errors->first('password','<small>:message</small>')!!} </span>
                 <!-- <div class="form-group">
                     <strong>Confirm Password:</strong>
                     <input type="password" placeholder="Confirm Password" class="form-control" name="confirm-password">
