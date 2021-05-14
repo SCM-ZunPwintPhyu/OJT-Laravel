@@ -9,19 +9,6 @@
     </div>
 </div>
 
-<!-- 
-@if (count($errors) > 0)
-<div class="alert alert-danger">
-    <strong>Whoops!</strong> There were some problems with your input.<br><br>
-    <ul>
-        @foreach ($errors->all() as $error)
-        <li>{{ $error }}</li>
-        @endforeach
-    </ul>
-</div>
-@endif -->
-
-
 <form method="post" action="{{ route('profile_update', $data->id)}}" enctype="multipart/form-data">
     @csrf
     @method('PUT')
@@ -56,22 +43,10 @@
 
         <div class="col-lg-9" style="padding-top:20px">
             <div class="pull-left">
-                <button type="submit" class="btn btn-success btn-sm">Change</button>
                 <a class="btn btn-primary btn-sm" href="{{ route('profile') }}"> Clear</a>
+                <button type="submit" class="btn btn-success btn-sm">Confirm</button>
             </div>
         </div>
     </div>
 </form>
-@stop
-
-
-@section('css')
-
-@stop
-
-
-@section('js')
-<script>
-console.log('Hi!');
-</script>
 @stop

@@ -1,0 +1,204 @@
+/* For welcome screen */
+html {
+    line-height: 2.3em;
+}
+
+.bg-white {
+    padding-left: 10px;
+}
+
+.text-sm {
+    font-size: .875rem
+}
+
+
+.mx-auto {
+    margin-left: auto;
+    margin-right: auto
+}
+
+
+.max-w-6xl {
+    max-width: 64rem
+}
+
+
+.py-4 {
+    padding-top: 1rem;
+    padding-bottom: 1rem
+}
+
+.px-6 {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem
+}
+
+.fixed {
+    position: fixed
+}
+
+[hidden] {
+    display: none
+}
+
+.top-0 {
+    top: 0
+}
+
+.right-0 {
+    right: 0
+}
+
+
+.text-gray-500 {
+    --text-opacity: 1;
+    color: black;
+}
+
+.text-gray-700 {
+    color: #4a5568;
+    height:1px;
+    margin-top:-10px;
+}
+
+/* For frontend pagination */
+.w-5 {
+    width: 1rem;
+    /* display: none; */
+}
+.hidden {
+    /* display: none */
+}
+
+.sm\:h-20 {
+    height: 5rem
+}
+
+/* For table */
+@import url(https://fonts.googleapis.com/css?family=Oswald:400,700,300);
+table {
+    border-collapse: collapse;
+    width: 1000px;
+    text-align: center;
+}
+
+tr {
+    cell-padding: 10px 0;
+}
+
+tr:nth-child(even) {
+    background: #ececec;
+}
+
+tr:first-child {
+    border-bottom: 2px solid #333;
+}
+
+th {
+    font-size: 17px;
+    font-family: "Time New Romans";
+}
+
+td {
+    font-family: "Time New Romans";
+    font-size: 15px;
+    font-weight: 100;
+    padding: 0px;
+}
+
+form {
+    margin-bottom: 30px;
+}
+
+form div {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+label {
+    font-family: "Oswald";
+    font-size: 24px;
+    font-weight: 100;
+}
+
+input[type="search"] {
+    font-size: 13px;
+    font-family: "Open Sans";
+    font-weight: 100;
+    padding: 7px 7px;
+    border: 1px solid #777777;
+    border-radius: 5px;
+    min-width: 200px;
+    margin-top: 8px;
+}
+input[type="submit"] {
+    padding: 3px 25px;
+    border-radius: 5px;
+    font-family: "Oswald";
+    font-weight: 100;
+    font-size: 18px;
+    background: #d0c15a;
+    border: none;
+    color: white;
+}
+
+/* For Button */
+.btn-5 {
+    width: 90px;
+    height: 35px;
+    line-height: 40px;
+    padding: 0;
+    border: none;
+    border-radius: 5px;
+    background: rgb(255, 27, 0);
+    /* background: linear-gradient(0deg, rgba(255, 27, 0, 1) 0%, rgba(251, 75, 2, 1) 100%); */
+    background: linear-gradient(0deg, rgba(251, 33, 117, 1) 0%, rgba(234, 76, 137, 1) 100%);
+}
+
+.btn-5:hover {
+    color: #f0094a;
+    background: transparent;
+    box-shadow: none;
+}
+
+.btn-5:before,
+.btn-5:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 2px;
+    width: 0;
+    background: #f0094a;
+    box-shadow:
+        -1px -1px 5px 0px #fff,
+        7px 7px 20px 0px #0003,
+        4px 4px 5px 0px #0002;
+    transition: 400ms ease all;
+}
+
+.btn-5:after {
+    right: inherit;
+    top: inherit;
+    left: 0;
+    bottom: 0;
+}
+
+.btn-5:hover:before,
+.btn-5:hover:after {
+    width: 100%;
+    transition: 800ms ease all;
+}
+
+/* For home page */
+
+  .card-header {
+      background-color: rgba(0, 0, 0, 0) !important;
+  }
+
+  #card1 {
+      width: 90%;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      /* background-image: linear-gradient(#ffc107, #f39c12); */
+      background-image: linear-gradient(to right, rgb(90, 216, 233), rgb(153, 255, 204));
+  }
