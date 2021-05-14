@@ -130,13 +130,14 @@ input:checked+.slider:before {
         <ul>
             <li>
                 <label style="float:left">CSV File</label>
-                <input type="file" name="uploadfile" class="field-style field-full align-none" placeholder="Browse File" />
-                @if( session( 'error' ) ) 
-        <p class="error-msgs">{{ session()->get( 'error' ) }}</p>
-      @endif
-      @if($errors->any())
-        <p class="error-msgs">{{ implode('', $errors->all(':message')) }}</p>
-      @endif
+                <input type="file" name="uploadfile" class="field-style field-full align-none"
+                    placeholder="Browse File" />
+                @if( session( 'error' ) )
+                <p class="error-msgs">{{ session()->get( 'error' ) }}</p>
+                @endif
+                @if($errors->any())
+                <p class="error-msgs">{{ implode('', $errors->all(':message')) }}</p>
+                @endif
             </li>
             <li>
                 <div class="row">

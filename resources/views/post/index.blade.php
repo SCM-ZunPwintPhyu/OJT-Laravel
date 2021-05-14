@@ -186,8 +186,8 @@ body {
                         class="glyphicon glyphicon-plus"></span> Upload </a>
             </div>
             <div class="col-md-2" style="margin-top:3%">
-                <a class="btn btn-info" href="{{ route('export') }}"><span
-                        class="glyphicon glyphicon-plus"></span> Download </a>
+                <a class="btn btn-info" href="{{ route('export') }}"><span class="glyphicon glyphicon-plus"></span>
+                    Download </a>
             </div>
         </div>
     </form>
