@@ -195,19 +195,6 @@ body {
     <div style="overflow-x:auto;">
         @if(count($data)>0)
         <table class="table table-hover" style="text-shadow: 2px 2px 5px rgb(90, 216, 233);">
-            <!-- <thead>
-                <tr class="info">
-                    <th>ID</th>
-                    <th>Title</th>
-                    <th>Description</th>
-                    <th>Status</th>
-                    <th>Created Time</th>
-                    <th>Created User</th>
-                    <th>Updated User</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody class="td"> -->
             <?php
                 if (Auth::user()->type == 0) {
                 ?>
@@ -373,7 +360,6 @@ body {
     @endif
     <div style="width:300px;height:30px;background:red;float:right;font-size:15px">
         Here Paginate
-
     </div>
     <div class="col-md-2" style="float:left">
         <p style="font-size:15px"> Count:: {{$count}}</p>

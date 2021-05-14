@@ -23,9 +23,8 @@ class FrontendController extends Controller
         if($keyword2!=''){
             $data = $data->where('created_user_id','like','%'.$keyword2.'%');
         }
-        $count = $data->count();
         $data = $data->where('status','like','1')->orderBy('id','DESC')->paginate(5);
-    
+        $count = $data->count();
         return view('welcome',compact('data','count'))
             ->with('i', ($request->input('page', 1) - 1) * 5);
     }
