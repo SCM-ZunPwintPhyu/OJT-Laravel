@@ -59,4 +59,8 @@ class PostService implements PostServiceInterface
     $post->updated_user_id = $user_id;
     return $this->postDao->updatePost($post);
   }
+
+  public function postDelete($id) {
+    return $this->postDao->postDelete($id);
+  }
 }

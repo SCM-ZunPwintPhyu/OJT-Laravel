@@ -10,4 +10,5 @@ interface PostServiceInterface
   public function createPost($request);
   public function postByID($id);
   public function updatePost($request, $id);
+  public function postDelete($id);
 }

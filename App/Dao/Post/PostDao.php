@@ -61,4 +61,10 @@ class PostDao implements PostDaoInterface
   public function updatePost($post) {
     $post->save();
   }
+
+  public function postDelete($id) {
+    $post = Post::find($id);
+    $post->delete();
+    return $post;
+  }
 }

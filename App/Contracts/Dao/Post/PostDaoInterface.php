@@ -10,4 +10,5 @@ interface PostDaoInterface
   public function createPost($post);
   public function postByID($id);
   public function updatePost($post);
+  public function postDelete($id);
 }
