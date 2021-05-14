@@ -16,12 +16,12 @@ class PostDao implements PostDaoInterface
   {
     $posts = new Post();
     if ($aa->title != '') {
-      $posts = $posts->where('title','like','%'.$aa->title.'%')->orderBy('id','DESC')->paginate(5);
+      $posts = $posts->where('title','like','%'.$aa->title.'%');
     }
-    elseif ($aa->description != '') {
-      $posts = $posts->where('description','like','%'.$aa->description.'%')->orderBy('id','DESC')->paginate(5);
+    if ($aa->description != '') {
+      $posts = $posts->where('description','like','%'.$aa->description.'%');
     }
-    elseif ($aa->created_user_id != '') {
+    if ($aa->created_user_id != '') {
       $posts = $posts->where('created_user_id','like','%'.$aa->created_user_id.'%')->orderBy('id','DESC')->paginate(5);
     }
     else {
@@ -34,15 +34,13 @@ class PostDao implements PostDaoInterface
     $posts = new Post();
     if ($aa->title != '') {
       $posts = $posts->where('title','like','%'.$aa->title.'%')
-                    ->where('status','like','1')
-                    ->orderBy('id','DESC')->paginate(5);
+                    ->where('status','like','1');
     }
-    elseif ($aa->description != '') {
+    if ($aa->description != '') {
       $posts = $posts->where('description','like','%'.$aa->description.'%')
-                      ->where('status','like','1')
-                      ->orderBy('id','DESC')->paginate(5);
+                      ->where('status','like','1');
     }
-    elseif ($aa->created_user_id != '') {
+    if ($aa->created_user_id != '') {
       $posts = $posts->where('created_user_id','like','%'.$aa->created_user_id.'%')->orderBy('id','DESC')->paginate(5);
     }
     else {

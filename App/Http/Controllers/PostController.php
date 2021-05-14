@@ -29,15 +29,6 @@ class PostController extends Controller
         $count =$data->count();
         return view('post.index',compact('data','count'));
     }
-    public function changestatuspost(Request $request)
-    {
-        // dd($request->all());
-        $posts = Post::find($request->post_id);
-        $posts->status = $request->status;
-
-        $posts->save();
-        return response()->json(['success'=>'Post change successfully.']);
-    }
 
     public function create() {
         return view('post.create');
