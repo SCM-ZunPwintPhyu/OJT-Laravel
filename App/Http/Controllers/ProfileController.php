@@ -18,146 +18,64 @@ class ProfileController extends Controller
         $this->userInterface = $userInterface;
     }
 
+    // user list
     public function index() {
         $data = $this->userInterface->getUserList();
         $count = $data->count();
         return view('user.index',compact('data','count'));
     }
 
+    // user create
     public function create() {
         return view('user.create');
     }
 
+    // user store
     public function store(Request $request) {
-        $rules = [
-                    'name'=>'required',
-                    'email' => 'required',
-                    'password'=>'required',
-                ];
-        
-                $customMessage = [
-                    'name.required' => 'Please Write Name',
-                    'email.required' => 'Please Write Email',
-                    'password.required' => 'Please Write Password',
-                ];
-        
-                $this->validate($request, $rules, $customMessage);
-                $destinationPath = public_path() . '/uploads/Profile/';
-        
-                $profile = "";
-                //upload image
-                $profile = $request->name;
-                if ($file = $request->file('profile')) {
-                    $extension = $file->getClientOriginalExtension();
-        
-                    $safeName = $profile. '.' ."PNG";
-                    $file->move($destinationPath, $safeName);
-                    $profile = $safeName;
-                }
+                $this->validate($request,[
+                    'name'=>'required|max:20',
+                    'email'=>'required|max:70',
+                    'password'=>'required|max:70',
+                ]);
                 $res = $this->userInterface->createUser($request);
                 return redirect()->route('profile')
                         ->with('success','User added successful!.');
     }
     
+    // show user
     public function show($id) {
         $data = $this->userInterface->userByID($id);
         return view('user.show',compact('data'));
-        // return view('user.show');
     }
 
+    // edit user
     public function edit($id) {
         $data = $this->userInterface->userByID($id);
         return view('user.edit',compact('data'));
     }
 
-    // public function update(Request $request, $id) {
-    //     $rules = [
-    //                 'name' => 'required',
-    //                 'email' => 'required|email|unique:users,email,'.$id,
-    //             ];
-        
-    //             $customMessage = [
-    //                 'name.required' => 'Please Fill name',
-    //                 'email.required' => 'Please Fill email',
-    //             ];
-        
-    //             $this->validate($request, $rules, $customMessage);
-
-    //             $target_dir = public_path() . '/uploads/Profile/';
-        
-    //             if(!File::isDirectory($target_dir)){
-    //                 File::makeDirectory($target_dir, 0777, true, true);
-    //             }
-        
-            
-    //             $structure = "uploads/Profile/";
-    //             // $profile = $user->profile;
-        
-    //             if ($profile = $request->file('profile')) {
-        
-    //                 if ($profile->getClientOriginalExtension() == "jpg" || $profile->getClientOriginalExtension() == "jpeg" || $profile->getClientOriginalExtension() == "JPG" || $profile->getClientOriginalExtension() == "png" || $profile->getClientOriginalExtension() == "PNG" || $profile->getClientOriginalExtension() == "gif" || $profile->getClientOriginalExtension() == "GIF") {
-        
-    //                     $photo = $profile->getClientOriginalName();
-    //                     $profile->move($structure, $photo);
-    //                 }
-    //             }
-    //             dd("herer");
-    //     $data = $this->userInterface->updateUser($request, $id);
-    //     return redirect()->route('profile')->with('success', 'User Update successfully');
-    // }
-
-
+    // user update
     public function update(Request $request, $id)
     {   
-        // dd($request);
-        // dd("herer");
-        $user = User::findOrFail($id);
-        $rules = [
-            'name' => 'required',
-            'email' => 'required|email|unique:users,email,'.$id,
-        ];
-
-        $customMessage = [
-            'name.required' => 'Please Fill name gg',
-            'email.required' => 'Please Fill email',
-        ];
-       
-        $this->validate($request, $rules, $customMessage);
-       
-       
-        $target_dir = public_path() . '/uploads/Profile/';
-
-        if(!File::isDirectory($target_dir)){
-            File::makeDirectory($target_dir, 0777, true, true);
-        }
-
-    
-        $structure = "uploads/Profile/";
-        $profile = $user->profile;
-
-        if ($profile = $request->file('profile')) {
-
-            if ($profile->getClientOriginalExtension() == "jpg" || $profile->getClientOriginalExtension() == "jpeg" || $profile->getClientOriginalExtension() == "JPG" || $profile->getClientOriginalExtension() == "png" || $profile->getClientOriginalExtension() == "PNG" || $profile->getClientOriginalExtension() == "gif" || $profile->getClientOriginalExtension() == "GIF") {
-
-                $photo = $profile->getClientOriginalName();
-                $profile->move($structure, $photo);
-            }
-        }
-    
+        $this->validate($request,[
+            'name'=>'required|max:20',
+            'email'=>'required|max:70',
+        ]);
         $data = $this->userInterface->updateUser($request, $id);
         return redirect()->route('profile')->with('success', 'User Update successfully');
     }
 
+    // user delete
     public function destroy($id)
     {
-        $user = User::findOrFail($id);
-        $user->delete();
-        return redirect('/profile')->with('success', 'Profile is successfully deleted');
+        $user = $this->userInterface->userDelete($id);
+        return redirect('/profile')->with('success', 'User is successfully deleted');
     }
+
+    // change password
     public function changePass($id)
     {
         $data = $this->userInterface->userByID($id);
         return view('user.password',compact('data'));
-    	// return view('user.password');
     }
 }

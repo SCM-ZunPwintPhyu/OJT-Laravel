@@ -9,4 +9,5 @@ interface UserDaoInterface
   public function createUser($user);
   public function userByID($id);
   public function updateUser($user);
+  public function userDelete($id);
 }

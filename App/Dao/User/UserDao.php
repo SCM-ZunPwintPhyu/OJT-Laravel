@@ -30,4 +30,10 @@ class UserDao implements UserDaoInterface
   public function updateUser($user) {
     $user->save();
   }
+
+  public function userDelete($id) {
+    $user = User::find($id);
+    $user->delete();
+    return $user;
+  }
 }

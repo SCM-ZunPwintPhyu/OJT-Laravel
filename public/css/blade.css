@@ -216,9 +216,10 @@ th {
 
 /* For  pagination */
 .w-5 {
-    width: 1rem;
+    /* font-size: 10px; */
+    /* width: 1rem; */
     /* display: none; */
 }
 .hidden {
-    /* display: none */
+    display: none
 }

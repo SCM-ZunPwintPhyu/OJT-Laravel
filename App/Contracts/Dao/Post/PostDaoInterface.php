@@ -11,4 +11,5 @@ interface PostDaoInterface
   public function postByID($id);
   public function updatePost($post);
   public function postDelete($id);
+  public function csvUploadFile($post);
 }

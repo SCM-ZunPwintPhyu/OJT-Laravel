@@ -8,12 +8,12 @@ use Auth;
 use Hash;
 use App\Post;
 use App\Models\User;
-use Maatwebsite\Excel\Facades\Excel;
-use App\Exports\PostsExport;
-use App\Imports\PostsImport;
-use App\Imports\ValidateCsvFile;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\File;
+// use Maatwebsite\Excel\Facades\Excel;
+// use App\Exports\PostsExport;
+// use App\Imports\PostsImport;
+// use App\Imports\ValidateCsvFile;
+// use Illuminate\Support\Facades\Storage;
+// use Illuminate\Support\Facades\File;
 
 class PostController extends Controller
 {
@@ -23,6 +23,7 @@ class PostController extends Controller
         $this->postInterface = $postInterface;
     }
 
+    // post list
     public function index(Request $request)
     {
         $data = $this->postInterface->getPostList($request);
@@ -30,10 +31,12 @@ class PostController extends Controller
         return view('post.index',compact('data','count'));
     }
 
+    // post create
     public function create() {
         return view('post.create');
     }
     
+    // post store
     public function store(Request $request)
     {
         $this->validate($request,[
@@ -45,75 +48,51 @@ class PostController extends Controller
                 ->with('success','Post added successful!.');        
     }
 
+    // show post
     public function show() {
         return view('post.show');
     }
 
+    // post edit
     public function edit($id){
         $post = $this->postInterface->postByID($id);
         return view('post.edit',compact('post'));
     }
 
+    // post update
     public function update(Request $request, $id) 
     {
         $this->validate($request,[
             'title'=>'required|max:20',
             'description'=>'required|max:70',
         ]);
-
-        if($request->has('status')) {
-            $request->status = 1;
-        }else {
-            $request->status = 0;
-        }
         $post = $this->postInterface->updatePost($request, $id);
         return redirect()->route('post')->with('success', 'Post Update successfully');
     }
 
+    // post delete
     public function destroy($id)
     {
         $post = $this->postInterface->postDelete($id);
         return redirect('/post')->with('success', 'Post is successfully deleted');
     } 
+
+    // file export
     public function export(Request $request)
     {   
         $data = $this->postInterface->getPostList($request);
         return Excel::download(new PostsExport($data), 'searchresult.xlsx' );
     }
+
+    // showuploadFile
     public function showuploadFile() {
         return view('post.csv');
     }
+
     //csv file upload
     public function uploadFile(Request $request) {
-        $file = $request->file('uploadfile');
-        if($request->has('uploadfile')) {
-            $filename = $file->getClientOriginalName();
-            $extension = $file->getClientOriginalExtension();
-            $fileSize = $file->getSize();
-            $filePath = $file->getRealPath();
-            $valid_extension = array("csv");
-            $maxFileSize = 2097152;
-            if(in_array(strtolower($extension),$valid_extension)){
-                if($fileSize <= $maxFileSize){
-                    try {
-                        Excel::import(new PostsImport, $filePath);
-                        Storage::disk('public')->put(Auth::User()->id . '/csv/' .$filename,  File::get($file));
-                        return redirect('post/');
-                    }catch (\Maatwebsite\Excel\Validators\ValidationException $e) {
-                        $failures = $e->failures();
-                         
-                        foreach ($failures as $failure) {
-                            return redirect()->back()->withInput()->withErrors($failure->errors());
-                        }
-                    }
-                }else {
-                    return back()->with('error','The uploadfile size larger than 2MB.');
-                }
-            }else {
-                return back()->with('error','The uploadfile must be a file of type: csv.');
-            }
-        }else {
-            return back()->with('error','The uploadfile field is required.');
-        }
+        $post = $this->postInterface->csvUploadFile($request);
+        return redirect()->route('post')
+                ->with('success','File Update successful!.');
     }
 }

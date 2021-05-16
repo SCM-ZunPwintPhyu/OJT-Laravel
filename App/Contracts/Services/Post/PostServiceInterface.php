@@ -11,4 +11,5 @@ interface PostServiceInterface
   public function postByID($id);
   public function updatePost($request, $id);
   public function postDelete($id);
+  public function csvUploadFile($request);
 }

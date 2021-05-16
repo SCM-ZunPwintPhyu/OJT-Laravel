@@ -12,6 +12,8 @@ class PostDao implements PostDaoInterface
    * @param Object
    * @return $operatorList
    */
+
+  // postlist for backend
   public function getPostList($aa)
   {
     $posts = new Post();
@@ -29,6 +31,8 @@ class PostDao implements PostDaoInterface
     }
     return $posts;
   }
+
+  // postlist for frontend
   public function getPostFrontend($aa)
   {
     $posts = new Post();
@@ -49,22 +53,31 @@ class PostDao implements PostDaoInterface
     return $posts;
   }
 
+  // create post
   public function createPost($post) {
     $post->save();
   }
 
+  // find by post id
   public function postByID($id) {
     $post = Post::find($id);
     return $post;
   }
 
+  // update post
   public function updatePost($post) {
     $post->save();
   }
 
+  // delete post
   public function postDelete($id) {
     $post = Post::find($id);
     $post->delete();
     return $post;
+  }
+
+  // delete csvUploadFile
+  public function csvUploadFile($post) {
+    $post->save();
   }
 }
