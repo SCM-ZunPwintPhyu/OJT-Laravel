@@ -24,7 +24,7 @@ class PostsImport implements ToModel, WithValidation, WithHeadingRow, WithBatchI
             'title'     => $row['title'],
             'description'    => $row['description'],
             'status'    => "0", 
-            'create_user_id' =>Auth::user()->name,
+            'created_user_id' =>Auth::user()->name,
             'updated_user_id' => "Not Updated",
         ]);
     }

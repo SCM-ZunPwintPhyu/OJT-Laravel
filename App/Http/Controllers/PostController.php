@@ -27,8 +27,8 @@ class PostController extends Controller
     public function index(Request $request)
     {
         $data = $this->postInterface->getPostList($request);
-        $count =$data->count();
-        return view('post.index',compact('data','count'));
+        // $count =$data->count();
+        return view('post.index',compact('data'));
     }
 
     // post create

@@ -43,7 +43,7 @@ class UserService implements UserServiceInterface
     if ($file = $request->file('profile')) {
         $extension = $file->getClientOriginalExtension();
 
-        $safeName = $profile. '.' ."PNG";
+        $safeName =$request->name. '.' ."PNG";
         $file->move($destinationPath, $safeName);
         $profile = $safeName;
     }
@@ -81,14 +81,19 @@ class UserService implements UserServiceInterface
     $structure = "uploads/Profile/";
     $profile = $user->profile;
 
+    
     if ($profile = $request->file('profile')) {
+      // dd("herk");
+        if ($profile->getClientOriginalExtension() == "jpg" || $profile->getClientOriginalExtension() == "jpeg" || $profile->getClientOriginalExtension() == "JPG" || $profile->getClientOriginalExtension() == "png" || $profile->getClientOriginalExtension() == "PNG" || $profile->getClientOriginalExtension() == "gif" || $profile->getClientOriginalExtension() == "GIF") {
 
-        if ($profile->getClientOriginalExtension() == "PNG" || $profile->getClientOriginalExtension() == "jpeg" || $profile->getClientOriginalExtension() == "JPG" || $profile->getClientOriginalExtension() == "png" || $profile->getClientOriginalExtension() == "PNG" || $profile->getClientOriginalExtension() == "gif" || $profile->getClientOriginalExtension() == "GIF") {
-
-            $photo = $profile->getClientOriginalName();
+            $photo = $request->name. '.' ."PNG";
             $profile->move($structure, $photo);
         }
     }
+
+
+
+
     $user->name = $request->name;
     $user->email = $request->email;
     $user->password = Hash::make($request->password);
@@ -100,7 +105,7 @@ class UserService implements UserServiceInterface
     $user->phone = $request->phone;
     $user->address = $request->address;
     $user->dob = $request->dob;
-    $user->profile = $profile;
+    $profile = $profile;
     return $this->userDao->updateUser($user);
   }
 
