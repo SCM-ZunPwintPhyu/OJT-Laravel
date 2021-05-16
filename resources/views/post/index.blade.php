@@ -201,7 +201,7 @@
     </div>
     <!-- For Count -->
     <div class="col-md-2" style="float:left">
-        <p style="font-size:15px"> Count:: {{$count}}</p>
+        <!-- <p style="font-size:15px"> Count::</p> -->
     </div>
 </div>
 @endsection

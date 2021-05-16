@@ -50,13 +50,17 @@
                 <span style="color:red"> </span>
             </li>
             <li>
+                <a href="{{ route('change_pass', $data->id)}}" class="" style="float:left">Change Password</a>
+            </li>
+            <li>
                 <label style="float:left">Profile Photo</label>
                 <input type="file" name="profile" class="field-style field-full align-none"
                     value="{{ $data->profile }}" />
                 <span style="color:red"> </span>
             </li>
             <li>
-                <a href="{{ route('change_pass', $data->id)}}" class="" style="float:left">Change Password</a>
+            <a href=""><img src='{{ asset("./uploads/Profile/$data->name/$data->name.PNG " ) }}' height="90px" width="90px" id="photo"
+                style="float:left"></a>
             </li>
             <br>
             <li>

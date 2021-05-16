@@ -37,7 +37,7 @@ class UserService implements UserServiceInterface
   // create user
   public function createUser($request) {
     $user = new User;
-    $destinationPath = public_path() . '/uploads/Profile/';
+    $destinationPath = public_path() . '/uploads/Profile/'.$request->name;
     $profile = "";
     $profile = $request->name;
     if ($file = $request->file('profile')) {
@@ -71,14 +71,14 @@ class UserService implements UserServiceInterface
   public function updateUser($request, $id) {
     $user = $this->userDao->userByID($id);
     
-    $target_dir = public_path() . '/uploads/Profile/';
+    $target_dir = public_path() . '/uploads/Profile/$user->name';
 
     if(!File::isDirectory($target_dir)){
         File::makeDirectory($target_dir, 0777, true, true);
     }
 
 
-    $structure = "uploads/Profile/";
+    $structure = "uploads/Profile/$user->name";
     $profile = $user->profile;
 
     

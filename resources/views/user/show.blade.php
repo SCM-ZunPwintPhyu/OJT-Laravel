@@ -13,7 +13,7 @@
         <a class="btn btn-primary btn-sm" href="{{ route('profile') }}"> Back</a>
     </div>
     <div class="col-xs-12 col-sm-12 col-md-12" align="center">
-        <a href=""><img src='{{ asset("./uploads/Profile/$data->name.PNG " ) }}' height="130px" width="130px" id="photo"
+        <a href=""><img src='{{ asset("./uploads/Profile/$data->name/$data->name.PNG " ) }}' height="130px" width="130px" id="photo"
                 style="border-radius:200px"></a>
         <h5>Profile</h5>
     </div>

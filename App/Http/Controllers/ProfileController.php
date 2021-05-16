@@ -57,7 +57,6 @@ class ProfileController extends Controller
     // user update
     public function update(Request $request, $id)
     {   
-        // dd($request->profile);
         $this->validate($request,[
             'name'=>'required|max:20',
             'email'=>'required|max:70',
