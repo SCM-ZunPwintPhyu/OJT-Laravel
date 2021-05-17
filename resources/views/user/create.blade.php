@@ -40,7 +40,7 @@
             </li>
             <li>
                 <label style="float:left">Address</label>
-                <input type="text" name="address" class="field-style field-full align-none" placeholder="Address" />
+                <textarea class="field-style field-full align-none" name="address" rows="5" placeholder="Address" >{{ old('address') }}</textarea>
                 <span style="color:red"> </span>
             </li>
             <li>

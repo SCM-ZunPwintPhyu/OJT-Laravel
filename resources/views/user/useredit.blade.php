@@ -45,8 +45,9 @@
             </li>
             <li>
                 <label style="float:left">Address</label>
-                <input type="text" name="address" class="field-style field-full align-none"
-                    value="{{Auth::user()->address}}" />
+                <!-- <input type="text" name="address" class="field-style field-full align-none"
+                    value="{{Auth::user()->address}}" /> -->
+                <textarea class="field-style field-full align-none" name="address" rows="5">{{Auth::user()->address}}</textarea>
                 <span style="color:red"> </span>
             </li>
             <li>

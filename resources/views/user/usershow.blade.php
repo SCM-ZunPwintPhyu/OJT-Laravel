@@ -61,10 +61,10 @@
                 </div>
             </div>
         </div>
-        <div class="card">
+        <div class="card" style="height:auto">
             <div class="w3-card-4 w3-info row">
                 <div class="col-xs-6 col-sm-6 col-md-6">
-                    <label><b>Address:{{Auth::user()->address}}</b></label>
+                    <label  style="width:490px"><b>Address:{{Auth::user()->address}}</b></label>
                 </div>
             </div>
         </div>

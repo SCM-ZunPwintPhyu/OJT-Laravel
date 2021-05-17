@@ -45,8 +45,7 @@
             </li>
             <li>
                 <label style="float:left">Address</label>
-                <input type="text" name="address" class="field-style field-full align-none"
-                    value="{{ $data->address }}" />
+                <textarea class="field-style field-full align-none" name="address" rows="5">{{ $data->address }}</textarea>
                 <span style="color:red"> </span>
             </li>
             <li>
