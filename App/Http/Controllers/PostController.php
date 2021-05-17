@@ -40,8 +40,8 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'title'=>'required|max:20',
-            'description'=>'required|max:70',
+            'title'=>'required|max:50',
+            'description'=>'required|max:200',
         ]);
         $post = $this->postInterface->createPost($request);
         return redirect()->route('post')
@@ -63,8 +63,8 @@ class PostController extends Controller
     public function update(Request $request, $id) 
     {
         $this->validate($request,[
-            'title'=>'required|max:20',
-            'description'=>'required|max:70',
+            'title'=>'required|max:50',
+            'description'=>'required|max:200',
         ]);
         $post = $this->postInterface->updatePost($request, $id);
         return redirect()->route('post')->with('success', 'Post Update successfully');

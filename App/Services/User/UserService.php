@@ -83,7 +83,6 @@ class UserService implements UserServiceInterface
 
     
     if ($profile = $request->file('profile')) {
-      // dd("herk");
         if ($profile->getClientOriginalExtension() == "jpg" || $profile->getClientOriginalExtension() == "jpeg" || $profile->getClientOriginalExtension() == "JPG" || $profile->getClientOriginalExtension() == "png" || $profile->getClientOriginalExtension() == "PNG" || $profile->getClientOriginalExtension() == "gif" || $profile->getClientOriginalExtension() == "GIF") {
 
             $photo = $request->name. '.' ."PNG";
@@ -97,9 +96,9 @@ class UserService implements UserServiceInterface
     $user->name = $request->name;
     $user->email = $request->email;
     $user->password = Hash::make($request->password);
-    if($request->type == 'Admin') {
+    if($request->type == '0') {
       $user->type = '0';
-    }else {
+    }else{
       $user->type = '1';
     }
     $user->phone = $request->phone;

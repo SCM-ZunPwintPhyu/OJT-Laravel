@@ -29,8 +29,8 @@
                         }
                         ?>
                     </option>
-                    <option value="Admin">Admin</option>
-                    <option value="User">User</option>
+                    <option value="0">Admin</option>
+                    <option value="1">User</option>
                 </select>
             </li>
             <li>
@@ -59,8 +59,8 @@
                 <span style="color:red"> </span>
             </li>
             <li>
-            <a href=""><img src='{{ asset("./uploads/Profile/$data->name/$data->name.PNG " ) }}' height="90px" width="90px" id="photo"
-                style="float:left"></a>
+                <a href=""><img src='{{ asset("./uploads/Profile/$data->name/$data->name.PNG " ) }}' height="90px"
+                        width="90px" id="photo" style="float:left"></a>
             </li>
             <br>
             <li>

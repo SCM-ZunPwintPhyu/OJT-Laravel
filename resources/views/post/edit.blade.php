@@ -14,8 +14,7 @@
             </li>
             <li>
                 <label style="float:left">Description</label>
-                <input type="text" name="description" class="field-style field-full align-none"
-                    value="{{ $post->description }}" />
+                <textarea class="field-style field-full align-none" name="description" rows="5">{{ $post->description }}</textarea>
                 <span style="color:red">{!! $errors->first('description','<small>:message</small>')!!} </span>
             </li><br>
 

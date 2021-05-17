@@ -7,13 +7,12 @@
         <ul>
             <li>
                 <label style="float:left">Title</label>
-                <input type="text" name="title" class="field-style field-full align-none" placeholder="Title" />
+                <input type="text" name="title" class="field-style field-full align-none" placeholder="Title" value="{{ old('title') }}"/>
                 <span style="color:red">{!! $errors->first('title','<small>:message</small>')!!} </span>
             </li>
             <li>
                 <label style="float:left">Description</label>
-                <input type="text" name="description" class="field-style field-full align-none"
-                    placeholder="Description" />
+                <textarea class="field-style field-full align-none" name="description" rows="5" placeholder="Description" >{{ old('description') }}</textarea>
                 <span style="color:red">{!! $errors->first('description','<small>:message</small>')!!} </span>
             </li><br>
             <li>

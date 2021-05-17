@@ -66,7 +66,7 @@
                     <td>{{$post->id}}</td>
                     <td>
                         <div type="button" data-toggle="modal" data-target="#exampleModal">
-                            {{$post->title}}
+                            {{ Str::limit($post->title, 10) }}
                             </diiv>
 
                             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
@@ -94,7 +94,7 @@
                                 </div>
                             </div>
                     </td>
-                    <td>{{$post->description}}</td>
+                    <td>{{ Str::limit($post->description, 40) }}</td>
                     <td>
                         <label class="switch">
                             <input data-id="{{$post->id}}" data-size="small" class="toggle-class" type="checkbox"
@@ -143,7 +143,7 @@
                     <!-- <td>{{ $post->title}}</td> -->
                     <td>
                         <div type="button" data-toggle="modal" data-target="#exampleModal">
-                            {{$post->title}}
+                            {{ Str::limit($post->title, 10) }}
                             </diiv>
 
                             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
@@ -171,7 +171,7 @@
                                 </div>
                             </div>
                     </td>
-                    <td>{{$post->description}}</td>
+                    <td>{{ Str::limit($post->description, 40) }}</td>
                     <td>
                         <label class="switch">
                             <input data-id="{{$post->id}}" data-size="small" class="toggle-class" type="checkbox"

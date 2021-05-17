@@ -65,7 +65,10 @@ html {
 }
 .hidden {
     /* height: 90px; */
-    /* display: none; */
+    display: none;
+
+}
+.hiddened{
 
 }
 
