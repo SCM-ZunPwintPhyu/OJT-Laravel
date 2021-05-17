@@ -50,7 +50,7 @@
               ?>
             <thead>
                 <tr class="info">
-                    <th>ID</th>
+                    <th>IDtt</th>
                     <th>Title</th>
                     <th>Description</th>
                     <th>Status</th>
@@ -65,11 +65,11 @@
                 <tr>
                     <td>{{$post->id}}</td>
                     <td>
-                        <div type="button" data-toggle="modal" data-target="#exampleModal">
+                        <div type="button" data-toggle="modal" data-target="#exampleModal{{$post->id}}">
                             {{ Str::limit($post->title, 10) }}
                             </diiv>
 
-                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                            <div class="modal fade" id="exampleModal{{$post->id}}" tabindex="4" role="dialog"
                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
