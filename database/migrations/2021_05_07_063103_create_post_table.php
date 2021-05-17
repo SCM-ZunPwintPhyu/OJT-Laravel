@@ -21,8 +21,8 @@ class CreatePostTable extends Migration
             $table->string('created_user_id')->nullable();
             $table->string('updated_user_id')->nullable();
             $table->string('deleted_user_id')->nullable();
-            $table->integer('deleted_at')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
