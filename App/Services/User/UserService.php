@@ -70,7 +70,6 @@ class UserService implements UserServiceInterface
   // update user
   public function updateUser($request, $id) {
     $user = $this->userDao->userByID($id);
-    
     $target_dir = public_path() . '/uploads/Profile/$user->name';
 
     if(!File::isDirectory($target_dir)){
@@ -90,13 +89,10 @@ class UserService implements UserServiceInterface
         }
     }
 
-
-
-
     $user->name = $request->name;
     $user->email = $request->email;
     $user->password = Hash::make($request->password);
-    if($request->type == '0') {
+    if($user->type == '0') {
       $user->type = '0';
     }else{
       $user->type = '1';
@@ -111,5 +107,42 @@ class UserService implements UserServiceInterface
   // user delete
   public function userDelete($id) {
     return $this->userDao->userDelete($id);
+  }
+
+  // update user profile
+  public function updateUserProfile($request) {
+    $user = Auth::user();
+    $target_dir = public_path() . '/uploads/Profile/$user->name';
+
+    if(!File::isDirectory($target_dir)){
+        File::makeDirectory($target_dir, 0777, true, true);
+    }
+
+
+    $structure = "uploads/Profile/$user->name";
+    $profile = $user->profile;
+
+    
+    if ($profile = $request->file('profile')) {
+        if ($profile->getClientOriginalExtension() == "jpg" || $profile->getClientOriginalExtension() == "jpeg" || $profile->getClientOriginalExtension() == "JPG" || $profile->getClientOriginalExtension() == "png" || $profile->getClientOriginalExtension() == "PNG" || $profile->getClientOriginalExtension() == "gif" || $profile->getClientOriginalExtension() == "GIF") {
+
+            $photo = $request->name. '.' ."PNG";
+            $profile->move($structure, $photo);
+        }
+    }
+
+    $user->name = $request->name;
+    $user->email = $request->email;
+    $user->password = Hash::make($request->password);
+    if($user->type == '0') {
+      $user->type = '0';
+    }else{
+      $user->type = '1';
+    }
+    $user->phone = $request->phone;
+    $user->address = $request->address;
+    $user->dob = $request->dob;
+    $profile = $profile;
+    return $this->userDao->updateUserProfile($user);
   }
 }

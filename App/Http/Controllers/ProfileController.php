@@ -78,4 +78,30 @@ class ProfileController extends Controller
         $data = $this->userInterface->userByID($id);
         return view('user.password',compact('data'));
     }
+
+     // user personal show data
+     public function userShow() {
+        return view('user.usershow');
+    }
+
+    // user personal edit data
+    public function userEdit() {
+        // $data = $this->userInterface->userByID($id);
+        return view('user.useredit');
+    }
+    // user personal update data
+    public function userUpdate(Request $request) {
+        $this->validate($request,[
+            'name'=>'required|max:20',
+            'email'=>'required|max:70',
+        ]);
+        $data = $this->userInterface->updateUserProfile($request);
+        return redirect()->route('user_show')->with('success', 'User Update successfully');
+    }
+    // user personal password change
+    public function userChangePass($id)
+    {
+        $data = $this->userInterface->userByID($id);
+        return view('user.userpass',compact('data'));
+    }
 }

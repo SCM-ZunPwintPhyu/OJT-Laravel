@@ -36,4 +36,8 @@ class UserDao implements UserDaoInterface
     $user->delete();
     return $user;
   }
+
+  public function updateUserProfile($user) {
+    $user->save();
+  }
 }

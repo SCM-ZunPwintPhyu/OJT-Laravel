@@ -10,4 +10,5 @@ interface UserServiceInterface
   public function userByID($id);
   public function updateUser($request, $id);
   public function userDelete($id);
+  public function updateUserProfile($request);
 }

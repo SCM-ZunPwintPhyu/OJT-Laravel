@@ -27,8 +27,6 @@ Route::group(['middleware' => 'auth'], function () {
         Route::delete('/destroy/{id}', [App\Http\Controllers\PostController::class, 'destroy'])->name('post_destroy');
         Route::get('/edit/{id}', [App\Http\Controllers\PostController::class, 'edit'])->name('post_edit');
         Route::put('/update/{id}', [App\Http\Controllers\PostController::class, 'update'])->name('post_update');
-        // Route::get('/create_csv', [App\Http\Controllers\PostController::class, 'csvCreate'])->name('csv_create');
-        // Route::post('/create_csv', [App\Http\Controllers\PostController::class, 'csvStore'])->name('csv_store');
         Route::get('/excel', [App\Http\Controllers\PostController::class, 'export'])->name('export');
         Route::get('/file', [App\Http\Controllers\PostController::class, 'showuploadFile'])->name('show_upload_file');
         Route::post('/file', [App\Http\Controllers\PostController::class, 'uploadFile'])->name('upload_file');
@@ -44,6 +42,10 @@ Route::group(['middleware' => 'auth'], function () {
         Route::put('/update/{id}', [App\Http\Controllers\ProfileController::class, 'update'])->name('profile_update');
         Route::get('/show/{id}', [App\Http\Controllers\ProfileController::class, 'show'])->name('profile_show');
         Route::get('/changePass/{id}', [App\Http\Controllers\ProfileController::class, 'changePass'])->name('change_pass');
+        Route::get('/user_show', [App\Http\Controllers\ProfileController::class, 'userShow'])->name('user_show');
+        Route::get('/user_edit', [App\Http\Controllers\ProfileController::class, 'userEdit'])->name('user_edit');
+        Route::put('/user_update', [App\Http\Controllers\ProfileController::class, 'userUpdate'])->name('user_update');
+        Route::get('/user_changepass/{id}', [App\Http\Controllers\ProfileController::class, 'userChangePass'])->name('user_changepass');
     });
    
 });

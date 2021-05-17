@@ -224,6 +224,13 @@
                                 <p>Posts</p>
                             </a>
                         </li>
+                        <li class="nav-header"><b>Personal Data</b></li>
+                        <li class="nav-item">
+                            <a href="{{ route('user_show') }}" class="nav-link">
+                                <i class="nav-icon far fa-circle text-warning"></i>
+                                <p>Profile</p>
+                            </a>
+                        </li>
                     </ul>
                 </nav>
                 <?php

@@ -10,4 +10,5 @@ interface UserDaoInterface
   public function userByID($id);
   public function updateUser($user);
   public function userDelete($id);
+  public function updateUserProfile($user);
 }
