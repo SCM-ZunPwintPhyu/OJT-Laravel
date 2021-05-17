@@ -145,4 +145,29 @@ class UserService implements UserServiceInterface
     $profile = $profile;
     return $this->userDao->updateUserProfile($user);
   }
+
+  // change password
+  public function changePassword($id) {
+    return $this->userDao->changePassword($id);
+  }
+
+
+   // update change password
+   public function updateChangePass($request, $id) {
+    $user = $this->userDao->userByID($id);
+    $user->name = $request->name;
+    $user->email = $request->email;
+    $user->password = Hash::make($request->password);
+    return $this->userDao->updateChangePass($user);
+  }
+
+  // user profile update change password
+  public function userUpdatePass($request, $id) {
+    $user = $this->userDao->userByID($id);
+    $user->name = $request->name;
+    $user->email = $request->email;
+    $user->password = Hash::make($request->password);
+    return $this->userDao->userUpdatePass($user);
+  }
+
 }

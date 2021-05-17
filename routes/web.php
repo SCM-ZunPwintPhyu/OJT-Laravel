@@ -52,6 +52,8 @@ Route::group(['middleware' => ['auth', 'prevent-back-history']], function () {
         Route::put('/userconfcreate', [App\Http\Controllers\ProfileController::class, 'confCreate'])->name('userconf_create');
         Route::put('/userconfedit/{id}', [App\Http\Controllers\ProfileController::class, 'confEdit'])->name('userconf_edit');
         Route::put('/personalconfedit/{id}', [App\Http\Controllers\ProfileController::class, 'personalUserEdit'])->name('personalconf_edit');
+        Route::put('/updatePass/{id}', [App\Http\Controllers\ProfileController::class, 'updateChangePass'])->name('update_pass');
+        Route::put('/updateUserPass/{id}', [App\Http\Controllers\ProfileController::class, 'userUpdatePass'])->name('user_update_pass');
     });
    
 });

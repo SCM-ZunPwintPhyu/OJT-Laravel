@@ -75,8 +75,31 @@ class ProfileController extends Controller
     // change password
     public function changePass($id)
     {
+        // dd("herer");
         $data = $this->userInterface->userByID($id);
         return view('user.password',compact('data'));
+    }
+
+    // update change password
+    public function updateChangePass(Request $request, $id)
+    {   
+        $this->validate($request,[
+            'name'=>'required|max:20',
+            'email'=>'required|max:70',
+        ]);
+        $data = $this->userInterface->updateChangePass($request, $id);
+        return redirect()->route('profile')->with('success', 'Password Change successfully');
+    }
+
+    // update profile change password
+    public function userUpdatePass(Request $request, $id)
+    {   
+        $this->validate($request,[
+            'name'=>'required|max:20',
+            'email'=>'required|max:70',
+        ]);
+        $data = $this->userInterface->userUpdatePass($request, $id);
+        return redirect()->route('user_show')->with('success', 'Password Change successfully');
     }
 
      // user personal show data

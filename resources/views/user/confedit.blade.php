@@ -67,10 +67,7 @@
                 <div class="row">
                     <div class="col-md-9"></div>
                     <div class="col-md-1 col-sm-9 col-xs-9">
-                        <a href="{{ route('profile') }}" class="btn btn-info btn-sm">Back</a>
-                    </div>
-                    <div class="col-md-1 col-sm-9 col-xs-9">
-                        <a href="{{ route('profile_edit',$data->id) }}" class="btn btn-danger btn-sm">Clear</a>
+                        <a href="{{ route('profile') }}" class="btn btn-info btn-sm">Cancel</a>
                     </div>
                     <div class="col-md-1 col-sm-3 col-xs-3">
                         <input type="submit" class="btn btn-success btn-sm" value="Confirm" />

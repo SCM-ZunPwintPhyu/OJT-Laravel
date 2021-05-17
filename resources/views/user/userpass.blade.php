@@ -9,7 +9,7 @@
     </div>
 </div>
 
-<form method="post" action="{{ route('user_update', Auth::user()->id)}}" enctype="multipart/form-data">
+<form method="post" action="{{ route('user_update_pass', Auth::user()->id)}}" enctype="multipart/form-data">
     @csrf
     @method('PUT')
     <div class="row">

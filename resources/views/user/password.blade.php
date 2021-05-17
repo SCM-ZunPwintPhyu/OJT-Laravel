@@ -9,7 +9,7 @@
     </div>
 </div>
 
-<form method="post" action="{{ route('profile_update', $data->id)}}" enctype="multipart/form-data">
+<form method="post" action="{{ route('update_pass', $data->id)}}" enctype="multipart/form-data">
     @csrf
     @method('PUT')
     <div class="row">
@@ -27,6 +27,7 @@
             <label style="float:left;padding-left:15%">Old Password:</label>
             <input type="password" name="password" class="field-style field-full align-none form-control"
                 value="{{$data->password}}" style="margin-left:15%" disabled />
+                
         </div>
 
         <div style="width:800px">

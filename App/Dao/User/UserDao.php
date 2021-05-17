@@ -40,4 +40,13 @@ class UserDao implements UserDaoInterface
   public function updateUserProfile($user) {
     $user->save();
   }
+
+  // change password
+  public function updateChangePass($user) {
+    $user->save();
+  }
+  // profile change password
+  public function userUpdatePass($user) {
+    $user->save();
+  }
 }
