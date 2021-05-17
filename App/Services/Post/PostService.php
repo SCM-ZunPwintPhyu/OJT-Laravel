@@ -64,6 +64,7 @@ class PostService implements PostServiceInterface
 
   // update post
   public function updatePost($request, $id) {
+    // dd("herer");
     $user_id=Auth::user()->name;
     $post = $this->postDao->postByID($id);
     if($request->has('status')) {

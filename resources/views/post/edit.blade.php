@@ -8,13 +8,13 @@
         <ul>
             <li>
                 <label style="float:left">Title</label>
-                <input type="text" name="title" class="field-style field-full align-none" value="{{ $post->title }}" />
+                <input type="text" name="title" class="field-style field-full align-none" value="{{ old('title',$post->title) }}" />
                 <span style="color:red">{!! $errors->first('title','<small>:message</small>')!!} </span>
             </li>
             <li>
                 <label style="float:left">Description</label>
                 <textarea class="field-style field-full align-none" name="description"
-                    rows="5">{{ $post->description }}</textarea>
+                    rows="5">{{ old('description',$post->description) }}</textarea>
                 <span style="color:red">{!! $errors->first('description','<small>:message</small>')!!} </span>
             </li><br>
 

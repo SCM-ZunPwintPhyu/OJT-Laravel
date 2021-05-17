@@ -36,7 +36,7 @@
             </li>
             <li>
                 <label style="float:left">Phone</label>
-                <input type="text" name="phone" class="field-style field-full align-none" placeholder="Phone"
+                <input type="number" name="phone" class="field-style field-full align-none" placeholder="Phone"
                     value="{{ $data->phone }}" />
             </li>
             <li>

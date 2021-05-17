@@ -9,18 +9,18 @@
         <ul>
             <li>
                 <label style="float:left">Name</label>
-                <input type="text" name="name" class="field-style field-full align-none" value="{{$data->name}}" />
+                <input type="text" name="name" class="field-style field-full align-none" value="{{ old('name',$data->name) }}" />
                 <span style="color:red">{!! $errors->first('name','<small>:message</small>')!!} </span>
             </li>
             <li>
                 <label style="float:left">Email</label>
-                <input type="email" name="email" class="field-style field-full align-none" value="{{ $data->email }}" />
+                <input type="email" name="email" class="field-style field-full align-none" value="{{ old('email',$data->email) }}" />
                 <span style="color:red">{!! $errors->first('email','<small>:message</small>')!!} </span>
             </li>
             <li>
                 <label style="float:left">Type</label>
                 <select class="form-control" name="type">
-                    <option value="{{$data->type}}">
+                    <option value="{{ old('type',$data->type) }}">
                         <?php
                         if ($data->type == 0) {
                         echo "Admin";
@@ -35,18 +35,18 @@
             </li>
             <li>
                 <label style="float:left">Phone</label>
-                <input type="text" name="phone" class="field-style field-full align-none" value="{{ $data->phone }}" />
+                <input type="number" name="phone" class="field-style field-full align-none" value="{{ old('phone',$data->phone) }}" />
                 <span style="color:red"> </span>
             </li>
             <li>
                 <label style="float:left">Date of Birth</label>
-                <input type="date" name="dob" class="field-style field-full align-none" value="{{ $data->dob }}" />
+                <input type="date" name="dob" class="field-style field-full align-none" value="{{ old('dob',$data->dob) }}" />
                 <span style="color:red"> </span>
             </li>
             <li>
                 <label style="float:left">Address</label>
                 <textarea class="field-style field-full align-none" name="address"
-                    rows="5">{{ $data->address }}</textarea>
+                    rows="5">{{ old('address',$data->address) }}</textarea>
                 <span style="color:red"> </span>
             </li>
             <li>
@@ -55,7 +55,7 @@
             <li>
                 <label style="float:left">Profile Photo</label>
                 <input type="file" name="profile" class="field-style field-full align-none"
-                    value="{{ $data->profile }}" />
+                    value="{{ old('profile',$data->profile) }}" />
                 <span style="color:red"> </span>
             </li>
             <li>

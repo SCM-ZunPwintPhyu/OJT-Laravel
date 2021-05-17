@@ -110,9 +110,14 @@ class PostController extends Controller
     public function confEdit(Request $request) {
         $this->validate($request,[
             'title'=>'required|max:50',
-            'description'=>'required|max:200', 
+            'description'=>'required|max:200',
         ]);
         $post = $request;
+        if($request->has('status')) {
+            $post->status = 1;
+        }else {
+            $post->status = 0;
+        }
         return view('post.confedit',compact('post'));
     }
 

@@ -9,18 +9,18 @@
         <ul>
             <li>
                 <label style="float:left">Name</label>
-                <input type="text" name="name" class="field-style field-full align-none" value="{{Auth::user()->name}}" />
+                <input type="text" name="name" class="field-style field-full align-none" value="{{ old('name',Auth::user()->name) }}" />
                 <span style="color:red">{!! $errors->first('name','<small>:message</small>')!!} </span>
             </li>
             <li>
                 <label style="float:left">Email</label>
-                <input type="email" name="email" class="field-style field-full align-none" value="{{Auth::user()->email}}" />
+                <input type="email" name="email" class="field-style field-full align-none" value="{{ old('email',Auth::user()->email) }}" />
                 <span style="color:red">{!! $errors->first('email','<small>:message</small>')!!} </span>
             </li>
             <li>
                 <label style="float:left">Type</label>
                 <select class="form-control" name="type" disabled>
-                    <option value="{{Auth::user()->type}}">
+                    <option value="{{ old('type',Auth::user()->type) }}">
                         <?php
                         if (Auth::user()->type == 0) {
                         echo "Admin";
@@ -35,17 +35,17 @@
             </li>
             <li>
                 <label style="float:left">Phone</label>
-                <input type="text" name="phone" class="field-style field-full align-none" value="{{Auth::user()->phone}}" />
+                <input type="number" name="phone" class="field-style field-full align-none" value="{{ old('phone',Auth::user()->phone) }}" />
                 <span style="color:red"> </span>
             </li>
             <li>
                 <label style="float:left">Date of Birth</label>
-                <input type="date" name="dob" class="field-style field-full align-none" value="{{Auth::user()->dob}}" />
+                <input type="date" name="dob" class="field-style field-full align-none" value="{{ old('dob',Auth::user()->dob) }}" />
                 <span style="color:red"> </span>
             </li>
             <li>
                 <label style="float:left">Address</label>
-                <textarea class="field-style field-full align-none" name="address" rows="5">{{Auth::user()->address}}</textarea>
+                <textarea class="field-style field-full align-none" name="address" rows="5">{{ old('address',Auth::user()->address) }}</textarea>
                 <span style="color:red"> </span>
             </li>
             <li>
@@ -54,7 +54,7 @@
             <li>
                 <label style="float:left">Profile Photo</label>
                 <input type="file" name="profile" class="field-style field-full align-none"
-                    value="{{Auth::user()->profile}}" />
+                    value="{{ old('profile',Auth::user()->profile) }}" />
                 <span style="color:red"> </span>
             </li>
             <li>
