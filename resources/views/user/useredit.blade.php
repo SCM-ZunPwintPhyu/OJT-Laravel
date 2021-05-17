@@ -66,9 +66,12 @@
             <br>
             <li>
                 <div class="row">
-                    <div class="col-md-10"></div>
+                    <div class="col-md-9"></div>
                     <div class="col-md-1 col-sm-9 col-xs-9">
-                        <a href="{{ route('user_show')}}" class="btn btn-danger btn-sm">Clear</a>
+                        <a href="{{ route('user_show') }}" class="btn btn-info btn-sm">Back</a>
+                    </div>
+                    <div class="col-md-1 col-sm-9 col-xs-9">
+                        <a href="{{ route('user_edit') }}" class="btn btn-danger btn-sm">Clear</a>
                     </div>
                     <div class="col-md-1 col-sm-3 col-xs-3">
                         <input type="submit" class="btn btn-success btn-sm" value="Confirm" />

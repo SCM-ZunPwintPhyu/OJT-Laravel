@@ -43,7 +43,8 @@
 
         <div class="col-lg-9" style="padding-top:20px">
             <div class="pull-left">
-                <a class="btn btn-primary btn-sm" href="{{ route('profile') }}"> Clear</a>
+                <a href="{{ route('profile') }}" class="btn btn-info btn-sm">Back</a>
+                <a href="{{ route('change_pass',$data->id) }}" class="btn btn-danger btn-sm">Clear</a>
                 <button type="submit" class="btn btn-success btn-sm">Confirm</button>
             </div>
         </div>
