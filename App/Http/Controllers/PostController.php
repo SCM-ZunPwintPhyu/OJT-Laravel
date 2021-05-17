@@ -95,4 +95,25 @@ class PostController extends Controller
         return redirect()->route('post')
                 ->with('success','File Update successful!.');
     }
+
+    // create confirm 
+    public function confCreate(Request $request) {
+        $this->validate($request,[
+            'title'=>'required|max:50',
+            'description'=>'required|max:200',
+        ]);
+        $post = $request;
+        return view('post.confcreate',compact('post'));
+    }
+
+    // edit confirm 
+    public function confEdit(Request $request) {
+        $this->validate($request,[
+            'title'=>'required|max:50',
+            'description'=>'required|max:200', 
+        ]);
+        $post = $request;
+        return view('post.confedit',compact('post'));
+    }
+
 }

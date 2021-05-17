@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <form class="form-style-9" method="post" action="{{ route('profile_update', $data->id)}}"
+    <form class="form-style-9" method="post" action="{{ route('userconf_edit', $data->id)}}"
         enctype="multipart/form-data">
         @csrf
         @method('PUT')
@@ -45,7 +45,8 @@
             </li>
             <li>
                 <label style="float:left">Address</label>
-                <textarea class="field-style field-full align-none" name="address" rows="5">{{ $data->address }}</textarea>
+                <textarea class="field-style field-full align-none" name="address"
+                    rows="5">{{ $data->address }}</textarea>
                 <span style="color:red"> </span>
             </li>
             <li>
@@ -72,7 +73,8 @@
                         <a href="{{ route('profile_edit',$data->id) }}" class="btn btn-danger btn-sm">Clear</a>
                     </div>
                     <div class="col-md-1 col-sm-3 col-xs-3">
-                        <input type="submit" class="btn btn-success btn-sm" value="Confirm" />
+                        <!-- <input type="submit" class="btn btn-success btn-sm" value="Confirm" /> -->
+                        <input type="submit" class="btn btn-success btn-sm" value="Create" />
                     </div>
                 </div>
             </li>

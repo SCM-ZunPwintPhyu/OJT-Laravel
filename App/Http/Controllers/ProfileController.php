@@ -86,8 +86,12 @@ class ProfileController extends Controller
 
     // user personal edit data
     public function userEdit() {
-        // $data = $this->userInterface->userByID($id);
         return view('user.useredit');
+    }
+    // user personal confirm edit data
+    public function personalUserEdit(Request $request) {
+        $data = $request;
+        return view('user.confuseredit',compact('data'));
     }
     // user personal update data
     public function userUpdate(Request $request) {
@@ -103,5 +107,26 @@ class ProfileController extends Controller
     {
         $data = $this->userInterface->userByID($id);
         return view('user.userpass',compact('data'));
+    }
+
+    // create confirm 
+    public function confCreate(Request $request) {
+        $this->validate($request,[
+            'name'=>'required|max:20',
+                    'email'=>'required|max:70',
+                    'password'=>'required|max:70',
+        ]);
+        $data = $request;
+        return view('user.confcreate',compact('data'));
+    }
+
+    // edit confirm 
+    public function confEdit(Request $request) {
+        $this->validate($request,[
+            'name'=>'required|max:20',
+            'email'=>'required|max:70' 
+        ]);
+        $data = $request;
+        return view('user.confedit',compact('data'));
     }
 }

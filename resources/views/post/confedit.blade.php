@@ -2,7 +2,8 @@
 
 @section('content')
 <div class="container">
-    <form class="form-style-9" method="post" action="{{ route('conf_edit', $post->id)}}" enctype="multipart/form-data">
+    <form class="form-style-9" method="post" action="{{ route('post_update', $post->id)}}"
+        enctype="multipart/form-data">
         @csrf
         @method('PUT')
         <ul>
@@ -35,14 +36,13 @@
                 <div class="row">
                     <div class="col-md-9"></div>
                     <div class="col-md-1 col-sm-9 col-xs-9">
-                        <a href="{{ route('post') }}" class="btn btn-info btn-sm">Back</a>
+                        <a href="{{ route('post') }}" class="btn btn-info btn-sm">Cancel</a>
                     </div>
-                    <div class="col-md-1 col-sm-9 col-xs-9">
+                    <!-- <div class="col-md-1 col-sm-9 col-xs-9">
                         <a href="{{ route('post_edit', $post->id) }}" class="btn btn-danger btn-sm">Clear</a>
-                    </div>
+                    </div> -->
                     <div class="col-md-1 col-sm-3 col-xs-3">
-                        <!-- <input type="submit" class="btn btn-success btn-sm" value="Confirm" /> -->
-                        <input type="submit" class="btn btn-success btn-sm" value="Create" />
+                        <input type="submit" class="btn btn-success btn-sm" value="Confirm" />
                     </div>
                 </div>
             </li>

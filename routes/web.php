@@ -30,6 +30,8 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/excel', [App\Http\Controllers\PostController::class, 'export'])->name('export');
         Route::get('/file', [App\Http\Controllers\PostController::class, 'showuploadFile'])->name('show_upload_file');
         Route::post('/file', [App\Http\Controllers\PostController::class, 'uploadFile'])->name('upload_file');
+        Route::put('/confcreate', [App\Http\Controllers\PostController::class, 'confCreate'])->name('conf_create');
+        Route::put('/confedit/{id}', [App\Http\Controllers\PostController::class, 'confEdit'])->name('conf_edit');
     });
     Route::get('changeStatus', 'UserController@changeStatus');
 
@@ -46,6 +48,9 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/user_edit', [App\Http\Controllers\ProfileController::class, 'userEdit'])->name('user_edit');
         Route::put('/user_update', [App\Http\Controllers\ProfileController::class, 'userUpdate'])->name('user_update');
         Route::get('/user_changepass/{id}', [App\Http\Controllers\ProfileController::class, 'userChangePass'])->name('user_changepass');
+        Route::put('/userconfcreate', [App\Http\Controllers\ProfileController::class, 'confCreate'])->name('userconf_create');
+        Route::put('/userconfedit/{id}', [App\Http\Controllers\ProfileController::class, 'confEdit'])->name('userconf_edit');
+        Route::put('/personalconfedit/{id}', [App\Http\Controllers\ProfileController::class, 'personalUserEdit'])->name('personalconf_edit');
     });
    
 });
