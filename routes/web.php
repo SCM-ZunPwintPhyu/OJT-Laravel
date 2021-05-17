@@ -12,13 +12,14 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/', [App\Http\Controllers\FrontendController::class, 'index'])->name('welcome');
 
 
-Route::group(['middleware' => 'auth'], function () {
+Route::group(['middleware' => ['auth', 'prevent-back-history']], function () {
     
     Route::group(['prefix' => 'post'],function() {
         Route::get('/', [App\Http\Controllers\PostController::class, 'index'])->name('post');

@@ -35,7 +35,7 @@ class ProfileController extends Controller
                 $this->validate($request,[
                     'name'=>'required|max:20',
                     'email'=>'required|max:70',
-                    'password'=>'required|max:70',
+                    'password'=>'required|min:8',
                 ]);
                 $res = $this->userInterface->createUser($request);
                 return redirect()->route('profile')
@@ -111,10 +111,11 @@ class ProfileController extends Controller
 
     // create confirm 
     public function confCreate(Request $request) {
+        // dd($request);
         $this->validate($request,[
             'name'=>'required|max:20',
                     'email'=>'required|max:70',
-                    'password'=>'required|max:70',
+                    'password'=>'required|min:8',
         ]);
         $data = $request;
         return view('user.confcreate',compact('data'));
