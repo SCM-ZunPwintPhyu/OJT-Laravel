@@ -62,12 +62,11 @@
             </li>
             <li>
                 <label style="float:left">Profile Photo</label>
-                <input type="file" name="profile" class="field-style field-full align-none" placeholder="Profile Photo"
-                    value="{{ old('profile') }}" />
+                <input type='file' onchange="readURL(this);" name="profile" class="field-style field-full align-none" value="{{ old('profile') }}"/>
+                <img id="blah" src="http://placehold.it/180" alt="your image" />
             </li>
-            <br>
             <li>
-                <div class="row">
+                <div class="row" style="margin-top:100px">
                     <div class="col-md-9"></div>
                     <div class="col-md-1 col-sm-9 col-xs-9">
                         <a href="{{ route('profile') }}" class="btn btn-info btn-sm">Back</a>
@@ -84,4 +83,18 @@
         </ul>
     </form>
 </div>
+<script>
+function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function(e) {
+            $('#blah')
+                .attr('src', e.target.result);
+        };
+
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+</script>
 @endsection

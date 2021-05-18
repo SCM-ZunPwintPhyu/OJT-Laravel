@@ -32,6 +32,7 @@ class ProfileController extends Controller
 
     // user store
     public function store(Request $request) {
+        // dd("here");
                 $this->validate($request,[
                     'name'=>'required|max:20',
                     'email'=>'required|max:70',
@@ -134,13 +135,13 @@ class ProfileController extends Controller
 
     // create confirm 
     public function confCreate(Request $request) {
-        // dd($request);
         $this->validate($request,[
             'name'=>'required|max:20',
                     'email'=>'required|max:70',
                     'password'=>'required|min:8',
         ]);
         $data = $request;
+        // dd($data->profile);
         return view('user.confcreate',compact('data'));
     }
 

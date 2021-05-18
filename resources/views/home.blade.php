@@ -195,7 +195,7 @@
                                 <p>Posts</p>
                             </a>
                         </li>
-                        <li class="nav-header"><b>Roles Permission</b></li>
+                        <li class="nav-header"><b>Setting</b></li>
                         <li class="nav-item">
                             <a href="{{ route('profile') }}" class="nav-link">
                                 <i class="nav-icon far fa-circle text-warning"></i>

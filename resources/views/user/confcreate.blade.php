@@ -63,8 +63,8 @@
             </li>
             <li>
                 <label style="float:left">Profile Photo</label>
-                <input type="file" name="profile" class="field-style field-full align-none" placeholder="Profile Photo"
-                    value="{{ $data->profile }}" />
+                <input type='file' onchange="readURL(this);" name="profile" class="field-style field-full align-none"/>
+                <img id="blah"  src="http://placehold.it/180" alt="your image" value="{{ $data->profile }}" />
             </li>
             <br>
             <li>
@@ -81,4 +81,18 @@
         </ul>
     </form>
 </div>
+<script>
+function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function(e) {
+            $('#blah')
+                .attr('src', e.target.result);
+        };
+
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+</script>
 @endsection

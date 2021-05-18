@@ -53,13 +53,8 @@
             </li>
             <li>
                 <label style="float:left">Profile Photo</label>
-                <input type="file" name="profile" class="field-style field-full align-none"
-                    value="{{ old('profile',Auth::user()->profile) }}" />
-                <span style="color:red"> </span>
-            </li>
-            <li>
-            <a href=""><img src='{{ asset("./uploads/Profile/". Auth::user()->name . "/" . Auth::user()->name . ".PNG " ) }}' height="90px"
-                        width="90px" id="photo" style="float:left"></a>
+                    <input type='file' onchange="readURL(this);" name="profile" class="field-style field-full align-none" value="{{ old('profile') }}"/>
+                <img id="blah" src='{{ asset("./uploads/Profile/". Auth::user()->name . "/" . Auth::user()->name . ".PNG " ) }}' alt="your image" />
             </li>
             <br>
             <li>
@@ -79,4 +74,18 @@
         </ul>
     </form>
 </div>
+<script>
+function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function(e) {
+            $('#blah')
+                .attr('src', e.target.result);
+        };
+
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+</script>
 @endsection
