@@ -26,7 +26,7 @@
             </div>
             <div class="col-md-1"></div>
             <div class="col-md-4">
-            <div style="float:right">
+                <div style="float:right">
                     <a class="btn btn-success btn-sm" href="{{ route('profile_create') }}"><span
                             class="glyphicon glyphicon-plus"></span>Add Profile</a>
                 </div>
@@ -52,7 +52,34 @@
                 @foreach ($data as $user)
                 <tr>
                     <td>{{$user->id}}</td>
-                    <td>{{$user->name}}</td>
+                    <td>
+                        <div type="button" data-toggle="modal" data-target="#exampleModal{{$user->id}}">
+                            <a href="#">{{ Str::limit($user->name, 10) }}</a>
+                            </diiv>
+
+                            <div class="modal fade" id="exampleModal{{$user->id}}" tabindex="-1" role="dialog"
+                                aria-labelledby="exampleModalLabel" aria-hidden="false">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">{{$user->name}}</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="false" style="color:red">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>Title:{{$user->name}}</p>
+                                            <p>Description:{{$user->email}}</p>
+                                            <p>Created Time:{{$user->created_at->format('d/m/Y')}}</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal"
+                                                aria-hidden="false">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </td>
                     <td>
                         <?php
 
@@ -88,7 +115,7 @@
             </tbody>
         </table>
         <div style="float:right">
-        {!! $data->appends(request()->input())->links() !!}
+            {!! $data->appends(request()->input())->links() !!}
         </div>
         <div class="col-md-2" style="float:left">
             <p style="font-size:15px"> Count:: {{$data->count()}}</p>

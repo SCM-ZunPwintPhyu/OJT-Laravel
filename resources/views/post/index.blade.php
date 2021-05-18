@@ -66,7 +66,7 @@
                     <td>{{$post->id}}</td>
                     <td>
                         <div type="button" data-toggle="modal" data-target="#exampleModal{{$post->id}}">
-                            {{ Str::limit($post->title, 10) }}
+                            <a href="#">{{ Str::limit($post->title, 10) }}</a>
                             </diiv>
 
                             <div class="modal fade" id="exampleModal{{$post->id}}" tabindex="4" role="dialog"
@@ -143,7 +143,7 @@
                     <!-- <td>{{ $post->title}}</td> -->
                     <td>
                         <div type="button" data-toggle="modal" data-target="#exampleModal{{$post->id}}">
-                            {{ Str::limit($post->title, 10) }}
+                            <a href="#"> {{ Str::limit($post->title, 10) }}</a>
                             </diiv>
 
                             <div class="modal fade" id="exampleModal{{$post->id}}" tabindex="-1" role="dialog"
