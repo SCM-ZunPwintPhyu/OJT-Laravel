@@ -92,6 +92,7 @@ class UserService implements UserServiceInterface
     $user->name = $request->name;
     $user->email = $request->email;
     $user->password = Hash::make($request->password);
+    $user->type = $request->type;
     if($user->type == '0') {
       $user->type = '0';
     }else{
