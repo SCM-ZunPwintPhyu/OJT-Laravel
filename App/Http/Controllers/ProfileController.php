@@ -44,15 +44,15 @@ class ProfileController extends Controller
 
     // user store
     public function store(Request $request) {
-                $this->validate($request,[
-                    'name'=>'required|max:20',
-                    'email'=>'required|max:70',
-                    'password'=>'required|min:8',
-                    'password_confirmation' => 'required_with:password|same:password|min:8'
-                ]);
-                $res = $this->userInterface->createUser($request);
-                return redirect()->route('profile')
-                        ->with('success','User added successful!.');
+        
+        if($request->name == null || $request->email == null||$request->password == null ||$request->password_confirmation == null){
+            return view('user.create');
+        }
+        else{
+            $res = $this->userInterface->createUser($request);
+            return redirect()->route('profile')
+                    ->with('success','User added successful!.');   
+        }    
     }
     
     // show user
@@ -80,12 +80,14 @@ class ProfileController extends Controller
     // user update
     public function update(Request $request, $id)
     {   
-        $this->validate($request,[
-            'name'=>'required|max:20',
-            'email'=>'required|max:70',
-        ]);
-        $data = $this->userInterface->updateUser($request, $id);
-        return redirect()->route('profile')->with('success', 'User Update successfully');
+        if($request->name == null || $request->email == null){
+            $data = $this->userInterface->userByID($id);
+            return view('user.edit',compact('data'));
+        }
+        else{
+            $data = $this->userInterface->updateUser($request, $id);
+            return redirect()->route('profile')->with('success', 'User Update successfully');   
+        } 
     }
 
     // user delete
@@ -144,13 +146,14 @@ class ProfileController extends Controller
 
     // user personal update data
     public function userUpdate(Request $request) {
-        $this->validate($request,[
-            'name'=>'required|max:20',
-            'email'=>'required|max:70',
-            'password_confirmation' => 'required_with:password|same:password|min:8'
-        ]);
-        $data = $this->userInterface->updateUserProfile($request);
-        return redirect()->route('user_show')->with('success', 'User Update successfully');
+        if($request->name == null || $request->email == null){
+            return view('user.useredit');
+        }
+        else{
+            $data = $this->userInterface->updateUserProfile($request);
+            return redirect()->route('user_show')->with('success', 'User Update successfully'); 
+        } 
+        
     }
 
     // user personal password change

@@ -42,13 +42,14 @@ class PostController extends Controller
     // post store
     public function store(Request $request)
     {
-        $this->validate($request,[
-            'title'=>'required|max:50',
-            'description'=>'required|max:200',
-        ]);
-        $post = $this->postInterface->createPost($request);
-        return redirect()->route('post')
-                ->with('success','Post added successful!.');        
+        if($request->description == null || $request->title == null){
+            return view('post.create');
+        }
+        else{
+            $post = $this->postInterface->createPost($request);
+            return redirect()->route('post')
+                    ->with('success','Post added successful!.');   
+        }    
     }
 
     // post edit
@@ -75,12 +76,14 @@ class PostController extends Controller
     // post update
     public function update(Request $request, $id) 
     {
-        $this->validate($request,[
-            'title'=>'required|max:50',
-            'description'=>'required|max:200',
-        ]);
-        $post = $this->postInterface->updatePost($request, $id);
-        return redirect()->route('post')->with('success', 'Post Update successfully');
+        if($request->description == null || $request->title == null){
+            $post = $this->postInterface->postByID($id);
+            return view('post.edit',compact('post'));
+        }
+        else{
+            $post = $this->postInterface->updatePost($request, $id);
+            return redirect()->route('post')->with('success', 'Post Update successfully');   
+        } 
     }
 
     // post delete

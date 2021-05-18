@@ -2,18 +2,18 @@
 
 @section('content')
 <div class="container">
-    <form class="form-style-9" method="post" action="{{ route('profile_create')}}" enctype="multipart/form-data">
+    <form class="form-style-9" method="post" action="{{ route('profile_store')}}" enctype="multipart/form-data">
         @csrf
         <input type="hidden" name="_token" value="mqblqz3d3DPukIC32buh1IOO8GX3vseCiBUlHTke">
         <ul>
             <li>
-                <label style="float:left">Name</label>
+                <label style="float:left">Name*</label>
                 <input type="text" name="name" class="field-style field-full align-none" placeholder="Name"
                     value="{{ $data->name }}" />
                 <span style="color:red">{!! $errors->first('name','<small>:message</small>')!!} </span>
             </li>
             <li>
-                <label style="float:left">Email</label>
+                <label style="float:left">Email*</label>
                 <input type="email" name="email" class="field-style field-full align-none" placeholder="Email"
                     value="{{ $data->email }}" />
                 <span style="color:red">{!! $errors->first('email','<small>:message</small>')!!} </span>
@@ -46,13 +46,13 @@
                     placeholder="Address">{{ $data->address }}</textarea>
             </li>
             <li>
-                <label style="float:left">Password:</label>
+                <label style="float:left">Password*</label>
                 <input type="password" name="password" class="field-style field-full align-none"
                     value="{{ $data->password }}" />
                 <span style="color:red">{!! $errors->first('password','<small>:message</small>')!!} </span>
             </li>
             <li>
-                <label style="float:left">Confirm Password:</label>
+                <label style="float:left">Confirm Password*</label>
                 <input type="password" name="password_confirmation" class="field-style field-full align-none"
                     value="{{ $data->password_confirmation }}" />
                 <span style="color:red">{!! $errors->first('password_confirmation','<small>:message</small>')!!} </span>
@@ -60,7 +60,7 @@
             <li>
                 <label style="float:left">Profile Photo</label>
                 <input type='file' onchange="readURL(this);" name="profile" class="field-style field-full align-none" />
-                <img id="blah" src="http://placehold.it/180" alt="your image" value="{{ $data->profile }}" />
+                <img id="blah" src="http://placehold.it/180" alt="profile image" value="{{ $data->profile }}" />
             </li>
             <br>
             <li>
@@ -70,7 +70,7 @@
                         <a href="{{ route('profile') }}" class="btn btn-info btn-sm">Cancel</a>
                     </div>
                     <div class="col-md-1 col-sm-3 col-xs-3">
-                        <input type="submit" class="btn btn-success btn-sm" value="Confirm" />
+                        <input type="submit" class="btn btn-success btn-sm" value="Create" />
                     </div>
                 </div>
             </li>

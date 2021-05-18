@@ -8,13 +8,13 @@
         <input type="hidden" name="_token" value="mqblqz3d3DPukIC32buh1IOO8GX3vseCiBUlHTke">
         <ul>
             <li>
-                <label style="float:left">Name</label>
+                <label style="float:left">Name*</label>
                 <input type="text" name="name" class="field-style field-full align-none" placeholder="Name"
                     value="{{ old('name') }}" />
                 <span style="color:red">{!! $errors->first('name','<small>:message</small>')!!} </span>
             </li>
             <li>
-                <label style="float:left">Email</label>
+                <label style="float:left">Email*</label>
                 <input type="email" name="email" class="field-style field-full align-none" placeholder="Email"
                     value="{{ old('email') }}" />
                 <span style="color:red">{!! $errors->first('email','<small>:message</small>')!!} </span>
@@ -47,13 +47,13 @@
                     placeholder="Address">{{ old('address') }}</textarea>
             </li>
             <li>
-                <label style="float:left">Password:</label>
+                <label style="float:left">Password:*</label>
                 <input type="password" name="password" class="field-style field-full align-none"
                     placeholder="Password" />
                 <span style="color:red">{!! $errors->first('password','<small>:message</small>')!!} </span>
             </li>
             <li>
-                <label style="float:left">Confirm Password:</label>
+                <label style="float:left">Confirm Password:*</label>
                 <input type="password" name="password_confirmation" class="field-style field-full align-none"
                     placeholder="Confirm Password" />
                 <span style="color:red">{!! $errors->first('password_confirmation','<small>:message</small>')!!} </span>
@@ -62,7 +62,7 @@
                 <label style="float:left">Profile Photo</label>
                 <input type='file' onchange="readURL(this);" name="profile" class="field-style field-full align-none"
                     value="{{ old('profile') }}" />
-                <img id="blah" src="http://placehold.it/180" alt="your image" />
+                <img id="blah" src="http://placehold.it/180" alt="profile image" />
             </li>
             <li>
                 <div class="row" style="margin-top:100px">
@@ -74,7 +74,7 @@
                         <a href="{{ route('profile_create') }}" class="btn btn-danger btn-sm">Clear</a>
                     </div>
                     <div class="col-md-1 col-sm-3 col-xs-3">
-                        <input type="submit" class="btn btn-success btn-sm" value="Create" />
+                        <input type="submit" class="btn btn-success btn-sm" value="Confirm" />
                     </div>
                 </div>
             </li>

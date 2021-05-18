@@ -60,7 +60,7 @@
                 <label style="float:left">Profile Photo</label>
                 <input type='file' onchange="readURL(this);" name="profile" class="field-style field-full align-none"
                     value="{{ old('profile') }}" />
-                <img id="blah" src='{{ asset("./uploads/Profile/$data->name/$data->name.PNG ") }}' alt="your image" />
+                <img id="blah" src='{{ asset("./uploads/Profile/$data->name/$data->name.PNG ") }}' alt="profile image" />
             </li>
             <br>
             <li>
@@ -70,7 +70,7 @@
                         <a href="{{ route('profile') }}" class="btn btn-info btn-sm">Cancel</a>
                     </div>
                     <div class="col-md-1 col-sm-3 col-xs-3">
-                        <input type="submit" class="btn btn-success btn-sm" value="Confirm" />
+                        <input type="submit" class="btn btn-success btn-sm" value="Create" />
                     </div>
                 </div>
             </li>

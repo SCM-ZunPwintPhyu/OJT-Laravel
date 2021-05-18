@@ -84,7 +84,7 @@
                                             <p>Description:{{$post->description}}</p>
                                             <p>Created User:{{$post->created_user_id}}</p>
                                             <p>Updated User:{{$post->updated_user_id}}</p>
-                                            <p>Created Time:{{$post->created_at}}</p>
+                                            <p>Created Time:{{$post->created_at->format('d/m/Y')}}</p>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary btn-sm"
@@ -105,7 +105,7 @@
                     </td>
                     <td>{{$post->created_user_id}}</td>
                     <td>{{$post->updated_user_id}}</td>
-                    <td>{{$post->created_at}}</td>
+                    <td>{{$post->created_at->format('d/m/Y')}}</td>
                     <td>
                         <form action="{{ route('post_destroy',$post->id)}}" method="post"
                             onsubmit="return confirm('Do you want to delete?');">
@@ -161,7 +161,7 @@
                                             <p>Description:{{$post->description}}</p>
                                             <p>Created User:{{$post->created_user_id}}</p>
                                             <p>Updated User:{{$post->updated_user_id}}</p>
-                                            <p>Created Time:{{$post->created_at}}</p>
+                                            <p>Created Time:{{$post->created_at->format('d/m/Y')}}</p>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal"
@@ -182,7 +182,7 @@
                     </td>
                     <td>{{$post->created_user_id}}</td>
                     <td>{{$post->updated_user_id}}</td>
-                    <td>{{$post->created_at}}</td>
+                    <td>{{$post->created_at->format('d/m/Y')}}</td>
                 </tr>
 
                 @endforeach

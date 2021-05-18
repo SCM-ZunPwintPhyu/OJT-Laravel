@@ -7,12 +7,12 @@
         @method('PUT')
         <ul>
             <li>
-                <label style="float:left">Title</label>
+                <label style="float:left">Title*</label>
                 <input type="text" name="title" class="field-style field-full align-none" value="{{ old('title',$post->title) }}" />
                 <span style="color:red">{!! $errors->first('title','<small>:message</small>')!!} </span>
             </li>
             <li>
-                <label style="float:left">Description</label>
+                <label style="float:left">Description*</label>
                 <textarea class="field-style field-full align-none" name="description"
                     rows="5">{{ old('description',$post->description) }}</textarea>
                 <span style="color:red">{!! $errors->first('description','<small>:message</small>')!!} </span>
@@ -41,7 +41,7 @@
                         <a href="{{ route('post_edit', $post->id) }}" class="btn btn-danger btn-sm">Clear</a>
                     </div>
                     <div class="col-md-1 col-sm-3 col-xs-3">
-                        <input type="submit" class="btn btn-success btn-sm" value="Create" />
+                        <input type="submit" class="btn btn-success btn-sm" value="Confirm" />
                     </div>
                 </div>
             </li>
