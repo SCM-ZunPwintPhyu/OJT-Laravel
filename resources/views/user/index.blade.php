@@ -68,8 +68,17 @@
                                             </button>
                                         </div>
                                         <div class="modal-body">
-                                            <p>Title:{{$user->name}}</p>
-                                            <p>Description:{{$user->email}}</p>
+                                            <p>Name:{{$user->name}}</p>
+                                            <p>Type:
+                                            <?php
+                                                if ($user->type == 0) {
+                                                echo "Admin";
+                                                } else {
+                                                echo "User";
+                                                }
+                                                ?>
+                                            </p>
+                                            <p>Email:{{$user->email}}</p>
                                             <p>Created Time:{{$user->created_at->format('d/m/Y')}}</p>
                                         </div>
                                         <div class="modal-footer">

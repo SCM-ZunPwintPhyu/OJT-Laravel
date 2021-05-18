@@ -38,18 +38,6 @@ class ProfileController extends Controller
             'password'=>'required|min:8',
             'password_confirmation' => 'required_with:password|same:password|min:8'
         ]);
-        // $data = $request;
-        // $destinationPath = public_path() . '/uploads/Profile/'.$request->name;
-        // $profile = "";
-        // $profile = $request->name;
-        // if ($file = $request->file('profile')) {
-        // $extension = $file->getClientOriginalExtension();
-        // $safeName =$request->name. '.' ."PNG";
-        // $file->move($destinationPath, $safeName);
-
-        // $profile = $safeName;
-        // }
-
         $data = $this->userInterface->confUserImage($request);
         return view('user.confcreate',compact('data'));
     }
@@ -137,7 +125,8 @@ class ProfileController extends Controller
             'email'=>'required|max:70',
             'password_confirmation' => 'required_with:password|same:password|min:8'
         ]);
-        $data = $this->userInterface->userUpdatePass($request, $id);
+        // $data = $this->userInterface->userUpdatePass($request, $id);
+        $data = $this->userInterface->updateChangePass($request, $id);
         return redirect()->route('user_show')->with('success', 'Password Change successfully');
     }
 

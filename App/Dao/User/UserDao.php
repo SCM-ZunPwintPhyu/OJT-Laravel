@@ -60,10 +60,6 @@ class UserDao implements UserDaoInterface
   public function updateChangePass($user) {
     $user->save();
   }
-  // profile change password
-  public function userUpdatePass($user) {
-    $user->save();
-  }
 
   // profile image upload
   public function confCreateImg($user) {

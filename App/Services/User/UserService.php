@@ -75,8 +75,6 @@ class UserService implements UserServiceInterface
     if(!File::isDirectory($target_dir)){
         File::makeDirectory($target_dir, 0777, true, true);
     }
-
-
     $structure = "uploads/Profile/$user->name";
     $profile = $user->profile;
 
@@ -88,7 +86,6 @@ class UserService implements UserServiceInterface
             $profile->move($structure, $photo);
         }
     }
-
     $user->name = $request->name;
     $user->email = $request->email;
     $user->type = $request->type;
@@ -160,15 +157,6 @@ class UserService implements UserServiceInterface
     return $this->userDao->updateChangePass($user);
   }
 
-  // user profile update change password
-  public function userUpdatePass($request, $id) {
-    $user = $this->userDao->userByID($id);
-    $user->name = $request->name;
-    $user->email = $request->email;
-    $user->password = Hash::make($request->password);
-    return $this->userDao->userUpdatePass($user);
-  }
-
 
   // profile image upload
   public function confCreateImg($request, $id) {
@@ -196,7 +184,6 @@ class UserService implements UserServiceInterface
 
    // confirm create profile image 
    public function confUserImage($request) {
-  
     $user = $request;
     $destinationPath = public_path() . '/uploads/Profile/'.$request->name;
     $profile = "";
