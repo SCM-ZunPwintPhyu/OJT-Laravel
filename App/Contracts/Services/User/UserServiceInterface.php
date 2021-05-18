@@ -13,4 +13,5 @@ interface UserServiceInterface
   public function updateUserProfile($request);
   public function updateChangePass($request, $id);
   public function userUpdatePass($request, $id);
+  // public function confCreateImg($request);
 }

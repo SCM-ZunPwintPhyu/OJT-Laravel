@@ -60,7 +60,7 @@
             <li>
                 <label style="float:left">Profile Photo</label>
                 <input type='file' onchange="readURL(this);" name="profile" class="field-style field-full align-none" />
-                <img id="blah" src="http://placehold.it/180" alt="profile image" value="{{ $data->profile }}" />
+                <img id="blah" src='{{ asset("./uploads/Profile/$data->name/$data->name.PNG " ) }}' alt="profile image" value="{{ $data->profile }}" />
             </li>
             <br>
             <li>

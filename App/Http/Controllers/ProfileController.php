@@ -32,13 +32,27 @@ class ProfileController extends Controller
 
     // create confirm 
     public function confCreate(Request $request) {
+        
         $this->validate($request,[
             'name'=>'required|max:20',
-                    'email'=>'required|max:70',
-                    'password'=>'required|min:8',
-                    'password_confirmation' => 'required_with:password|same:password|min:8'
+            'email'=>'required|max:70',
+            'password'=>'required|min:8',
+            'password_confirmation' => 'required_with:password|same:password|min:8'
         ]);
+
         $data = $request;
+        $destinationPath = public_path() . '/uploads/Profile/'.$request->name;
+        $profile = "";
+        $profile = $request->name;
+        if ($file = $request->file('profile')) {
+        $extension = $file->getClientOriginalExtension();
+        $safeName =$request->name. '.' ."PNG";
+        $file->move($destinationPath, $safeName);
+
+        $profile = $safeName;
+        }
+
+        // $data = $this->userInterface->confCreateImg($request);
         return view('user.confcreate',compact('data'));
     }
 
@@ -74,6 +88,17 @@ class ProfileController extends Controller
             'email'=>'required|max:70',
         ]);
         $data = $request;
+        $destinationPath = public_path() . '/uploads/Profile/'.$request->name;
+        $profile = "";
+        $profile = $request->name;
+        if ($file = $request->file('profile')) {
+        $extension = $file->getClientOriginalExtension();
+        $safeName =$request->name. '.' ."PNG";
+        $file->move($destinationPath, $safeName);
+
+        $profile = $safeName;
+        }
+
         return view('user.confedit',compact('data'));
     }
 
@@ -140,7 +165,21 @@ class ProfileController extends Controller
     
     // user personal confirm edit data
     public function personalUserEdit(Request $request) {
+        $this->validate($request,[
+            'name'=>'required|max:20',
+            'email'=>'required|max:70',
+        ]);
         $data = $request;
+        $destinationPath = public_path() . '/uploads/Profile/'.$request->name;
+        $profile = "";
+        $profile = $request->name;
+        if ($file = $request->file('profile')) {
+        $extension = $file->getClientOriginalExtension();
+        $safeName =$request->name. '.' ."PNG";
+        $file->move($destinationPath, $safeName);
+
+        $profile = $safeName;
+        }
         return view('user.confuseredit',compact('data'));
     }
 

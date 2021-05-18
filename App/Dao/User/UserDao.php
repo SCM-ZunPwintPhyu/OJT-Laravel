@@ -65,4 +65,8 @@ class UserDao implements UserDaoInterface
     $user->save();
   }
 
+  // profile image upload
+  // public function confCreateImg($user) {
+  //   $user->save();
+  // }
 }

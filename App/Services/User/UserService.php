@@ -175,4 +175,26 @@ class UserService implements UserServiceInterface
     // $user->password =$request->password;
     return $this->userDao->userUpdatePass($user);
   }
+
+
+  // profile image upload
+  // public function confCreateImg($request) {
+  //   // $user = new User;
+
+  //   $destinationPath = public_path() . '/uploads/Profile/'.$request->name;
+  //   $profile = "";
+  //   $profile = $request->name;
+  //   if ($file = $request->file('profile')) {
+  //   $extension = $file->getClientOriginalExtension();
+  //   $safeName =$request->name. '.' ."PNG";
+  //   $file->move($destinationPath, $safeName);
+
+  //   $profile = $safeName;
+  //   }
+
+  //   $request->profile = $profile;
+  //   $user = $request->profile;
+  //   return $this->userDao->confCreateImg($user);
+  // }
+
 }

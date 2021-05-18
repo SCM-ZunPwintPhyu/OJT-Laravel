@@ -13,4 +13,5 @@ interface UserDaoInterface
   public function updateUserProfile($user);
   public function updateChangePass($user);
   public function userUpdatePass($user);
+  // public function confCreateImg($user);
 }
