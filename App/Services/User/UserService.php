@@ -49,7 +49,8 @@ class UserService implements UserServiceInterface
     }
     $user->name = $request->name;
     $user->email = $request->email;
-    $user->password = Hash::make($request->password);
+    // $user->password = Hash::make($request->password);
+    $user->password =$request->password;
     if($request->type == 'Admin') {
       $user->type = '0';
     }else {
@@ -91,7 +92,15 @@ class UserService implements UserServiceInterface
 
     $user->name = $request->name;
     $user->email = $request->email;
-    $user->password = Hash::make($request->password);
+    // $user->password = Hash::make($request->password);
+    // $user->password =$request->password;
+    // dd($request->password);
+    if($request->password == null) {
+      $user->password = $user->password;
+    }else{
+      $user->password = $request->password;
+    }
+    // dd($user->password);
     $user->type = $request->type;
     if($user->type == '0') {
       $user->type = '0';
@@ -134,7 +143,8 @@ class UserService implements UserServiceInterface
 
     $user->name = $request->name;
     $user->email = $request->email;
-    $user->password = Hash::make($request->password);
+    // $user->password = Hash::make($request->password);
+    $user->password =$request->password;
     if($user->type == '0') {
       $user->type = '0';
     }else{
@@ -158,7 +168,8 @@ class UserService implements UserServiceInterface
     $user = $this->userDao->userByID($id);
     $user->name = $request->name;
     $user->email = $request->email;
-    $user->password = Hash::make($request->password);
+    // $user->password = Hash::make($request->password);
+    $user->password =$request->password;
     return $this->userDao->updateChangePass($user);
   }
 
@@ -167,7 +178,8 @@ class UserService implements UserServiceInterface
     $user = $this->userDao->userByID($id);
     $user->name = $request->name;
     $user->email = $request->email;
-    $user->password = Hash::make($request->password);
+    // $user->password = Hash::make($request->password);
+    $user->password =$request->password;
     return $this->userDao->userUpdatePass($user);
   }
 

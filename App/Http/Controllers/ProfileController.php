@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Contracts\Services\User\UserServiceInterface;
-
+use Illuminate\Contracts\Encryption\DecryptException;
+use Illuminate\Support\Facades\Crypt;
 use Hash;
 use App\Models\User;
 use File;
@@ -32,7 +33,7 @@ class ProfileController extends Controller
 
     // user store
     public function store(Request $request) {
-        // dd("here");
+        // dd($request);
                 $this->validate($request,[
                     'name'=>'required|max:20',
                     'email'=>'required|max:70',
@@ -63,7 +64,7 @@ class ProfileController extends Controller
             'name'=>'required|max:20',
             'email'=>'required|max:70',
             // 'password'=>'required|min:8',
-            'password_confirmation' => 'required_with:password|same:password|min:8'
+            // 'password_confirmation' => 'required_with:password|same:password|min:8'
         ]);
         $data = $this->userInterface->updateUser($request, $id);
         return redirect()->route('profile')->with('success', 'User Update successfully');
@@ -79,7 +80,6 @@ class ProfileController extends Controller
     // change password
     public function changePass($id)
     {
-        // dd("herer");
         $data = $this->userInterface->userByID($id);
         return view('user.password',compact('data'));
     }
@@ -141,6 +141,7 @@ class ProfileController extends Controller
 
     // create confirm 
     public function confCreate(Request $request) {
+        // dd($request);
         $this->validate($request,[
             'name'=>'required|max:20',
                     'email'=>'required|max:70',
@@ -153,13 +154,16 @@ class ProfileController extends Controller
     }
 
     // edit confirm 
-    public function confEdit(Request $request) {
+    public function confEdit(Request $request,$id) {
+    
         $this->validate($request,[
             'name'=>'required|max:20',
             'email'=>'required|max:70',
-            'password_confirmation' => 'required_with:password|same:password|min:8' 
+            // 'password_confirmation' => 'required_with:password|same:password|min:8'
         ]);
+
         $data = $request;
+        // dd($data);
         return view('user.confedit',compact('data'));
     }
 }
