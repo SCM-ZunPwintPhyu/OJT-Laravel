@@ -53,9 +53,9 @@
                     rows="5">{{ old('address',$data->address) }}</textarea>
                 <span style="color:red"> </span>
             </li>
-            <li>
+            <!-- <li>
                 <a href="{{ route('change_pass', $data->id)}}" class="" style="float:left">Change Password</a>
-            </li>
+            </li> -->
             <li>
                 <label style="float:left">Profile Photo</label>
                 <input type='file' onchange="readURL(this);" name="profile" class="field-style field-full align-none"

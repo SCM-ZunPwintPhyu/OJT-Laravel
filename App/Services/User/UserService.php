@@ -178,23 +178,32 @@ class UserService implements UserServiceInterface
 
 
   // profile image upload
-  // public function confCreateImg($request) {
-  //   // $user = new User;
+  public function confCreateImg($request, $id) {
+    // dd($request);
+    $receive = $this->userDao->userByID($id);
+    $user=$request;
+    $destinationPath = public_path() . '/uploads/Profile/'.$request->name;
+    $profile = "";
+    $profile = $request->name;
+    if ($file = $request->file('profile')) {
+    $extension = $file->getClientOriginalExtension();
+    $safeName =$request->name. '.' ."PNG";
+    $file->move($destinationPath, $safeName);
 
-  //   $destinationPath = public_path() . '/uploads/Profile/'.$request->name;
-  //   $profile = "";
-  //   $profile = $request->name;
-  //   if ($file = $request->file('profile')) {
-  //   $extension = $file->getClientOriginalExtension();
-  //   $safeName =$request->name. '.' ."PNG";
-  //   $file->move($destinationPath, $safeName);
+    $profile = $safeName;
+    }
 
-  //   $profile = $safeName;
-  //   }
-
-  //   $request->profile = $profile;
-  //   $user = $request->profile;
-  //   return $this->userDao->confCreateImg($user);
-  // }
+    // dd($receive->name);
+    $user->name = $request->name;
+    $user->email = $request->email;
+    $user->type = $request->type;
+    $user->phone = $request->phone;
+    $user->dob = $request->dob;
+    $user->address = $request->address;
+    $user->password =Hash::make($receive->password);
+    // $user->password_confirmation = $receive->password_confirmation;
+    $user->profile = $profile;
+    return $this->userDao->confCreateImg($user,$id);
+  }
 
 }

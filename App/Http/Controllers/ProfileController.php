@@ -31,28 +31,14 @@ class ProfileController extends Controller
     }
 
     // create confirm 
-    public function confCreate(Request $request) {
-        
+    public function confCreate(Request $request,$id) {
         $this->validate($request,[
             'name'=>'required|max:20',
             'email'=>'required|max:70',
             'password'=>'required|min:8',
             'password_confirmation' => 'required_with:password|same:password|min:8'
         ]);
-
-        $data = $request;
-        $destinationPath = public_path() . '/uploads/Profile/'.$request->name;
-        $profile = "";
-        $profile = $request->name;
-        if ($file = $request->file('profile')) {
-        $extension = $file->getClientOriginalExtension();
-        $safeName =$request->name. '.' ."PNG";
-        $file->move($destinationPath, $safeName);
-
-        $profile = $safeName;
-        }
-
-        // $data = $this->userInterface->confCreateImg($request);
+        $data = $this->userInterface->confCreateImg($request,$id);
         return view('user.confcreate',compact('data'));
     }
 
@@ -87,18 +73,7 @@ class ProfileController extends Controller
             'name'=>'required|max:20',
             'email'=>'required|max:70',
         ]);
-        $data = $request;
-        $destinationPath = public_path() . '/uploads/Profile/'.$request->name;
-        $profile = "";
-        $profile = $request->name;
-        if ($file = $request->file('profile')) {
-        $extension = $file->getClientOriginalExtension();
-        $safeName =$request->name. '.' ."PNG";
-        $file->move($destinationPath, $safeName);
-
-        $profile = $safeName;
-        }
-
+        $data = $this->userInterface->confCreateImg($request,$id);
         return view('user.confedit',compact('data'));
     }
 
@@ -132,6 +107,7 @@ class ProfileController extends Controller
     // update change password
     public function updateChangePass(Request $request, $id)
     {   
+        // dd($request);
         $this->validate($request,[
             'name'=>'required|max:20',
             'email'=>'required|max:70',
@@ -164,22 +140,12 @@ class ProfileController extends Controller
     }
     
     // user personal confirm edit data
-    public function personalUserEdit(Request $request) {
+    public function personalUserEdit(Request $request,$id) {
         $this->validate($request,[
             'name'=>'required|max:20',
             'email'=>'required|max:70',
         ]);
-        $data = $request;
-        $destinationPath = public_path() . '/uploads/Profile/'.$request->name;
-        $profile = "";
-        $profile = $request->name;
-        if ($file = $request->file('profile')) {
-        $extension = $file->getClientOriginalExtension();
-        $safeName =$request->name. '.' ."PNG";
-        $file->move($destinationPath, $safeName);
-
-        $profile = $safeName;
-        }
+        $data = $this->userInterface->confCreateImg($request,$id);
         return view('user.confuseredit',compact('data'));
     }
 
@@ -192,7 +158,6 @@ class ProfileController extends Controller
             $data = $this->userInterface->updateUserProfile($request);
             return redirect()->route('user_show')->with('success', 'User Update successfully'); 
         } 
-        
     }
 
     // user personal password change
