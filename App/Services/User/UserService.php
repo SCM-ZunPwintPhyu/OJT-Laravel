@@ -50,7 +50,6 @@ class UserService implements UserServiceInterface
     $user->name = $request->name;
     $user->email = $request->email;
     $user->password = Hash::make($request->password);
-    // $user->password =$request->password;
     if($request->type == 'Admin') {
       $user->type = '0';
     }else {
@@ -92,8 +91,6 @@ class UserService implements UserServiceInterface
 
     $user->name = $request->name;
     $user->email = $request->email;
-    $user->password = Hash::make($request->password);
-    // $user->password =$request->password;
     $user->type = $request->type;
     if($user->type == '0') {
       $user->type = '0';
@@ -136,8 +133,6 @@ class UserService implements UserServiceInterface
 
     $user->name = $request->name;
     $user->email = $request->email;
-    $user->password = Hash::make($request->password);
-    // $user->password =$request->password;
     if($user->type == '0') {
       $user->type = '0';
     }else{
@@ -162,7 +157,6 @@ class UserService implements UserServiceInterface
     $user->name = $request->name;
     $user->email = $request->email;
     $user->password = Hash::make($request->password);
-    // $user->password =$request->password;
     return $this->userDao->updateChangePass($user);
   }
 
@@ -172,14 +166,12 @@ class UserService implements UserServiceInterface
     $user->name = $request->name;
     $user->email = $request->email;
     $user->password = Hash::make($request->password);
-    // $user->password =$request->password;
     return $this->userDao->userUpdatePass($user);
   }
 
 
   // profile image upload
   public function confCreateImg($request, $id) {
-    // dd($request);
     $receive = $this->userDao->userByID($id);
     $user=$request;
     $destinationPath = public_path() . '/uploads/Profile/'.$request->name;
@@ -192,16 +184,12 @@ class UserService implements UserServiceInterface
 
     $profile = $safeName;
     }
-
-    // dd($receive->name);
     $user->name = $request->name;
     $user->email = $request->email;
     $user->type = $request->type;
     $user->phone = $request->phone;
     $user->dob = $request->dob;
     $user->address = $request->address;
-    $user->password =Hash::make($receive->password);
-    // $user->password_confirmation = $receive->password_confirmation;
     $user->profile = $profile;
     return $this->userDao->confCreateImg($user,$id);
   }
