@@ -31,14 +31,26 @@ class ProfileController extends Controller
     }
 
     // create confirm 
-    public function confCreate(Request $request,$id) {
+    public function confCreate(Request $request) {
         $this->validate($request,[
             'name'=>'required|max:20',
             'email'=>'required|max:70',
             'password'=>'required|min:8',
             'password_confirmation' => 'required_with:password|same:password|min:8'
         ]);
-        $data = $this->userInterface->confCreateImg($request,$id);
+        // $data = $request;
+        // $destinationPath = public_path() . '/uploads/Profile/'.$request->name;
+        // $profile = "";
+        // $profile = $request->name;
+        // if ($file = $request->file('profile')) {
+        // $extension = $file->getClientOriginalExtension();
+        // $safeName =$request->name. '.' ."PNG";
+        // $file->move($destinationPath, $safeName);
+
+        // $profile = $safeName;
+        // }
+
+        $data = $this->userInterface->confUserImage($request);
         return view('user.confcreate',compact('data'));
     }
 

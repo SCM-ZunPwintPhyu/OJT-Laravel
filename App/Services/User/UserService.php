@@ -206,4 +206,24 @@ class UserService implements UserServiceInterface
     return $this->userDao->confCreateImg($user,$id);
   }
 
+   // confirm create profile image 
+   public function confUserImage($request) {
+  
+    $user = $request;
+    $destinationPath = public_path() . '/uploads/Profile/'.$request->name;
+    $profile = "";
+    $profile = $request->name;
+    if ($file = $request->file('profile')) {
+    $extension = $file->getClientOriginalExtension();
+    $safeName =$request->name. '.' ."PNG";
+    $file->move($destinationPath, $safeName);
+
+    $profile = $safeName;
+    }
+
+    $user->profile = $profile;
+    return $this->userDao->confCreateImg($user);
+  }
+
+
 }

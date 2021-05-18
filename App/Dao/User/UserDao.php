@@ -69,4 +69,9 @@ class UserDao implements UserDaoInterface
   public function confCreateImg($user) {
     return $user;
   }
+
+  // confirm create profile image 
+  public function confUserImage($user) {
+    return $user;
+  }
 }
