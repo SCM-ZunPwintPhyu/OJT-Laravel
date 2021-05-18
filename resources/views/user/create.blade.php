@@ -56,9 +56,9 @@
             </li>
             <li>
                 <label style="float:left">Confirm Password:</label>
-                <input type="password" name="confirm-password" class="field-style field-full align-none"
+                <input type="password" name="password_confirmation" class="field-style field-full align-none"
                     placeholder="Confirm Password" />
-                <span style="color:red">{!! $errors->first('password','<small>:message</small>')!!} </span>
+                <span style="color:red">{!! $errors->first('password_confirmation','<small>:message</small>')!!} </span>
             </li>
             <li>
                 <label style="float:left">Profile Photo</label>

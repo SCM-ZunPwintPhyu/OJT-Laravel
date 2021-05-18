@@ -37,6 +37,7 @@ class ProfileController extends Controller
                     'name'=>'required|max:20',
                     'email'=>'required|max:70',
                     'password'=>'required|min:8',
+                    'password_confirmation' => 'required_with:password|same:password|min:8'
                 ]);
                 $res = $this->userInterface->createUser($request);
                 return redirect()->route('profile')
@@ -61,6 +62,8 @@ class ProfileController extends Controller
         $this->validate($request,[
             'name'=>'required|max:20',
             'email'=>'required|max:70',
+            // 'password'=>'required|min:8',
+            'password_confirmation' => 'required_with:password|same:password|min:8'
         ]);
         $data = $this->userInterface->updateUser($request, $id);
         return redirect()->route('profile')->with('success', 'User Update successfully');
@@ -87,6 +90,7 @@ class ProfileController extends Controller
         $this->validate($request,[
             'name'=>'required|max:20',
             'email'=>'required|max:70',
+            'password_confirmation' => 'required_with:password|same:password|min:8'
         ]);
         $data = $this->userInterface->updateChangePass($request, $id);
         return redirect()->route('profile')->with('success', 'Password Change successfully');
@@ -98,6 +102,7 @@ class ProfileController extends Controller
         $this->validate($request,[
             'name'=>'required|max:20',
             'email'=>'required|max:70',
+            'password_confirmation' => 'required_with:password|same:password|min:8'
         ]);
         $data = $this->userInterface->userUpdatePass($request, $id);
         return redirect()->route('user_show')->with('success', 'Password Change successfully');
@@ -122,6 +127,7 @@ class ProfileController extends Controller
         $this->validate($request,[
             'name'=>'required|max:20',
             'email'=>'required|max:70',
+            'password_confirmation' => 'required_with:password|same:password|min:8'
         ]);
         $data = $this->userInterface->updateUserProfile($request);
         return redirect()->route('user_show')->with('success', 'User Update successfully');
@@ -139,6 +145,7 @@ class ProfileController extends Controller
             'name'=>'required|max:20',
                     'email'=>'required|max:70',
                     'password'=>'required|min:8',
+                    'password_confirmation' => 'required_with:password|same:password|min:8'
         ]);
         $data = $request;
         // dd($data->profile);
@@ -149,7 +156,8 @@ class ProfileController extends Controller
     public function confEdit(Request $request) {
         $this->validate($request,[
             'name'=>'required|max:20',
-            'email'=>'required|max:70' 
+            'email'=>'required|max:70',
+            'password_confirmation' => 'required_with:password|same:password|min:8' 
         ]);
         $data = $request;
         return view('user.confedit',compact('data'));

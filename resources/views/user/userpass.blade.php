@@ -36,8 +36,9 @@
         </div>
         <div style="width:800px">
             <label style="float:left;padding-left:15%">Confirm New Password:</label>
-            <input type="password" name="password" class="field-style field-full align-none form-control" value=""
-                style="margin-left:15%" />
+            <input type="password" name="password_confirmation" class="field-style field-full align-none form-control"
+                value="" style="margin-left:15%" />
+            <span style="color:red">{!! $errors->first('password_confirmation','<small>:message</small>')!!} </span>
         </div>
 
 
