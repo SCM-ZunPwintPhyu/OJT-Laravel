@@ -8,8 +8,9 @@
         <a class="btn btn-primary btn-sm" href="{{ route('user_edit') }}"> Edit</a>
     </div>
     <div class="col-xs-12 col-sm-12 col-md-12" align="center">
-        <a href=""><img src='{{ asset("./uploads/Profile/". Auth::user()->name . "/" . Auth::user()->name . ".PNG " ) }}' height="130px"
-                width="130px" id="photo" style="border-radius:200px"></a>
+        <a href=""><img
+                src='{{ asset("./uploads/Profile/". Auth::user()->name . "/" . Auth::user()->name . ".PNG " ) }}'
+                height="130px" width="130px" id="photo" style="border-radius:200px"></a>
         <h5>Profile</h5>
     </div>
 </div><br><br>
@@ -64,7 +65,7 @@
         <div class="card" style="height:auto">
             <div class="w3-card-4 w3-info row">
                 <div class="col-xs-6 col-sm-6 col-md-6">
-                    <label  style="width:490px"><b>Address:{{Auth::user()->address}}</b></label>
+                    <label style="width:490px"><b>Address:{{Auth::user()->address}}</b></label>
                 </div>
             </div>
         </div>

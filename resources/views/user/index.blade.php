@@ -1,12 +1,32 @@
 @extends('layouts.frame')
 @section('content')
 <div class="container">
+    <?php 
+        $name= isset($_GET['name'])?$_GET['name']:'';
+        $email= isset($_GET['email'])?$_GET['email']:'';
+        $created_at= isset($_GET['created_at'])?$_GET['created_at']:'';
+    ?>
     <!-- Add Button -->
-    <form>
+    <form action="{{ url('profile') }}" method="GET">
         <div class="row">
-            <div class="col-md-10"></div>
             <div class="col-md-2">
-                <div style="float:right">
+                <input type="search" name="name" class="form-control-sm" placeholder="Serach By Name..."
+                    value="{{ $name}}">
+            </div>
+            <div class="col-md-2" style="margin-left:10px">
+                <input type="search" name="email" class="form-control-sm" placeholder="Serach By Email..."
+                    value="{{ $email}}">
+            </div>
+            <!-- <div class="col-md-2" style="margin-left:10px">
+                <input type="date" name="created_at" class="form-control-sm"
+                    placeholder="Serach By Created User..." value="{{ $created_at}}">
+            </div> -->
+            <div class="col-md-2">
+                <input type="submit" class="btn btn-primary btn-sm" value="Search">
+            </div>
+            <div class="col-md-1"></div>
+            <div class="col-md-4">
+            <div style="float:right">
                     <a class="btn btn-success btn-sm" href="{{ route('profile_create') }}"><span
                             class="glyphicon glyphicon-plus"></span>Add Profile</a>
                 </div>
@@ -15,7 +35,7 @@
     </form>
     <br>
     <!-- User Form -->
-    <div style="overflow-x:auto;">
+    <div>
         <table class="table table-hover" style="text-shadow: 2px 2px 5px rgb(90, 216, 233);">
             <thead>
                 <tr class="info">
@@ -23,6 +43,8 @@
                     <th>Name</th>
                     <th>Type</th>
                     <th>Email</th>
+                    <th>Created At</th>
+                    <th>Updated At</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -42,6 +64,8 @@
                         ?>
                     </td>
                     <td>{{$user->email}}</td>
+                    <td>{{$user->created_at->format('d/m/Y')}}</td>
+                    <td>{{$user->updated_at->format('d/m/Y')}}</td>
                     <td>
                         <form action="{{ route('profile_destroy',$user->id)}}" method="post"
                             onsubmit="return confirm('Do you want to delete?');">
@@ -63,8 +87,11 @@
 
             </tbody>
         </table>
+        <div style="float:right">
+        {!! $data->appends(request()->input())->links() !!}
+        </div>
         <div class="col-md-2" style="float:left">
-            <p style="font-size:15px"> Count:: {{$count}}</p>
+            <p style="font-size:15px"> Count:: {{$data->count()}}</p>
         </div>
         </main>
     </div>

@@ -9,7 +9,8 @@
         <ul>
             <li>
                 <label style="float:left">Title</label>
-                <input type="text" name="title" class="field-style field-full align-none" value="{{ old('title',$post->title) }}" />
+                <input type="text" name="title" class="field-style field-full align-none"
+                    value="{{ old('title',$post->title) }}" />
                 <span style="color:red">{!! $errors->first('title','<small>:message</small>')!!} </span>
             </li>
             <li>
@@ -38,9 +39,6 @@
                     <div class="col-md-1 col-sm-9 col-xs-9">
                         <a href="{{ route('post') }}" class="btn btn-info btn-sm">Cancel</a>
                     </div>
-                    <!-- <div class="col-md-1 col-sm-9 col-xs-9">
-                        <a href="{{ route('post_edit', $post->id) }}" class="btn btn-danger btn-sm">Clear</a>
-                    </div> -->
                     <div class="col-md-1 col-sm-3 col-xs-3">
                         <input type="submit" class="btn btn-success btn-sm" value="Confirm" />
                     </div>

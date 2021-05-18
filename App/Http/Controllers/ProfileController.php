@@ -20,10 +20,9 @@ class ProfileController extends Controller
     }
 
     // user list
-    public function index() {
-        $data = $this->userInterface->getUserList();
-        $count = $data->count();
-        return view('user.index',compact('data','count'));
+    public function index(Request $request) {
+        $data = $this->userInterface->getUserList($request);
+        return view('user.index',compact('data'));
     }
 
     // user create
@@ -31,9 +30,20 @@ class ProfileController extends Controller
         return view('user.create');
     }
 
+    // create confirm 
+    public function confCreate(Request $request) {
+        $this->validate($request,[
+            'name'=>'required|max:20',
+                    'email'=>'required|max:70',
+                    'password'=>'required|min:8',
+                    'password_confirmation' => 'required_with:password|same:password|min:8'
+        ]);
+        $data = $request;
+        return view('user.confcreate',compact('data'));
+    }
+
     // user store
     public function store(Request $request) {
-        // dd($request);
                 $this->validate($request,[
                     'name'=>'required|max:20',
                     'email'=>'required|max:70',
@@ -57,14 +67,22 @@ class ProfileController extends Controller
         return view('user.edit',compact('data'));
     }
 
+    // edit confirm 
+    public function confEdit(Request $request,$id) {
+        $this->validate($request,[
+            'name'=>'required|max:20',
+            'email'=>'required|max:70',
+        ]);
+        $data = $request;
+        return view('user.confedit',compact('data'));
+    }
+
     // user update
     public function update(Request $request, $id)
     {   
         $this->validate($request,[
             'name'=>'required|max:20',
             'email'=>'required|max:70',
-            // 'password'=>'required|min:8',
-            // 'password_confirmation' => 'required_with:password|same:password|min:8'
         ]);
         $data = $this->userInterface->updateUser($request, $id);
         return redirect()->route('profile')->with('success', 'User Update successfully');
@@ -117,11 +135,13 @@ class ProfileController extends Controller
     public function userEdit() {
         return view('user.useredit');
     }
+    
     // user personal confirm edit data
     public function personalUserEdit(Request $request) {
         $data = $request;
         return view('user.confuseredit',compact('data'));
     }
+
     // user personal update data
     public function userUpdate(Request $request) {
         $this->validate($request,[
@@ -132,6 +152,7 @@ class ProfileController extends Controller
         $data = $this->userInterface->updateUserProfile($request);
         return redirect()->route('user_show')->with('success', 'User Update successfully');
     }
+
     // user personal password change
     public function userChangePass($id)
     {
@@ -139,31 +160,4 @@ class ProfileController extends Controller
         return view('user.userpass',compact('data'));
     }
 
-    // create confirm 
-    public function confCreate(Request $request) {
-        // dd($request);
-        $this->validate($request,[
-            'name'=>'required|max:20',
-                    'email'=>'required|max:70',
-                    'password'=>'required|min:8',
-                    'password_confirmation' => 'required_with:password|same:password|min:8'
-        ]);
-        $data = $request;
-        // dd($data->profile);
-        return view('user.confcreate',compact('data'));
-    }
-
-    // edit confirm 
-    public function confEdit(Request $request,$id) {
-    
-        $this->validate($request,[
-            'name'=>'required|max:20',
-            'email'=>'required|max:70',
-            // 'password_confirmation' => 'required_with:password|same:password|min:8'
-        ]);
-
-        $data = $request;
-        // dd($data);
-        return view('user.confedit',compact('data'));
-    }
 }

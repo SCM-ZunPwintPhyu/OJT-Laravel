@@ -2,8 +2,6 @@
 
 @section('content')
 <div class="container">
-    <!-- <form class="form-style-9" method="post" action="{{ route('post_create')}}" enctype="multipart/form-data">
-        @csrf -->
     <form class="form-style-9" method="post" action="{{ route('conf_create')}}" enctype="multipart/form-data">
         @csrf
         @method('PUT')
@@ -30,9 +28,7 @@
                         <a href="{{ route('post_create') }}" class="btn btn-danger btn-sm">Clear</a>
                     </div>
                     <div class="col-md-1 col-sm-3 col-xs-3">
-                        <!-- <input type="submit" class="btn btn-success btn-sm" value="Confirm" /> -->
                         <input type="submit" class="btn btn-success btn-sm" value="Create" />
-                        <!-- <a href="{{ route('conf_create') }}" class="btn btn-success btn-sm">Create</a> -->
                     </div>
                 </div>
             </li>

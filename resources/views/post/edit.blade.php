@@ -41,7 +41,6 @@
                         <a href="{{ route('post_edit', $post->id) }}" class="btn btn-danger btn-sm">Clear</a>
                     </div>
                     <div class="col-md-1 col-sm-3 col-xs-3">
-                        <!-- <input type="submit" class="btn btn-success btn-sm" value="Confirm" /> -->
                         <input type="submit" class="btn btn-success btn-sm" value="Create" />
                     </div>
                 </div>

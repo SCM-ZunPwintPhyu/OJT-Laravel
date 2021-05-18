@@ -12,9 +12,24 @@ class UserDao implements UserDaoInterface
    * @param Object
    * @return $operatorList
    */
-  public function getUserList()
+  public function getUserList($user)
   {
-    $users =  User::all();
+    // $users =  User::all();
+    // return $users;
+    
+    $users = new User();
+    if ($user->name != '') {
+      $users = $users->where('name','like','%'.$user->name.'%');
+    }
+    if ($user->email != '') {
+      $users = $users->where('email','like','%'.$user->email.'%');
+    }
+    if ($user->created_at != '') {
+      $users = $users->where('created_at','like','%'.$user->created_at.'%')->orderBy('id','DESC')->paginate(6);
+    }
+    else {
+      $users = $users->orderBy('id','DESC')->paginate(6);
+    }
     return $users;
   }
 
@@ -49,4 +64,5 @@ class UserDao implements UserDaoInterface
   public function userUpdatePass($user) {
     $user->save();
   }
+
 }

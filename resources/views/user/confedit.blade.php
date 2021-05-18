@@ -9,12 +9,14 @@
         <ul>
             <li>
                 <label style="float:left">Name</label>
-                <input type="text" name="name" class="field-style field-full align-none" value="{{ old('name',$data->name) }}" />
+                <input type="text" name="name" class="field-style field-full align-none"
+                    value="{{ old('name',$data->name) }}" />
                 <span style="color:red">{!! $errors->first('name','<small>:message</small>')!!} </span>
             </li>
             <li>
                 <label style="float:left">Email</label>
-                <input type="email" name="email" class="field-style field-full align-none" value="{{ old('email',$data->email) }}" />
+                <input type="email" name="email" class="field-style field-full align-none"
+                    value="{{ old('email',$data->email) }}" />
                 <span style="color:red">{!! $errors->first('email','<small>:message</small>')!!} </span>
             </li>
             <li>
@@ -35,12 +37,14 @@
             </li>
             <li>
                 <label style="float:left">Phone</label>
-                <input type="number" name="phone" class="field-style field-full align-none" value="{{ old('phone',$data->phone) }}" />
+                <input type="number" name="phone" class="field-style field-full align-none"
+                    value="{{ old('phone',$data->phone) }}" />
                 <span style="color:red"> </span>
             </li>
             <li>
                 <label style="float:left">Date of Birth</label>
-                <input type="date" name="dob" class="field-style field-full align-none" value="{{ old('dob',$data->dob) }}" />
+                <input type="date" name="dob" class="field-style field-full align-none"
+                    value="{{ old('dob',$data->dob) }}" />
                 <span style="color:red"> </span>
             </li>
             <li>
@@ -54,7 +58,8 @@
             </li>
             <li>
                 <label style="float:left">Profile Photo</label>
-                <input type='file' onchange="readURL(this);" name="profile" class="field-style field-full align-none" value="{{ old('profile') }}"/>
+                <input type='file' onchange="readURL(this);" name="profile" class="field-style field-full align-none"
+                    value="{{ old('profile') }}" />
                 <img id="blah" src='{{ asset("./uploads/Profile/$data->name/$data->name.PNG ") }}' alt="your image" />
             </li>
             <br>
@@ -72,18 +77,4 @@
         </ul>
     </form>
 </div>
-<script>
-function readURL(input) {
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
-
-        reader.onload = function(e) {
-            $('#blah')
-                .attr('src', e.target.result);
-        };
-
-        reader.readAsDataURL(input.files[0]);
-    }
-}
-</script>
 @endsection

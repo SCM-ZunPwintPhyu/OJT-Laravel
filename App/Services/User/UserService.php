@@ -29,9 +29,9 @@ class UserService implements UserServiceInterface
    */
 
   //  user list
-  public function getUserList()
+  public function getUserList($user)
   {
-    return $this->userDao->getUserList();
+    return $this->userDao->getUserList($user);
   }
 
   // create user
@@ -175,5 +175,4 @@ class UserService implements UserServiceInterface
     // $user->password =$request->password;
     return $this->userDao->userUpdatePass($user);
   }
-
 }

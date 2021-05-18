@@ -2,8 +2,6 @@
 
 @section('content')
 <div class="container">
-    <!-- <form class="form-style-9" method="post" action="{{ route('profile_create') }}" enctype="multipart/form-data"
-        autocomplete="false"> -->
     <form class="form-style-9" method="post" action="{{ route('userconf_create')}}" enctype="multipart/form-data">
         @csrf
         @method('PUT')
@@ -62,7 +60,8 @@
             </li>
             <li>
                 <label style="float:left">Profile Photo</label>
-                <input type='file' onchange="readURL(this);" name="profile" class="field-style field-full align-none" value="{{ old('profile') }}"/>
+                <input type='file' onchange="readURL(this);" name="profile" class="field-style field-full align-none"
+                    value="{{ old('profile') }}" />
                 <img id="blah" src="http://placehold.it/180" alt="your image" />
             </li>
             <li>
@@ -75,7 +74,6 @@
                         <a href="{{ route('profile_create') }}" class="btn btn-danger btn-sm">Clear</a>
                     </div>
                     <div class="col-md-1 col-sm-3 col-xs-3">
-                        <!-- <input type="submit" class="btn btn-success btn-sm" value="Confirm" /> -->
                         <input type="submit" class="btn btn-success btn-sm" value="Create" />
                     </div>
                 </div>
@@ -83,18 +81,4 @@
         </ul>
     </form>
 </div>
-<script>
-function readURL(input) {
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
-
-        reader.onload = function(e) {
-            $('#blah')
-                .attr('src', e.target.result);
-        };
-
-        reader.readAsDataURL(input.files[0]);
-    }
-}
-</script>
 @endsection

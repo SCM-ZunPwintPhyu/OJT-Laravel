@@ -8,12 +8,6 @@ use Auth;
 use Hash;
 use App\Post;
 use App\Models\User;
-// use Maatwebsite\Excel\Facades\Excel;
-// use App\Exports\PostsExport;
-// use App\Imports\PostsImport;
-// use App\Imports\ValidateCsvFile;
-// use Illuminate\Support\Facades\Storage;
-// use Illuminate\Support\Facades\File;
 
 class PostController extends Controller
 {
@@ -27,13 +21,22 @@ class PostController extends Controller
     public function index(Request $request)
     {
         $data = $this->postInterface->getPostList($request);
-        // $count =$data->count();
         return view('post.index',compact('data'));
     }
 
     // post create
     public function create() {
         return view('post.create');
+    }
+
+    // create confirm 
+    public function confCreate(Request $request) {
+        $this->validate($request,[
+            'title'=>'required|max:50',
+            'description'=>'required|max:200',
+        ]);
+        $post = $request;
+        return view('post.confcreate',compact('post'));
     }
     
     // post store
@@ -48,15 +51,25 @@ class PostController extends Controller
                 ->with('success','Post added successful!.');        
     }
 
-    // show post
-    public function show() {
-        return view('post.show');
-    }
-
     // post edit
     public function edit($id){
         $post = $this->postInterface->postByID($id);
         return view('post.edit',compact('post'));
+    }
+
+    // edit confirm 
+    public function confEdit(Request $request) {
+        $this->validate($request,[
+            'title'=>'required|max:50',
+            'description'=>'required|max:200',
+        ]);
+        $post = $request;
+        if($request->has('status')) {
+            $post->status = 1;
+        }else {
+            $post->status = 0;
+        }
+        return view('post.confedit',compact('post'));
     }
 
     // post update
@@ -94,31 +107,6 @@ class PostController extends Controller
         $post = $this->postInterface->csvUploadFile($request);
         return redirect()->route('post')
                 ->with('success','File Update successful!.');
-    }
-
-    // create confirm 
-    public function confCreate(Request $request) {
-        $this->validate($request,[
-            'title'=>'required|max:50',
-            'description'=>'required|max:200',
-        ]);
-        $post = $request;
-        return view('post.confcreate',compact('post'));
-    }
-
-    // edit confirm 
-    public function confEdit(Request $request) {
-        $this->validate($request,[
-            'title'=>'required|max:50',
-            'description'=>'required|max:200',
-        ]);
-        $post = $request;
-        if($request->has('status')) {
-            $post->status = 1;
-        }else {
-            $post->status = 0;
-        }
-        return view('post.confedit',compact('post'));
     }
 
 }
