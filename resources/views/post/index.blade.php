@@ -142,11 +142,11 @@
                     <td>{{$post->id}}</td>
                     <!-- <td>{{ $post->title}}</td> -->
                     <td>
-                        <div type="button" data-toggle="modal" data-target="#exampleModal">
+                        <div type="button" data-toggle="modal" data-target="#exampleModal{{$post->id}}">
                             {{ Str::limit($post->title, 10) }}
                             </diiv>
 
-                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                            <div class="modal fade" id="exampleModal{{$post->id}}" tabindex="-1" role="dialog"
                                 aria-labelledby="exampleModalLabel" aria-hidden="false">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
@@ -197,7 +197,7 @@
     @endif
     <!-- For Pagination -->
     <div style="float:right">
-    {!! $data->appends(request()->input())->links() !!}
+        {!! $data->appends(request()->input())->links() !!}
     </div>
     <!-- For Count -->
     <div class="col-md-2" style="float:left">
