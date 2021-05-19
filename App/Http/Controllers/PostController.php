@@ -53,8 +53,7 @@ class PostController extends Controller
         }
         else{
             $post = $this->postInterface->createPost($request);
-            return redirect()->route('post')
-                    ->with('success','Post added successful!.');   
+            return redirect()->route('post');   
         }    
     }
 
@@ -88,7 +87,7 @@ class PostController extends Controller
         }
         else{
             $post = $this->postInterface->updatePost($request, $id);
-            return redirect()->route('post')->with('success', 'Post Update successfully');   
+            return redirect()->route('post');   
         } 
     }
 
@@ -96,7 +95,7 @@ class PostController extends Controller
     public function destroy($id)
     {
         $post = $this->postInterface->postDelete($id);
-        return redirect('/post')->with('success', 'Post is successfully deleted');
+        return redirect('/post');
     } 
 
     // file export
@@ -114,8 +113,7 @@ class PostController extends Controller
     //csv file upload
     public function uploadFile(Request $request) {
         $post = $this->postInterface->csvUploadFile($request);
-        return redirect()->route('post')
-                ->with('success','File Update successful!.');
+        return redirect()->route('post');
     }
 
 }

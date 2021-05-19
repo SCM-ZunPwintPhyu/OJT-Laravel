@@ -50,8 +50,7 @@ class ProfileController extends Controller
         }
         else{
             $res = $this->userInterface->createUser($request);
-            return redirect()->route('profile')
-                    ->with('success','User added successful!.');   
+            return redirect()->route('profile');   
         }    
     }
     
@@ -86,7 +85,7 @@ class ProfileController extends Controller
         }
         else{
             $data = $this->userInterface->updateUser($request, $id);
-            return redirect()->route('profile')->with('success', 'User Update successfully');   
+            return redirect()->route('profile');   
         } 
     }
 
@@ -94,7 +93,7 @@ class ProfileController extends Controller
     public function destroy($id)
     {
         $user = $this->userInterface->userDelete($id);
-        return redirect('/profile')->with('success', 'User is successfully deleted');
+        return redirect('/profile');
     }
 
     // change password
@@ -107,14 +106,12 @@ class ProfileController extends Controller
     // update change password
     public function updateChangePass(Request $request, $id)
     {   
-        // dd($request);
         $this->validate($request,[
             'name'=>'required|max:20',
             'email'=>'required|email',
-            // 'password_confirmation' => 'required_with:password|same:password|min:8'
         ]);
         $data = $this->userInterface->updateChangePass($request, $id);
-        return redirect()->route('profile')->with('success', 'Password Change successfully');
+        return redirect()->route('profile');
     }
 
     // update profile change password
@@ -123,11 +120,9 @@ class ProfileController extends Controller
         $this->validate($request,[
             'name'=>'required|max:20',
             'email'=>'required|email',
-            // 'password_confirmation' => 'required_with:password|same:password|min:8'
         ]);
-        // $data = $this->userInterface->userUpdatePass($request, $id);
         $data = $this->userInterface->updateChangePass($request, $id);
-        return redirect()->route('user_show')->with('success', 'Password Change successfully');
+        return redirect()->route('user_show');
     }
 
      // user personal show data
@@ -157,7 +152,7 @@ class ProfileController extends Controller
         }
         else{
             $data = $this->userInterface->updateUserProfile($request);
-            return redirect()->route('user_show')->with('success', 'User Update successfully'); 
+            return redirect()->route('user_show'); 
         } 
     }
 

@@ -44,7 +44,7 @@ Route::group(['middleware' => ['auth', 'prevent-back-history']], function () {
         Route::get('/edit/{id}', [App\Http\Controllers\ProfileController::class, 'edit'])->name('profile_edit');
         Route::put('/update/{id}', [App\Http\Controllers\ProfileController::class, 'update'])->name('profile_update');
         Route::get('/show/{id}', [App\Http\Controllers\ProfileController::class, 'show'])->name('profile_show');
-        Route::get('/changePass/{id}', [App\Http\Controllers\ProfileController::class, 'changePass'])->name('change_pass');
+        Route::get('/changepass/{id}', [App\Http\Controllers\ProfileController::class, 'changePass'])->name('change_pass');
         Route::get('/user_show', [App\Http\Controllers\ProfileController::class, 'userShow'])->name('user_show');
         Route::get('/user_edit', [App\Http\Controllers\ProfileController::class, 'userEdit'])->name('user_edit');
         Route::put('/user_update', [App\Http\Controllers\ProfileController::class, 'userUpdate'])->name('user_update');
@@ -52,8 +52,8 @@ Route::group(['middleware' => ['auth', 'prevent-back-history']], function () {
         Route::put('/userconfcreate', [App\Http\Controllers\ProfileController::class, 'confCreate'])->name('userconf_create');
         Route::put('/userconfedit/{id}', [App\Http\Controllers\ProfileController::class, 'confEdit'])->name('userconf_edit');
         Route::put('/personalconfedit/{id}', [App\Http\Controllers\ProfileController::class, 'personalUserEdit'])->name('personalconf_edit');
-        Route::put('/updatePass/{id}', [App\Http\Controllers\ProfileController::class, 'updateChangePass'])->name('update_pass');
-        Route::put('/updateUserPass/{id}', [App\Http\Controllers\ProfileController::class, 'userUpdatePass'])->name('user_update_pass');
+        Route::put('/updatepass/{id}', [App\Http\Controllers\ProfileController::class, 'updateChangePass'])->name('update_pass');
+        Route::put('/update_user_pass/{id}', [App\Http\Controllers\ProfileController::class, 'userUpdatePass'])->name('user_update_pass');
     });
    
 });
