@@ -34,7 +34,7 @@ class ProfileController extends Controller
     public function confCreate(Request $request) {
         $this->validate($request,[
             'name'=>'required|max:20',
-            'email'=>'required|max:70',
+            'email'=>'required|unique:users|email',
             'password'=>'required|min:8',
             'password_confirmation' => 'required_with:password|same:password|min:8'
         ]);
@@ -71,7 +71,7 @@ class ProfileController extends Controller
     public function confEdit(Request $request,$id) {
         $this->validate($request,[
             'name'=>'required|max:20',
-            'email'=>'required|max:70',
+            'email'=>'required|unique:users|email',
         ]);
         $data = $this->userInterface->confCreateImg($request,$id);
         return view('user.confedit',compact('data'));
@@ -110,7 +110,7 @@ class ProfileController extends Controller
         // dd($request);
         $this->validate($request,[
             'name'=>'required|max:20',
-            'email'=>'required|max:70',
+            'email'=>'required|unique:users|email',
             'password_confirmation' => 'required_with:password|same:password|min:8'
         ]);
         $data = $this->userInterface->updateChangePass($request, $id);
@@ -122,7 +122,7 @@ class ProfileController extends Controller
     {   
         $this->validate($request,[
             'name'=>'required|max:20',
-            'email'=>'required|max:70',
+            'email'=>'required|unique:users|email',
             'password_confirmation' => 'required_with:password|same:password|min:8'
         ]);
         // $data = $this->userInterface->userUpdatePass($request, $id);
@@ -144,7 +144,7 @@ class ProfileController extends Controller
     public function personalUserEdit(Request $request,$id) {
         $this->validate($request,[
             'name'=>'required|max:20',
-            'email'=>'required|max:70',
+            'email'=>'required|unique:users|email',
         ]);
         $data = $this->userInterface->confCreateImg($request,$id);
         return view('user.confuseredit',compact('data'));
