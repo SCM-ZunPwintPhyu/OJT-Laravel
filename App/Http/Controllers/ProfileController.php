@@ -35,7 +35,7 @@ class ProfileController extends Controller
         $this->validate($request,[
             'name'=>'required|max:20',
             'email'=>'required|unique:users|email',
-            'password'=>'required|min:8',
+            'password'=>'required|regex:/^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\x])(?=.*[!$#%]).*$/|min:8',
             'password_confirmation' => 'required_with:password|same:password|min:8'
         ]);
         $data = $this->userInterface->confUserImage($request);
@@ -71,7 +71,7 @@ class ProfileController extends Controller
     public function confEdit(Request $request,$id) {
         $this->validate($request,[
             'name'=>'required|max:20',
-            'email'=>'required|unique:users|email',
+            'email'=>'required|email',
         ]);
         $data = $this->userInterface->confCreateImg($request,$id);
         return view('user.confedit',compact('data'));
@@ -110,8 +110,8 @@ class ProfileController extends Controller
         // dd($request);
         $this->validate($request,[
             'name'=>'required|max:20',
-            'email'=>'required|unique:users|email',
-            'password_confirmation' => 'required_with:password|same:password|min:8'
+            'email'=>'required|email',
+            // 'password_confirmation' => 'required_with:password|same:password|min:8'
         ]);
         $data = $this->userInterface->updateChangePass($request, $id);
         return redirect()->route('profile')->with('success', 'Password Change successfully');
@@ -122,8 +122,8 @@ class ProfileController extends Controller
     {   
         $this->validate($request,[
             'name'=>'required|max:20',
-            'email'=>'required|unique:users|email',
-            'password_confirmation' => 'required_with:password|same:password|min:8'
+            'email'=>'required|email',
+            // 'password_confirmation' => 'required_with:password|same:password|min:8'
         ]);
         // $data = $this->userInterface->userUpdatePass($request, $id);
         $data = $this->userInterface->updateChangePass($request, $id);
@@ -144,7 +144,7 @@ class ProfileController extends Controller
     public function personalUserEdit(Request $request,$id) {
         $this->validate($request,[
             'name'=>'required|max:20',
-            'email'=>'required|unique:users|email',
+            'email'=>'required|email',
         ]);
         $data = $this->userInterface->confCreateImg($request,$id);
         return view('user.confuseredit',compact('data'));
