@@ -24,9 +24,17 @@ class UserDao implements UserDaoInterface
     if ($user->email != '') {
       $users = $users->where('email','like','%'.$user->email.'%');
     }
-    if ($user->created_at != '') {
-      $users = $users->where('created_at','like','%'.$user->created_at.'%')->orderBy('id','DESC')->paginate(6);
+  
+    $from = $user->from;
+    $to = $user->to;
+    if(isset($from) && isset($to)) {
+      $users =$users->whereBetween('created_at', [$from." 00:00:00",$to." 23:59:59"])->orderBy('id','DESC')->paginate(6);
+    }elseif(isset($from) && !isset($to)) {
+      $users = $users->where('created_at', '>=', $from." 00:00:00")->orderBy('id','DESC')->paginate(6);
+    }elseif(!isset($from) && isset($to)) {
+      $users =$users->where('created_at', '<=', $to." 23:59:59")->orderBy('id','DESC')->paginate(6);
     }
+
     else {
       $users = $users->orderBy('id','DESC')->paginate(6);
     }

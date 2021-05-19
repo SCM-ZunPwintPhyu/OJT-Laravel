@@ -4,7 +4,8 @@
     <?php 
         $name= isset($_GET['name'])?$_GET['name']:'';
         $email= isset($_GET['email'])?$_GET['email']:'';
-        $created_at= isset($_GET['created_at'])?$_GET['created_at']:'';
+        $from= isset($_GET['from'])?$_GET['from']:'';
+        $to= isset($_GET['to'])?$_GET['to']:'';
     ?>
     <!-- Add Button -->
     <form action="{{ url('profile') }}" method="GET">
@@ -13,19 +14,20 @@
                 <input type="search" name="name" class="form-control-sm" placeholder="Serach By Name..."
                     value="{{ $name}}">
             </div>
-            <div class="col-md-2" style="margin-left:10px">
+            <div class="col-md-2">
                 <input type="search" name="email" class="form-control-sm" placeholder="Serach By Email..."
                     value="{{ $email}}">
             </div>
-            <!-- <div class="col-md-2" style="margin-left:10px">
-                <input type="date" name="created_at" class="form-control-sm"
-                    placeholder="Serach By Created User..." value="{{ $created_at}}">
-            </div> -->
+            <div class="col-md-2">
+                <input type="date" name="from" class="form-control-sm">
+            </div>
+            <div class="col-md-2">
+                <input type="date" name="to" class="form-control-sm">
+            </div>
             <div class="col-md-2">
                 <input type="submit" class="btn btn-primary btn-sm" value="Search">
             </div>
-            <div class="col-md-1"></div>
-            <div class="col-md-4">
+            <div class="col-md-2">
                 <div style="float:right">
                     <a class="btn btn-success btn-sm" href="{{ route('profile_create') }}"><span
                             class="glyphicon glyphicon-plus"></span>Add Profile</a>
@@ -70,7 +72,7 @@
                                         <div class="modal-body">
                                             <p>Name:{{$user->name}}</p>
                                             <p>Type:
-                                            <?php
+                                                <?php
                                                 if ($user->type == 0) {
                                                 echo "Admin";
                                                 } else {
@@ -79,7 +81,7 @@
                                                 ?>
                                             </p>
                                             <p>Email:{{$user->email}}</p>
-                                            <p>Created Time:{{$user->created_at->format('d/m/Y')}}</p>
+                                            <p>Created Time:{{$user->created_at->format('Y-m-d')}}</p>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal"
@@ -100,8 +102,8 @@
                         ?>
                     </td>
                     <td>{{$user->email}}</td>
-                    <td>{{$user->created_at->format('d/m/Y')}}</td>
-                    <td>{{$user->updated_at->format('d/m/Y')}}</td>
+                    <td>{{$user->created_at->format('Y-m-d')}}</td>
+                    <td>{{$user->updated_at->format('Y-m-d')}}</td>
                     <td>
                         <form action="{{ route('profile_destroy',$user->id)}}" method="post"
                             onsubmit="return confirm('Do you want to delete?');">
