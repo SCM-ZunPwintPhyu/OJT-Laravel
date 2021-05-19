@@ -96,7 +96,7 @@
                 </table>
                 @endif
                 <div>
-                    <p style="font-size:15px"> Count:: {{$count}}</p>
+                    <p style="font-size:15px"> Count:: {{$data->count()}}</p>
                 </div>
             </div>
         </div>
