@@ -8,6 +8,12 @@ use Auth;
 use Hash;
 use App\Post;
 use App\Models\User;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\PostsExport;
+use App\Imports\PostsImport;
+use App\Imports\ValidateCsvFile;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 
 class PostController extends Controller
 {
