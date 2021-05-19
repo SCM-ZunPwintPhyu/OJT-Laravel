@@ -26,7 +26,7 @@
         <div style="width:800px">
             <label style="float:left;padding-left:15%">Old Password:</label>
             <input type="password" name="password" class="field-style field-full align-none form-control"
-                value="{{Auth::user()->password}}" style="margin-left:15%" disabled />
+            value="password" style="margin-left:15%" disabled />
         </div>
 
         <div style="width:800px">
