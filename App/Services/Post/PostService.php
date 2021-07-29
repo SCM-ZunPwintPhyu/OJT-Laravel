@@ -49,10 +49,11 @@ class PostService implements PostServiceInterface
   // create post
   public function createPost($request) {
     $post = new Post;
-    $user_id=Auth::user()->name;
+    // $user_id=Auth::user()->name;
     $post->title = $request->title;
     $post->description = $request->description;
-    $post->created_user_id = $user_id;
+    // $post->created_user_id = Auth::user();
+    $post->created_user_id = "Admin";
     $post->updated_user_id = "Not Updated";
     return $this->postDao->createPost($post);
   }
@@ -64,8 +65,7 @@ class PostService implements PostServiceInterface
 
   // update post
   public function updatePost($request, $id) {
-    // dd("herer");
-    $user_id=Auth::user()->name;
+    // $user_id=Auth::user()->name;
     $post = $this->postDao->postByID($id);
     if($request->has('status')) {
       $request->status = 1;
@@ -75,7 +75,8 @@ class PostService implements PostServiceInterface
     $post->title = $request->title;
     $post->description = $request->description;
     $post->status = $request->status;
-    $post->updated_user_id = $user_id;
+    $post->updated_user_id = "Admin";
+    // $post->updated_user_id = $user_id;
     return $this->postDao->updatePost($post);
   }
 
