@@ -31,7 +31,7 @@ Route::apiResource('users',UserApiController::class);
 Route::post('/change_password/{id}',[UserApiController::class,'updateChangePass']);
 
 Route::apiResource('posts',PostApiController::class);
-Route::get('posts/search',[PostApiController::class,'search']);
+// Route::get('/posts/search',[PostApiController::class,'search']);
 Route::post('/exportExcel',[PostApiController::class,'export']);
 Route::get('/importExcel',[PostApiController::class,'showuploadFile']);
 Route::post('/importExcel',[PostApiController::class,'uploadFile']);

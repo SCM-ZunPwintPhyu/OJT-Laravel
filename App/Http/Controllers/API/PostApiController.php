@@ -26,12 +26,12 @@ class PostApiController extends BaseController
         return response()->json($posts);
     }
 
-    public function search(Request $request)
-    { 
-        $search_data = $request->search_data;
-        $posts = $this->postInterface->getPostList($search_data);
-        return response()->json($posts);
-    }
+    // public function search(Request $request)
+    // { 
+    //     $search_data = $request->search_data;
+    //     $posts = $this->postInterface->getPostList($search_data);
+    //     return response()->json($posts);
+    // }
 
     public function store(Request $request)
     {
@@ -52,7 +52,6 @@ class PostApiController extends BaseController
 
     public function update(Request $request, $id)
     {
-        // return response()->json($request);
         $post = $this->postInterface->updatePost($request,$id);
         return response()->json($post);
     }
@@ -83,7 +82,6 @@ class PostApiController extends BaseController
     public function uploadFile(Request $request)
     {
         $post = $this->postInterface->csvUploadFile($request);
-        // return redirect()->route('post');
         return response()->json($post);
     }
 }

@@ -29,12 +29,10 @@ class UserApiController extends BaseController
     public function store(Request $request) {
         
         if($request->name == null || $request->email == null||$request->password == null){
-            // return view('user.create');
             return response()->json('please fill again');
         }
         else{
             $res = $this->userInterface->createUser($request);
-            // return redirect()->route('profile'); 
             return response()->json($res);  
         }    
     }
@@ -58,24 +56,12 @@ class UserApiController extends BaseController
         return response()->json($user);
     }
 
-    // change password
-    // public function changePass($id)
-    // {
-    //     $data = $this->userInterface->userByID($id);
-    //     return response()->json($data);
-    // }
-
     // update change password
     public function updateChangePass(Request $request, $id)
     {   
-        // $this->validate($request,[
-        //     'name'=>'required|max:20',
-        //     'email'=>'required|email',
-        // ]);
         $data = $this->userInterface->updateChangePass($request, $id);
         return response()->json($data);
     }
-
     // update profile change password
     public function userUpdatePass(Request $request, $id)
     {   
@@ -86,6 +72,9 @@ class UserApiController extends BaseController
         $data = $this->userInterface->updateChangePass($request, $id);
         return redirect()->route('user_show');
     }
+
+
+
 
      // user personal show data
      public function userShow() {
